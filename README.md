@@ -13,7 +13,13 @@ We highly appreciate contributions in building the dataset by either direct upda
 
 ## License 
 
-CC-BY-4.0 https://creativecommons.org/licenses/by/4.0
+Agent Landscape Dataset (c) by AttoAgents
+
+Agent Landscape Dataset is licensed under a
+Creative Commons Attribution-ShareAlike 4.0 International License.
+
+You should have received a copy of the license along with this
+work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
 ## Attribution 
 
