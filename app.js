@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'ClaudeCode', label: 'Claude Code', type: 'Product', properties: { url: "https://www.anthropic.com/claude-code"}}},
       { data: { id: 'ChatGPT', label: 'ChatGPT', type: 'Product', properties: { url: "https://chat.openai.com/"}}},
       { data: { id: 'Claude', label: 'Claude', type: 'Product', properties: { url: "https://claude.ai/"}}},
-      { data: { id: 'Langfuse', label: 'Langfuse', type: 'Product', properties: { url: "https://langfuse.com/", github: "https://github.com/langfuse/langfuse"}}},
+      { data: { id: 'Langfuse', label: 'Langfuse', type: 'Product', properties: { url: "https://langfuse.com/", github: "https://github.com/langfuse/langfuse", license: "MIT Expat License with custom clauses"}}},
       { data: { id: 'LangSmith', label: 'LangSmith', type: 'Product', properties: { url: "https://smith.langchain.com/", github: "https://github.com/langchain-ai/langsmith-sdk"}}},
       { data: { id: 'vectara-agentic', label: 'vectara-agentic', type: 'Product', properties: { url: "https://www.vectara.com/", github: "https://github.com/vectara/py-vectara-agentic", license: "Apache License 2.0"}}},
       { data: { id: 'Clark', label: 'Clark', type: 'Product', properties: { url: "https://www.superblocks.com/", about: "AI Agent for building internal enterprise apps."}}},
@@ -133,7 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'LiveKit', label: 'LiveKit Agents', type: 'Product', properties: { url: "https://livekit.io/", github: "https://github.com/livekit/agents", license: "Apache License 2.0"}}},
       { data: { id: 'llm_agents', label: 'llm_agents', type: 'Product', properties: { github: "https://github.com/mpaepper/llm_agents", license: "MIT License"}}},
       { data: { id: 'AgentFlow', label: 'AgentFlow', type: 'Product', properties: { github: "https://github.com/simonmesmith/agentflow", license: "MIT License"}}},
-      { data: { id: 'llama-agentic-system', label: 'Llama Agentic System', type: 'Product', properties: { url: "https://github.com/meta-llama/llama-agentic-system", github: "https://github.com/meta-llama/llama-agentic-system", license: "MIT License" }}},
+      { data: { id: 'llama-stack-apps', label: 'Llama Stack Apps', type: 'Product', properties: { url: "", github: "https://github.com/meta-llama/llama-stack-apps", license: "MIT License" }}},
+      { data: { id: 'llama-stack', label: 'Llama Stack', type: 'Product', properties: { url: "https://llama-stack.readthedocs.io/", github: "https://github.com/meta-llama/llama-stack", license: "MIT License" }}},
       { data: { id: 'AgentVerse', label: 'AgentVerse', type: 'Product', properties: { url: "", github: "https://github.com/openbmb/agentverse", license: "Apache License 2.0" }}},
       { data: { id: 'MaestroFramework', label: 'Maestro', type: 'Product', properties: { url: "", github: "https://github.com/Doriandarko/maestro", license: "MIT License" }}},
       { data: { id: 'Upsonic', label: 'Upsonic', type: 'Product', properties: { url: "", github: "https://github.com/upsonic/upsonic", license: "MIT License" }}},
@@ -169,6 +170,13 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'Pipecat', label: 'Pipecat', type: 'Product', properties: { url: "", github: "https://github.com/pipecat-ai/pipecat", license: "Apache License 2.0" }}},
       { data: { id: 'VoiceLab', label: 'Voice Lab', type: 'Product', properties: { url: "", github: "https://github.com/saharmor/voice-lab", license: "MIT License" }}},
       { data: { id: 'OpenRAGEval', label: 'Open-RAG-Eval', type: 'Product', properties: { url: "", github: "https://github.com/vectara/open-rag-eval", license: "Apache License 2.0" }}},
+      { data: { id: 'Codex', label: 'Codex', type: 'Product', properties: { url: "https://openai.com/codex/", github: "https://github.com/openai/codex", license: "Apache License 2.0" }}},
+      { data: { id: 'openai-agents', label: 'OpenAI Agents SDK', type: 'Product', properties: { url: "https://openai.github.io/openai-agents-python/", github: "https://github.com/openai/openai-agents-python", license: "MIT License" }}},
+      { data: { id: 'LiteLLM', label: 'LiteLLM', type: 'Product', properties: { url: "https://www.litellm.ai/", github: "https://github.com/BerriAI/litellm", license: "MIT License with Enterprise Features" }}},
+      { data: { id: 'PurpleLlama', label: 'PurpleLlama', type: 'Product', properties: { url: "", github: "https://github.com/meta-llama/PurpleLlama", license: "LLAMA 3.2 COMMUNITY LICENSE" }}},
+
+
+      
 
       
 
@@ -191,11 +199,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
       // Investors
-      { data: { id: 'YCombinator', label: 'Y Combinator', type: 'Investor'} },
-      { data: { id: 'KleinerPerkins', label: 'Kleiner Perkins', type: 'Investor'} },
-      { data: { id: 'GeneralCatalyst', label: 'General Catalyst', type: 'Investor'} },
-      { data: { id: 'GreenOaks', label: 'Green Oaks', type: 'Investor'} },
-      { data: { id: 'FoundersFund', label: 'Founders Fund', type: 'Investor'} },
+      { data: { id: 'YCombinator', label: 'Y Combinator', type: 'Investor', properties: { url: "https://www.ycombinator.com/"}} },
+      { data: { id: 'KleinerPerkins', label: 'Kleiner Perkins', type: 'Investor', properties: { url: "https://www.kleinerperkins.com/"}} },
+      { data: { id: 'GeneralCatalyst', label: 'General Catalyst', type: 'Investor', properties: { url: "https://www.generalcatalyst.com/"}} },
+      { data: { id: 'GreenOaks', label: 'Green Oaks', type: 'Investor', properties: { url: "https://greenoaks.com/"}} },
+      { data: { id: 'FoundersFund', label: 'Founders Fund', type: 'Investor', properties: { url: "https://foundersfund.com/"}} },
       { data: { id: 'SparkCapital', label: 'Spark Capital', type: 'Investor'} },
       { data: { id: 'Meritech', label: 'Meritech', type: 'Investor'} },
       { data: { id: 'UIPath', label: 'UI Path', type: 'Investor'} },
@@ -204,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'CraftVentures', label: 'Craft Ventures', type: 'Investor'} },
       { data: { id: 'EarlyGrey', label: 'Early Grey', type: 'Investor'} },
       { data: { id: 'FirsthandVentures', label: 'Firsthand Ventures', type: 'Investor'} },
-      { data: { id: 'Newlands', label: 'Newlands', type: 'Investor'} },
+      { data: { id: 'Newlands', label: 'Newlands', type: 'Investor', properties: { url: "https://www.thenewlands.com/" }} },
       { data: { id: 'KeaCapital', label: 'Kea Capital', type: 'Investor'} },
       { data: { id: 'Better', label: 'Better', type: 'Investor'} },
       { data: { id: 'Redpoint', label: 'Redpoint', type: 'Investor'} },
@@ -220,6 +228,10 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'Sequoia', label: 'Sequoia Capital', type: 'Investor', properties: { url: "https://www.sequoiacap.com/" }} },
       { data: { id: 'XYZ', label: 'XYZ Venture Capital', type: 'Investor', properties: { url: "https://xyz.vc/" }} },
       { data: { id: 'ConnectVentures', label: 'Connect Ventures', type: 'Investor', properties: { url: "https://www.connectventures.co/" }} },
+      { data: { id: 'GravityFund', label: 'Gravity Fund', type: 'Investor', properties: { url: "https://gravityfund.vc/" }} },
+      { data: { id: 'PioneerFund', label: 'Pioneer Fund', type: 'Investor', properties: { url: "https://www.pioneerfund.vc/" }} },
+  
+      
       
 
 
@@ -264,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'IBM', label: 'IBM', type: 'Company', properties: { url: "https://ibm.com/"}}},
       { data: { id: 'MaitaiCompany', label: 'Maitai, Inc', type: 'Company', properties: { url: "https://trymaitai.ai/"}}},
       { data: { id: 'Groq', label: 'Groq, Inc.', type: 'Company', properties: { url: "https://groq.com/"}}},
-      { data: { id: 'LangfuseCompany', label: 'Langfuse Gmbh', type: 'Company', properties: { url: "https://langfuse.com/"}}},
+      { data: { id: 'LangfuseCompany', label: 'Langfuse GmbH', type: 'Company', properties: { url: "https://langfuse.com/"}}},
       { data: { id: 'LangChainCompany', label: 'LangChain, Inc.', type: 'Company', properties: { url: "https://langchain.com/"}}},
       { data: { id: 'LangflowCompany', label: 'LangFlow', type: 'Company', properties: { url: "https://www.langflow.org/", github: "https://github.com/langflow-ai/"}}},
       { data: { id: 'IO', label: 'IO', type: 'Company', properties: { url: "https://www.lovefrom.com/", country: 'US'}}},
@@ -287,6 +299,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'MemGPTCompany', label: 'MemGPT', type: 'Company', properties: { url: "https://memgpt.ai", country: "US" }}},
       { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'LiteLLMCompany', label: 'LiteLLM', type: 'Company', properties: { url: "https://www.litellm.ai/", country: "US" }}},
+      
 
 
       
@@ -335,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'KnowledgeManagement', label: 'Knowledge Management', type: 'UseCase' }},
       { data: { id: 'MultimodalAgents', label: 'Multimodal Agents', type: 'UseCase' }},
       { data: { id: 'TestingEvaluation', label: 'Testing and Evaluation', type: 'UseCase' }},
+      { data: { id: 'LLMSecurity', label: 'LLM Security', type: 'UseCase' }},
 
 
 
@@ -633,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e269', source: 'ConnectVentures', target: 'DustCompany', label: 'INVESTED_IN' }},
       { data: { id: 'e270', source: 'MetaGPTCompany', target: 'MetaGPT', label: 'DEVELOPED' }},
       { data: { id: 'e271', source: 'AgentFlow', target: 'AgentFramework', label: 'IN_AREA' }},
-      { data: { id: 'e-meta-llama', source: 'MetaCompany', target: 'llama-agentic-system', label: 'DEVELOPED' }},
+      { data: { id: 'e-meta-llama', source: 'MetaCompany', target: 'llama-stack-apps', label: 'DEVELOPED' }},
       { data: { id: 'e-pythagora-gpt', source: 'PythagoraCompany', target: 'GPTPilot', label: 'DEVELOPED' }},
       { data: { id: 'e-stition-devika', source: 'StitionAI', target: 'Devika', label: 'DEVELOPED' }},
       { data: { id: 'e-pipecat-pipe', source: 'PipecatAI', target: 'Pipecat', label: 'DEVELOPED' }},
@@ -645,8 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-openbmb-xagent', source: 'OpenBMB', target: 'XAgent', label: 'DEVELOPED' }},
       { data: { id: 'e-minedojo-voyager', source: 'MineDojo', target: 'Voyager', label: 'DEVELOPED' }},
       { data: { id: 'e-openai-swarm', source: 'openai', target: 'Swarm', label: 'DEVELOPED' }},
-      { data: { id: 'e-anthropic-claude-eng', source: 'Anthropic', target: 'ClaudeEngineer', label: 'DEVELOPED' }},
-      { data: { id: 'e-llama-agent', source: 'llama-agentic-system', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-llama-agent', source: 'llama-stack', target: 'AgentFramework', label: 'IN_AREA' }},
       { data: { id: 'e-agentverse-agent', source: 'AgentVerse', target: 'AgentFramework', label: 'IN_AREA' }},
       { data: { id: 'e-maestro-agent', source: 'MaestroFramework', target: 'AgentFramework', label: 'IN_AREA' }},
       { data: { id: 'e-upsonic-agent', source: 'Upsonic', target: 'AgentFramework', label: 'IN_AREA' }},
@@ -683,6 +697,19 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-voicelab-test', source: 'VoiceLab', target: 'TestingEvaluation', label: 'IN_AREA' }},
       { data: { id: 'e-openrag-test', source: 'OpenRAGEval', target: 'TestingEvaluation', label: 'IN_AREA' }},
       { data: { id: 'e-upsonic-mcp', source: 'Upsonic', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-codex-ai-devel', source: 'Codex', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-codex-openai', source: 'openai', target: 'Codex', label: 'DEVELOPED' }},
+      { data: { id: 'e-openai-agents-framework', source: 'openai-agents', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-openai-openai-agents-sdk', source: 'openai', target: 'openai-agents', label: 'DEVELOPED' }},
+      { data: { id: 'e-openai-agents-sdk-mcp', source: 'openai-agents', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-litellm-model-serving', source: 'LiteLLM', target: 'ModelServing', label: 'IN_AREA' }},
+      { data: { id: 'e-litellm-company-litellm', source: 'LiteLLMCompany', target: 'LiteLLM', label: 'DEVELOPED' }},
+      { data: { id: 'e-ycombinator-litellm', source: 'YCombinator', target: 'LiteLLMCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-gravity-litellm', source: 'GravityFund', target: 'LiteLLMCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-pioneer-litellm', source: 'PioneerFund', target: 'LiteLLMCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-meta-llama-stack', source: 'MetaCompany', target: 'llama-stack', label: 'DEVELOPED' }},
+      { data: { id: 'e-meta-purple-llama', source: 'MetaCompany', target: 'PurpleLlama', label: 'DEVELOPED' }},
+      { data: { id: 'e-purple-llama-security', source: 'PurpleLlama', target: 'LLMSecurity', label: 'IN_AREA' }},
 
       
  
