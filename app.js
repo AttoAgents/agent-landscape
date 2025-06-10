@@ -174,6 +174,12 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'openai-agents', label: 'OpenAI Agents SDK', type: 'Product', properties: { url: "https://openai.github.io/openai-agents-python/", github: "https://github.com/openai/openai-agents-python", license: "MIT License" }}},
       { data: { id: 'LiteLLM', label: 'LiteLLM', type: 'Product', properties: { url: "https://www.litellm.ai/", github: "https://github.com/BerriAI/litellm", license: "MIT License with Enterprise Features" }}},
       { data: { id: 'PurpleLlama', label: 'PurpleLlama', type: 'Product', properties: { url: "", github: "https://github.com/meta-llama/PurpleLlama", license: "LLAMA 3.2 COMMUNITY LICENSE" }}},
+      { data: { id: 'MistralAgentsAPI', label: 'Mistral Agents API', type: 'Product', properties: { url: 'https://mistral.ai/news/agents-api'}} },
+      { data: { id: 'LeChat', label: 'Le Chat', type: 'Product', properties: { url: "https://chat.mistral.ai/"}}},
+      { data: { id: 'MistralCode', label: 'Mistral Code', type: 'Product', properties: { url: "https://mistral.ai/products/mistral-code"}}},
+
+
+      
 
 
       
@@ -300,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'LiteLLMCompany', label: 'LiteLLM', type: 'Company', properties: { url: "https://www.litellm.ai/", country: "US" }}},
+      { data: { id: 'MistralAI', label: 'Mistral AI', type: 'Company', properties: { url: "https://mistral.ai/", country: "France" }}},
       
 
 
@@ -710,6 +717,14 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-meta-llama-stack', source: 'MetaCompany', target: 'llama-stack', label: 'DEVELOPED' }},
       { data: { id: 'e-meta-purple-llama', source: 'MetaCompany', target: 'PurpleLlama', label: 'DEVELOPED' }},
       { data: { id: 'e-purple-llama-security', source: 'PurpleLlama', target: 'LLMSecurity', label: 'IN_AREA' }},
+      { data: { id: 'e-mistral-agents-api', source: 'MistralAI', target: 'MistralAgentsAPI', label: 'DEVELOPED' }},
+      { data: { id: 'e-mistral-agents-api-use-case', source: 'MistralAgentsAPI', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-mistral-le-chat', source: 'MistralAI', target: 'LeChat', label: 'DEVELOPED' }},
+      { data: { id: 'e-mistral-mistral-code', source: 'MistralAI', target: 'MistralCode', label: 'DEVELOPED' }},
+      { data: { id: 'e-mistral-code-use-case', source: 'MistralCode', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-mistral-use-case', source: 'MistralAI', target: 'ModelServing', label: 'IN_AREA' }}
+
+      
 
       
  
