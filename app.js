@@ -133,6 +133,42 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'LiveKit', label: 'LiveKit Agents', type: 'Product', properties: { url: "https://livekit.io/", github: "https://github.com/livekit/agents", license: "Apache License 2.0"}}},
       { data: { id: 'llm_agents', label: 'llm_agents', type: 'Product', properties: { github: "https://github.com/mpaepper/llm_agents", license: "MIT License"}}},
       { data: { id: 'AgentFlow', label: 'AgentFlow', type: 'Product', properties: { github: "https://github.com/simonmesmith/agentflow", license: "MIT License"}}},
+      { data: { id: 'llama-agentic-system', label: 'Llama Agentic System', type: 'Product', properties: { url: "https://github.com/meta-llama/llama-agentic-system", github: "https://github.com/meta-llama/llama-agentic-system", license: "MIT License" }}},
+      { data: { id: 'AgentVerse', label: 'AgentVerse', type: 'Product', properties: { url: "", github: "https://github.com/openbmb/agentverse", license: "Apache License 2.0" }}},
+      { data: { id: 'MaestroFramework', label: 'Maestro', type: 'Product', properties: { url: "", github: "https://github.com/Doriandarko/maestro", license: "MIT License" }}},
+      { data: { id: 'Upsonic', label: 'Upsonic', type: 'Product', properties: { url: "", github: "https://github.com/upsonic/upsonic", license: "MIT License" }}},
+      { data: { id: 'Mastra', label: 'Mastra', type: 'Product', properties: { url: "", github: "https://github.com/mastra-ai/mastra", license: "MIT License" }}},
+      { data: { id: 'PortiaAI', label: 'Portia AI', type: 'Product', properties: { url: "", github: "https://github.com/portiaAI/portia-sdk-python", license: "MIT License" }}},
+      { data: { id: 'Swarm', label: 'Swarm', type: 'Product', properties: { url: "", github: "https://github.com/openai/swarm", license: "MIT License" }}},
+      { data: { id: 'GPTPilot', label: 'GPT Pilot', type: 'Product', properties: { url: "", github: "https://github.com/Pythagora-io/gpt-pilot", license: "MIT License" }}},
+      { data: { id: 'Devika', label: 'Devika', type: 'Product', properties: { url: "", github: "https://github.com/stitionai/devika", license: "MIT License" }}},
+      { data: { id: 'RepoAgent', label: 'RepoAgent', type: 'Product', properties: { url: "", github: "https://github.com/OpenBMB/RepoAgent", license: "Apache License 2.0" }}},
+      { data: { id: 'Codel', label: 'Codel', type: 'Product', properties: { url: "", github: "https://github.com/semanser/codel", license: "MIT License" }}},
+      { data: { id: 'MicroAgent', label: 'MicroAgent', type: 'Product', properties: { url: "", github: "https://github.com/aymenfurter/microagents", license: "MIT License" }}},
+      { data: { id: 'AgentRun', label: 'AgentRun', type: 'Product', properties: { url: "", github: "https://github.com/Jonathan-Adly/AgentRun", license: "MIT License" }}},
+      { data: { id: 'ClaudeEngineer', label: 'Claude Engineer', type: 'Product', properties: { url: "", github: "https://github.com/Doriandarko/claude-engineer", license: "MIT License" }}},
+      { data: { id: 'BlockAGI', label: 'BlockAGI', type: 'Product', properties: { url: "", github: "https://github.com/blockpipe/blockagi", license: "MIT License" }}},
+      { data: { id: 'LLocalSearch', label: 'LLocalSearch', type: 'Product', properties: { url: "", github: "https://github.com/nilsherzig/LLocalSearch", license: "MIT License" }}},
+      { data: { id: 'RasaGPT', label: 'RasaGPT', type: 'Product', properties: { url: "", github: "https://github.com/paulpierre/RasaGPT", license: "MIT License" }}},
+      { data: { id: 'BabyAGI-UI', label: 'BabyAGI UI', type: 'Product', properties: { url: "", github: "https://github.com/miurla/babyagi-ui", license: "MIT License" }}},
+      { data: { id: 'ix', label: 'ix', type: 'Product', properties: { url: "", github: "https://github.com/kreneskyp/ix", license: "MIT License" }}},
+      { data: { id: 'DuetGPT', label: 'DuetGPT', type: 'Product', properties: { url: "", github: "https://github.com/kristoferlund/duet-gpt", license: "MIT License" }}},
+      { data: { id: 'Memgpt', label: 'Memgpt', type: 'Product', properties: { url: "https://memgpt.ai", github: "https://github.com/cpacker/memgpt", license: "Apache License 2.0" }}},
+      { data: { id: 'CamelAutoGPT', label: 'Camel-AutoGPT', type: 'Product', properties: { url: "", github: "https://github.com/SamurAIGPT/Camel-AutoGPT", license: "MIT License" }}},
+      { data: { id: 'SkyAGI', label: 'SkyAGI', type: 'Product', properties: { url: "", github: "https://github.com/litanlitudan/skyagi", license: "MIT License" }}},
+      { data: { id: 'Voyager', label: 'Voyager', type: 'Product', properties: { url: "", github: "https://github.com/MineDojo/Voyager", license: "MIT License" }}},
+      { data: { id: 'PrivateGPT', label: 'Private GPT', type: 'Product', properties: { url: "", github: "https://github.com/imartinez/privateGPT", license: "Apache License 2.0" }}},
+      { data: { id: 'LocalGPT', label: 'Local GPT', type: 'Product', properties: { url: "", github: "https://github.com/PromtEngineer/localGPT", license: "MIT License" }}},
+      { data: { id: 'SecondBrainAgent', label: 'Second Brain AI Agent', type: 'Product', properties: { url: "", github: "https://github.com/flepied/second-brain-agent", license: "MIT License" }}},
+      { data: { id: 'RestGPT', label: 'RestGPT', type: 'Product', properties: { url: "", github: "https://github.com/Yifan-Song793/RestGPT", license: "MIT License" }}},
+      { data: { id: 'XAgent', label: 'XAgent', type: 'Product', properties: { url: "", github: "https://github.com/OpenBMB/XAgent", license: "Apache License 2.0" }}},
+      { data: { id: 'llama-agents', label: 'llama-agents', type: 'Product', properties: { url: "", github: "https://github.com/run-llama/llama-agents", license: "Apache License 2.0" }}},
+      { data: { id: 'AgentK', label: 'AgentK', type: 'Product', properties: { url: "", github: "https://github.com/mikekelly/AgentK", license: "MIT License" }}},
+      { data: { id: 'ADAS', label: 'ADAS', type: 'Product', properties: { url: "", github: "https://github.com/ShengranHu/ADAS", license: "MIT License" }}},
+      { data: { id: 'Giselle', label: 'Giselle', type: 'Product', properties: { url: "", github: "https://github.com/giselles-ai/giselle", license: "MIT License" }}},
+      { data: { id: 'Pipecat', label: 'Pipecat', type: 'Product', properties: { url: "", github: "https://github.com/pipecat-ai/pipecat", license: "Apache License 2.0" }}},
+      { data: { id: 'VoiceLab', label: 'Voice Lab', type: 'Product', properties: { url: "", github: "https://github.com/saharmor/voice-lab", license: "MIT License" }}},
+      { data: { id: 'OpenRAGEval', label: 'Open-RAG-Eval', type: 'Product', properties: { url: "", github: "https://github.com/vectara/open-rag-eval", license: "Apache License 2.0" }}},
 
       
 
@@ -185,22 +221,6 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'XYZ', label: 'XYZ Venture Capital', type: 'Investor', properties: { url: "https://xyz.vc/" }} },
       { data: { id: 'ConnectVentures', label: 'Connect Ventures', type: 'Investor', properties: { url: "https://www.connectventures.co/" }} },
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
       // Companies
@@ -258,9 +278,16 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'FoundryLabs', label: 'FoundryLabs, Inc.', type: 'Company', properties: { url: "https://e2b.dev", country: 'US', github: "https://github.com/e2b-dev"}}},
       { data: { id: 'DustCompany', label: 'Dust', type: 'Company', properties: { url: "https://dust.tt/", country: 'France', github: "https://github.com/dust-tt"}}},
       { data: { id: 'MetaGPTCompany', label: 'MetaGPT', type: 'Company', properties: { url: "https://www.deepwisdom.ai/", country: 'US'}}},
+      { data: { id: 'MetaCompany', label: 'Meta', type: 'Company', properties: { url: "https://meta.com", country: "US" }}},
+      { data: { id: 'PythagoraCompany', label: 'Pythagora', type: 'Company', properties: { url: "https://pythagora.io", country: "US" }}},
+      { data: { id: 'StitionAI', label: 'Stition AI', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'PipecatAI', label: 'Pipecat AI', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'PortiaAICompany', label: 'Portia AI', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'GiselleAI', label: 'Giselle AI', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'MemGPTCompany', label: 'MemGPT', type: 'Company', properties: { url: "https://memgpt.ai", country: "US" }}},
+      { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
 
-
-      
 
       
 
@@ -304,6 +331,10 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'AILegal', label: 'AI in Law', type: "UseCase"}},
       { data: { id: 'AICLM', label: 'Contract Lifecycle Management', type: "UseCase"}},
       { data: { id: 'VoiceAgents', label: 'Voice Agents', type: "UseCase"}},
+      { data: { id: 'GameSimulation', label: 'Game Simulation', type: 'UseCase' }},
+      { data: { id: 'KnowledgeManagement', label: 'Knowledge Management', type: 'UseCase' }},
+      { data: { id: 'MultimodalAgents', label: 'Multimodal Agents', type: 'UseCase' }},
+      { data: { id: 'TestingEvaluation', label: 'Testing and Evaluation', type: 'UseCase' }},
 
 
 
@@ -602,34 +633,56 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e269', source: 'ConnectVentures', target: 'DustCompany', label: 'INVESTED_IN' }},
       { data: { id: 'e270', source: 'MetaGPTCompany', target: 'MetaGPT', label: 'DEVELOPED' }},
       { data: { id: 'e271', source: 'AgentFlow', target: 'AgentFramework', label: 'IN_AREA' }},
-      
-
-     
-
-
-
-
-
-    
-
-      
-      
-      
-
-      
-
-
-
-      
-
-      
-      
-
-
-      
-  
-
-
+      { data: { id: 'e-meta-llama', source: 'MetaCompany', target: 'llama-agentic-system', label: 'DEVELOPED' }},
+      { data: { id: 'e-pythagora-gpt', source: 'PythagoraCompany', target: 'GPTPilot', label: 'DEVELOPED' }},
+      { data: { id: 'e-stition-devika', source: 'StitionAI', target: 'Devika', label: 'DEVELOPED' }},
+      { data: { id: 'e-pipecat-pipe', source: 'PipecatAI', target: 'Pipecat', label: 'DEVELOPED' }},
+      { data: { id: 'e-portia-portia', source: 'PortiaAICompany', target: 'PortiaAI', label: 'DEVELOPED' }},
+      { data: { id: 'e-giselle-giselle', source: 'GiselleAI', target: 'Giselle', label: 'DEVELOPED' }},
+      { data: { id: 'e-memgpt-memgpt', source: 'MemGPTCompany', target: 'Memgpt', label: 'DEVELOPED' }},
+      { data: { id: 'e-openbmb-agentverse', source: 'OpenBMB', target: 'AgentVerse', label: 'DEVELOPED' }},
+      { data: { id: 'e-openbmb-repoagent', source: 'OpenBMB', target: 'RepoAgent', label: 'DEVELOPED' }},
+      { data: { id: 'e-openbmb-xagent', source: 'OpenBMB', target: 'XAgent', label: 'DEVELOPED' }},
+      { data: { id: 'e-minedojo-voyager', source: 'MineDojo', target: 'Voyager', label: 'DEVELOPED' }},
+      { data: { id: 'e-openai-swarm', source: 'openai', target: 'Swarm', label: 'DEVELOPED' }},
+      { data: { id: 'e-anthropic-claude-eng', source: 'Anthropic', target: 'ClaudeEngineer', label: 'DEVELOPED' }},
+      { data: { id: 'e-llama-agent', source: 'llama-agentic-system', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-agentverse-agent', source: 'AgentVerse', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-maestro-agent', source: 'MaestroFramework', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-upsonic-agent', source: 'Upsonic', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-mastra-agent', source: 'Mastra', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-portia-agent', source: 'PortiaAI', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-swarm-agent', source: 'Swarm', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-gptpilot-code', source: 'GPTPilot', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-devika-code', source: 'Devika', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-repoagent-code', source: 'RepoAgent', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-codel-code', source: 'Codel', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-microagent-code', source: 'MicroAgent', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-agentrun-code', source: 'AgentRun', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-claudeeng-code', source: 'ClaudeEngineer', target: 'AICodding', label: 'IN_AREA' }},
+      { data: { id: 'e-blockagi-research', source: 'BlockAGI', target: 'Research', label: 'IN_AREA' }},
+      { data: { id: 'e-llocal-research', source: 'LLocalSearch', target: 'Research', label: 'IN_AREA' }},
+      { data: { id: 'e-rasagpt-gen', source: 'RasaGPT', target: 'GenPurposeAgent', label: 'IN_AREA' }},
+      { data: { id: 'e-babyagi-gen', source: 'BabyAGI-UI', target: 'GenPurposeAgent', label: 'IN_AREA' }},
+      { data: { id: 'e-ix-gen', source: 'ix', target: 'GenPurposeAgent', label: 'IN_AREA' }},
+      { data: { id: 'e-duetgpt-gen', source: 'DuetGPT', target: 'GenPurposeAgent', label: 'IN_AREA' }},
+      { data: { id: 'e-memgpt-gen', source: 'Memgpt', target: 'GenPurposeAgent', label: 'IN_AREA' }},
+      { data: { id: 'e-camel-game', source: 'CamelAutoGPT', target: 'GameSimulation', label: 'IN_AREA' }},
+      { data: { id: 'e-skyagi-game', source: 'SkyAGI', target: 'GameSimulation', label: 'IN_AREA' }},
+      { data: { id: 'e-voyager-game', source: 'Voyager', target: 'GameSimulation', label: 'IN_AREA' }},
+      { data: { id: 'e-privategpt-km', source: 'PrivateGPT', target: 'KnowledgeManagement', label: 'IN_AREA' }},
+      { data: { id: 'e-localgpt-km', source: 'LocalGPT', target: 'KnowledgeManagement', label: 'IN_AREA' }},
+      { data: { id: 'e-secondbrain-km', source: 'SecondBrainAgent', target: 'KnowledgeManagement', label: 'IN_AREA' }},
+      { data: { id: 'e-restgpt-auto', source: 'RestGPT', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-xagent-auto', source: 'XAgent', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-llamaagents-auto', source: 'llama-agents', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-agentk-auto', source: 'AgentK', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-adas-auto', source: 'ADAS', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-giselle-auto', source: 'Giselle', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-pipecat-multi', source: 'Pipecat', target: 'MultimodalAgents', label: 'IN_AREA' }},
+      { data: { id: 'e-voicelab-test', source: 'VoiceLab', target: 'TestingEvaluation', label: 'IN_AREA' }},
+      { data: { id: 'e-openrag-test', source: 'OpenRAGEval', target: 'TestingEvaluation', label: 'IN_AREA' }},
+      { data: { id: 'e-upsonic-mcp', source: 'Upsonic', target: 'MCP', label: 'CLIENT' }},
 
       
  
