@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'llama-agents', label: 'llama-agents', type: 'Product', properties: { url: "", github: "https://github.com/run-llama/llama-agents", license: "Apache License 2.0" }}},
       { data: { id: 'AgentK', label: 'AgentK', type: 'Product', properties: { url: "", github: "https://github.com/mikekelly/AgentK", license: "MIT License" }}},
       { data: { id: 'ADAS', label: 'ADAS', type: 'Product', properties: { url: "", github: "https://github.com/ShengranHu/ADAS", license: "MIT License" }}},
-      { data: { id: 'Giselle', label: 'Giselle', type: 'Product', properties: { url: "", github: "https://github.com/giselles-ai/giselle", license: "MIT License" }}},
+      { data: { id: 'Giselle', label: 'Giselle', type: 'Product', properties: { url: "https://giselles.ai/", github: "https://github.com/giselles-ai/giselle", license: "Apache License 2.0" }}},
       { data: { id: 'Pipecat', label: 'Pipecat', type: 'Product', properties: { url: "", github: "https://github.com/pipecat-ai/pipecat", license: "Apache License 2.0" }}},
       { data: { id: 'VoiceLab', label: 'Voice Lab', type: 'Product', properties: { url: "", github: "https://github.com/saharmor/voice-lab", license: "MIT License" }}},
       { data: { id: 'OpenRAGEval', label: 'Open-RAG-Eval', type: 'Product', properties: { url: "", github: "https://github.com/vectara/open-rag-eval", license: "Apache License 2.0" }}},
@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'Liner', label: 'Liner', type: 'Product', properties: { url: "https://getliner.com/"}}},
       { data: { id: 'GoogleAIMode', label: 'Google AI Mode in Search', type: 'Product', properties: { url: "https://google.com/"}}},
       { data: { id: 'Athenic', label: 'Athenic', type: 'Product', properties: { url: "https://www.athenic.com/"}}},
+      { data: { id: 'Graphiti', label: 'Graphiti', type: 'Product', properties: { github: "https://github.com/getzep/graphiti", url: "https://help.getzep.com/graphiti/graphiti/overview", license: "Apache License 2.0"}}},
       
 
       
@@ -230,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'KeaCapital', label: 'Kea Capital', type: 'Investor', properties: { url: "https://kae-capital.com/" }} },
       { data: { id: 'Better', label: 'Better', type: 'Investor'} },
       { data: { id: 'Redpoint', label: 'Redpoint', type: 'Investor'} },
-      { data: { id: 'Altimeter', label: 'Altimeter', type: 'Investor'} },
+      { data: { id: 'Altimeter', label: 'Altimeter', type: 'Investor', properties: { url: "https://www.altimeter.com/"}} },
       { data: { id: 'Decibel', label: 'Decibel', type: 'Investor'} },
       { data: { id: 'Inovia', label: 'Inovia', type: 'Investor'} },
       { data: { id: 'PanacheVentures', label: 'Panache Ventures', type: 'Investor'} },
@@ -310,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'IBM', label: 'IBM', type: 'Company', properties: { url: "https://ibm.com/"}}},
       { data: { id: 'MaitaiCompany', label: 'Maitai, Inc', type: 'Company', properties: { url: "https://trymaitai.ai/"}}},
       { data: { id: 'Groq', label: 'Groq, Inc.', type: 'Company', properties: { url: "https://groq.com/"}}},
-      { data: { id: 'LangfuseCompany', label: 'Langfuse GmbH', type: 'Company', properties: { url: "https://langfuse.com/"}}},
+      { data: { id: 'LangfuseCompany', label: 'Langfuse GmbH', type: 'Company', properties: { url: "https://langfuse.com/", country: 'Germany', github: "https://github.com/langfuse"}}},
       { data: { id: 'LangChainCompany', label: 'LangChain, Inc.', type: 'Company', properties: { url: "https://langchain.com/"}}},
       { data: { id: 'LangflowCompany', label: 'LangFlow', type: 'Company', properties: { url: "https://www.langflow.org/", github: "https://github.com/langflow-ai/"}}},
       { data: { id: 'IO', label: 'IO', type: 'Company', properties: { url: "https://www.lovefrom.com/", country: 'US'}}},
@@ -329,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'StitionAI', label: 'Stition AI', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'PipecatAI', label: 'Pipecat AI', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'PortiaAICompany', label: 'Portia AI', type: 'Company', properties: { url: "", country: "US" }}},
-      { data: { id: 'GiselleAI', label: 'Giselle AI', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'GiselleAI', label: 'Giselle AI', type: 'Company', properties: { url: "https://giselles.ai/", country: "US" }}},
       { data: { id: 'MemGPTCompany', label: 'MemGPT', type: 'Company', properties: { url: "https://memgpt.ai", country: "US" }}},
       { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "https://www.openbmb.cn/en/home", country: "China", github: "https://github.com/OpenBMB" }}},
       { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
@@ -339,6 +340,11 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'PerplexityAI', label: 'Perplexity AI', type: 'Company', properties: { url: "https://www.perplexity.ai/", country: "US" }}},
       { data: { id: 'LinerCompany', label: 'Liner', type: 'Company', properties: { url: "https://getliner.com/", country: "US"}}},
       { data: { id: 'AthenicAICompany', label: 'Athenic AI Inc.', type: 'Company', properties: { url: "https://www.athenic.com/", country: "US"}}},
+      { data: { id: 'CohereCompany', label: 'Cohere', type: 'Company', properties: { url: "https://cohere.com/", country: "Canada"}}},
+      { data: { id: 'MindsDBCompany', label: 'MindsDB', type: 'Company', properties: { url: "https://mindsdb.com/", country: "US"}}},
+      { data: { id: 'PipedreamCompany', label: 'Pipedream, Inc.', type: 'Company', properties: { url: "https://pipedream.com/", country: "US", github: "https://github.com/PipedreamHQ"}}},
+      { data: { id: 'ZepCompany', label: 'Zep AI', type: 'Company', properties: { url: "https://www.getzep.com/", country: "US", github: "https://github.com/getzep"}} },
+      
       
 
 
@@ -390,6 +396,12 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'TestingEvaluation', label: 'Testing and Evaluation', type: 'UseCase' }},
       { data: { id: 'LLMSecurity', label: 'LLM Security', type: 'UseCase' }},
       { data: { id: 'AISearch', label: 'AI Search', type: 'UseCase' }},
+      { data: { id: 'AgentInfrastructure', label: 'Agent Infrastructure', type: 'UseCase' }},
+
+
+
+
+
 
 
 
@@ -411,8 +423,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
+
+
+
+
+
+
+
         // Services - Mainly MCP servers
       { data: { id: 'OpenMCP', label: 'OpenMCP', type: 'Service', properties: { url: "https://www.open-mcp.org/", github: "https://github.com/wegotdocs/open-mcp", license: ""}} }, 
+      { data: { id: 'MetaMCP', label: 'MetaMCP', type: 'Service', properties: { url: "https://metamcp.com/", github: "https://github.com/metatool-ai/metatool-app", license: "AGPL-3"}} }, 
+      { data: { id: 'Waystation', label: 'Waystation', type: 'Service', properties: { url: "https://waystation.ai/", github: "https://github.com/waystation-ai/mcp", license: ""}} }, 
+      { data: { id: 'mcp-access-point', label: 'mcp-access-point', type: 'Service', properties: { url: "https://deepwiki.com/OpenAgentX/mcp-access-point", github: "https://github.com/sxhxliang/mcp-access-point", license: "MIT License"}} }, 
+      { data: { id: 'openai-gpt-image-mcp', label: 'openai-gpt-image-mcp', type: 'Service', properties: { url: "", github: "https://github.com/SureScaleAI/openai-gpt-image-mcp", license: "MIT License"}} },
+      { data: { id: 'anyquery', label: 'anyquery', type: 'Service', properties: { url: "https://anyquery.dev/", github: "https://github.com/julien040/anyquery", license: "AGPLv3"}} },
+      { data: { id: 'mindsdb', label: 'mindsdb', type: 'Service', properties: { url: "https://mindsdb.com/", github: "https://github.com/mindsdb/mindsdb", license: "AGPLv3"}} },
+      { data: { id: 'pipedream-mcp', label: 'Pipedream MCP', type: 'Service', properties: { url: "https://pipedream.com/", github: "https://github.com/PipedreamHQ/pipedream", license: "AGPLv3"}} },
+{ data: { id: 'pipedream-connect', label: 'Pipedream Connect', type: 'Product', properties: { url: "https://pipedream.com/", github: "https://github.com/PipedreamHQ/pipedream", license: "AGPLv3"}} },
+      
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -731,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-llamaagents-auto', source: 'llama-agents', target: 'Automation', label: 'IN_AREA' }},
       { data: { id: 'e-agentk-auto', source: 'AgentK', target: 'Automation', label: 'IN_AREA' }},
       { data: { id: 'e-adas-auto', source: 'ADAS', target: 'Automation', label: 'IN_AREA' }},
-      { data: { id: 'e-giselle-auto', source: 'Giselle', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-giselle-auto', source: 'Giselle', target: 'AICodding', label: 'IN_AREA' }},
       { data: { id: 'e-pipecat-multi', source: 'Pipecat', target: 'MultimodalAgents', label: 'IN_AREA' }},
       { data: { id: 'e-voicelab-test', source: 'VoiceLab', target: 'TestingEvaluation', label: 'IN_AREA' }},
       { data: { id: 'e-openrag-test', source: 'OpenRAGEval', target: 'TestingEvaluation', label: 'IN_AREA' }},
@@ -798,6 +838,24 @@ document.addEventListener('DOMContentLoaded', function() {
       
 
       { data: { id: 'e-OpenMCP-MCP', source: 'OpenMCP', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-MetaMCP-MCP-server', source: 'MetaMCP', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-MetaMCP-MCP-client', source: 'MetaMCP', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-Waystation-MCP-server', source: 'Waystation', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-Waystation-MCP-client', source: 'Waystation', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-mcp-access-point-MCP-server', source: 'mcp-access-point', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-mcp-access-point-MCP-client', source: 'mcp-access-point', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-MindsDBCompany', source: 'MindsDBCompany', target: 'mindsdb', label: 'CLIENT' }},
+      { data: { id: 'e-mindsdb-mcp-client', source: 'mindsdb', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-mindsdb-mcp-server', source: 'mindsdb', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-pipedream-company-mcp', source: 'PipedreamCompany', target: 'pipedream-mcp', label: 'DEVELOPED' }},
+      { data: { id: 'e-pipedream-company-connect', source: 'PipedreamCompany', target: 'pipedream-connect', label: 'DEVELOPED' }},
+      { data: { id: 'e-pipedream-mcp-server', source: 'pipedream-mcp', target: 'MCP', label: 'SERVER' }},
+      { data: { id: 'e-pipedream-mcp-client', source: 'pipedream-mcp', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-zep-company-graphiti', source: 'ZepCompany', target: 'Graphiti', label: 'DEVELOPED' }},
+      { data: { id: 'e-YCombinator-ZepCompany', source: 'YCombinator', target: 'ZepCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-graphiti-use-case', source: 'Graphiti', target: 'AgentInfrastructure', label: 'IN_AREA' }},
+      
+      
 
       
 
@@ -1135,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   document.getElementById('layout').addEventListener('click', () => {
-    cy.layout({ name: 'cose-bilkent' }).run();
+      cy.layout({ name: 'cose-bilkent' }).run();
   });
   
        document.getElementById('search').addEventListener('input', performSearch);
