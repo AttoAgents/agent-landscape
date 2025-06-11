@@ -328,12 +328,13 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'PortiaAICompany', label: 'Portia AI', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'GiselleAI', label: 'Giselle AI', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'MemGPTCompany', label: 'MemGPT', type: 'Company', properties: { url: "https://memgpt.ai", country: "US" }}},
-      { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "", country: "US" }}},
+      { data: { id: 'OpenBMB', label: 'OpenBMB', type: 'Company', properties: { url: "https://www.openbmb.cn/en/home", country: "China", github: "https://github.com/OpenBMB" }}},
       { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'LiteLLMCompany', label: 'LiteLLM', type: 'Company', properties: { url: "https://www.litellm.ai/", country: "US" }}},
       { data: { id: 'MistralAI', label: 'Mistral AI', type: 'Company', properties: { url: "https://mistral.ai/", country: "France" }}},
       { data: { id: 'GleanCompany', label: 'Glean Technologies, Inc.', type: 'Company', properties: { url: "https://www.glean.com/", country: "US" }}},
       { data: { id: 'PerplexityAI', label: 'Perplexity AI', type: 'Company', properties: { url: "https://www.perplexity.ai/", country: "US" }}},
+      { data: { id: 'LinerCompany', label: 'Liner', type: 'Company', properties: { url: "https://getliner.com/", country: "US"}}},
       
 
 
@@ -785,7 +786,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-liner-use-case', source: 'Liner', target: 'AISearch', label: 'IN_AREA' }},
       { data: { id: 'e-google-ai-search-use-case', source: 'GoogleAIMode', target: 'AISearch', label: 'IN_AREA' }},
       { data: { id: 'e-google-ai-search', source: 'Google', target: 'GoogleAIMode', label: 'DEVELOPED' }},
-
+      { data: { id: 'e-liner-company-product', source: 'LinerCompany', target: 'Liner', label: 'DEVELOPED' }},
+{ data: { id: 'e-chatdev-openbmb', source: 'OpenBMB', target: 'ChatDev', label: 'DEVELOPED' }},
       
 
       { data: { id: 'e-OpenMCP-MCP', source: 'OpenMCP', target: 'MCP', label: 'SERVER' }},
@@ -1086,18 +1088,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  const closeButton = document.getElementById('close-info');
+  const infoBlock = document.getElementById('info');
+  const infoPanel = document.getElementById('info-content');
+
   // Add interaction handlers
   cy.on('tap', 'node', function(evt) {
     const node = evt.target;
     console.log('Node clicked:', node.id(), node.data());
+
+    const infoDiv = infoPanel;
     
     // Display node properties (you could show this in a panel)
     const properties = node.data('properties');
     let propertiesText = '';
     for (const key in properties) {
-      propertiesText += `${key}: ${properties[key]}\n`;
+      if (key === 'url' || key === 'github') {
+        console.log('Link found:', key, properties[key]);
+        propertiesText += `<div class="property"><strong>${key}</strong>: <a href="${properties[key]}" rel="nofollow" target="_blank">${properties[key]}</a></div>`;
+      } else {
+        propertiesText += `<div class="property"><strong>${key}</strong>: ${properties[key]}</div>`;
+      }
     }
-    alert(`${node.data('label')} (${node.data('type')})\n\n${propertiesText}`);
+    // alert(`${node.data('label')} (${node.data('type')})\n\n${propertiesText}`);
+    infoDiv.innerHTML = `<div class="nodeTitle"><strong>${node.data('label')}</strong> (${node.data('type')})</div>`;
+    infoDiv.innerHTML += `${propertiesText}`;
+    infoBlock.style.display = 'block';
+  });
+
+
+    
+  closeButton.addEventListener('click', function() {
+    infoBlock.style.display = 'none';
   });
   
   // Add controls functionality
