@@ -8,6 +8,32 @@ Holistic view on the current Generative AI application landscape including produ
 - `app.js` - embedded datasource and helper functions for visualization and searches for direct connection and most relevant paths.
 - `js` - JS files for visualization of the data graph.
 
+## How to use the dataset 
+
+### Basic view
+
+<img src="media/01-initial-view-of-data-graph.png" alt="Initial view of the graph with all nodes displayed." width="100%">
+
+### Search 
+
+<img src="media/02-search-for-company-or-product.png" alt="Filter data to highlight only product of companies that match the search phrase." width="100%">
+
+### Extended environment 
+
+<img src="media/03-extended-paths-view-and-node-details.png" alt="Display extended paths in addition to the directly connected nodes." width="100%">
+
+### Investor portfolio
+
+<img src="media/04-vc-investment-in-companies.png" alt="Investigate VC's investment portfolio and types of products that they are selecting." width="100%">
+
+### Startup investors
+
+<img src="media/05-startup-funding-sources.png" alt="Find information about funding sources for startup and information about the involved VCs." width="100%">
+
+### Application Area
+
+<img src="media/06-products-in-a-given-application-area.png" alt="List products in a given application area." width="100%">
+
 ## Contributions 
 
 We highly appreciate contributions in building the dataset by either direct updates or messages (or issues) related to needed fixes or updates. 
