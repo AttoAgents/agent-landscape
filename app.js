@@ -184,6 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'Perplexity', label: 'Perplexity', type: 'Product', properties: { url: "https://www.perplexity.ai/"}}},
       { data: { id: 'Liner', label: 'Liner', type: 'Product', properties: { url: "https://getliner.com/"}}},
       { data: { id: 'GoogleAIMode', label: 'Google AI Mode in Search', type: 'Product', properties: { url: "https://google.com/"}}},
+      { data: { id: 'Athenic', label: 'Athenic', type: 'Product', properties: { url: "https://www.athenic.com/"}}},
+      
 
       
 
@@ -216,16 +218,16 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'GeneralCatalyst', label: 'General Catalyst', type: 'Investor', properties: { url: "https://www.generalcatalyst.com/"}} },
       { data: { id: 'GreenOaks', label: 'Green Oaks', type: 'Investor', properties: { url: "https://greenoaks.com/"}} },
       { data: { id: 'FoundersFund', label: 'Founders Fund', type: 'Investor', properties: { url: "https://foundersfund.com/"}} },
-      { data: { id: 'SparkCapital', label: 'Spark Capital', type: 'Investor'} },
-      { data: { id: 'Meritech', label: 'Meritech', type: 'Investor'} },
-      { data: { id: 'UIPath', label: 'UI Path', type: 'Investor'} },
-      { data: { id: 'Accel', label: 'Meritech', type: 'Investor'} },
-      { data: { id: 'InsightPartners', label: 'Insight Partners', type: 'Investor'} },
-      { data: { id: 'CraftVentures', label: 'Craft Ventures', type: 'Investor'} },
-      { data: { id: 'EarlyGrey', label: 'Early Grey', type: 'Investor'} },
-      { data: { id: 'FirsthandVentures', label: 'Firsthand Ventures', type: 'Investor'} },
+      { data: { id: 'SparkCapital', label: 'Spark Capital', type: 'Investor', properties: { url: "https://www.sparkcapital.com/"}} },
+      { data: { id: 'Meritech', label: 'Meritech', type: 'Investor', properties: { url: "https://www.meritechcapital.com/"}} },
+      { data: { id: 'UIPath', label: 'UI Path Ventures', type: 'Investor', properties: { url: "https://www.uipath.com/blog/product-and-updates/introducing-uipath-ventures"}} },
+      { data: { id: 'Accel', label: 'Meritech', type: 'Investor', properties: { url: "https://www.accel.com/" }} },
+      { data: { id: 'InsightPartners', label: 'Insight Partners', type: 'Investor', properties: { url: "https://www.insightpartners.com/" }} },
+      { data: { id: 'CraftVentures', label: 'Craft Ventures', type: 'Investor', properties: { url: "https://www.craftventures.com/" }} },
+      { data: { id: 'EarlGrey', label: 'Earl Grey', type: 'Investor', properties: { url: "https://earlgrey.capital/" }} },
+      { data: { id: 'FirsthandVentures', label: 'Firsthand Ventures', type: 'Investor', properties: { url: "https://www.firsthand.vc/"}} },
       { data: { id: 'Newlands', label: 'Newlands', type: 'Investor', properties: { url: "https://www.thenewlands.com/" }} },
-      { data: { id: 'KeaCapital', label: 'Kea Capital', type: 'Investor'} },
+      { data: { id: 'KeaCapital', label: 'Kea Capital', type: 'Investor', properties: { url: "https://kae-capital.com/" }} },
       { data: { id: 'Better', label: 'Better', type: 'Investor'} },
       { data: { id: 'Redpoint', label: 'Redpoint', type: 'Investor'} },
       { data: { id: 'Altimeter', label: 'Altimeter', type: 'Investor'} },
@@ -256,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'LatitudeCapital', label: 'Latitude Capital', type: 'Investor', properties: { url: "https://www.latitudecp.com/" }} },
       { data: { id: 'Lightspeed', label: 'Lightspeed', type: 'Investor', properties: { url: "https://lsvp.com/" }} },
       { data: { id: 'SapphireVentures', label: 'Sapphire Ventures', type: 'Investor', properties: { url: "https://sapphireventures.com/" }} },
+      { data: { id: 'BMWiVentures', label: 'BMW iVentures', type: 'Investor', properties: { url: "https://www.bmwiventures.com/" }} },
       
 
 
@@ -335,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'GleanCompany', label: 'Glean Technologies, Inc.', type: 'Company', properties: { url: "https://www.glean.com/", country: "US" }}},
       { data: { id: 'PerplexityAI', label: 'Perplexity AI', type: 'Company', properties: { url: "https://www.perplexity.ai/", country: "US" }}},
       { data: { id: 'LinerCompany', label: 'Liner', type: 'Company', properties: { url: "https://getliner.com/", country: "US"}}},
+      { data: { id: 'AthenicAICompany', label: 'Athenic AI Inc.', type: 'Company', properties: { url: "https://www.athenic.com/", country: "US"}}},
       
 
 
@@ -651,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e237', source: 'IroncladCLM', target: 'AICLM', label: 'IN_AREA' }},
       { data: { id: 'e238', source: 'InsightPartners', target: 'CrewAICompany', label: 'INVESTED_IN' }},
       { data: { id: 'e239', source: 'CraftVentures', target: 'CrewAICompany', label: 'INVESTED_IN' }},
-      { data: { id: 'e240', source: 'EarlyGrey', target: 'CrewAICompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e240', source: 'EarlGrey', target: 'CrewAICompany', label: 'INVESTED_IN' }},
       { data: { id: 'e241', source: 'FirsthandVentures', target: 'CrewAICompany', label: 'INVESTED_IN' }},
       { data: { id: 'e242', source: 'SuperAGICompany', target: 'SuperAGI', label: 'DEVELOPED' }},
       { data: { id: 'e243', source: 'SuperAGI', target: 'AgentPlatform', label: 'IN_AREA' }},
@@ -787,7 +791,10 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-google-ai-search-use-case', source: 'GoogleAIMode', target: 'AISearch', label: 'IN_AREA' }},
       { data: { id: 'e-google-ai-search', source: 'Google', target: 'GoogleAIMode', label: 'DEVELOPED' }},
       { data: { id: 'e-liner-company-product', source: 'LinerCompany', target: 'Liner', label: 'DEVELOPED' }},
-{ data: { id: 'e-chatdev-openbmb', source: 'OpenBMB', target: 'ChatDev', label: 'DEVELOPED' }},
+      { data: { id: 'e-chatdev-openbmb', source: 'OpenBMB', target: 'ChatDev', label: 'DEVELOPED' }},
+      { data: { id: 'e-athenic-company', source: 'AthenicAICompany', target: 'Athenic', label: 'DEVELOPED' }},
+      { data: { id: 'e-athenic-use-case', source: 'Athenic', target: 'DataAnalysis', label: 'IN_AREA' }},
+      { data: { id: 'e-bmw-athenic', source: 'BMWiVentures', target: 'AthenicAICompany', label: 'INVESTED_IN' }},
       
 
       { data: { id: 'e-OpenMCP-MCP', source: 'OpenMCP', target: 'MCP', label: 'SERVER' }},
