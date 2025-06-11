@@ -177,7 +177,13 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'MistralAgentsAPI', label: 'Mistral Agents API', type: 'Product', properties: { url: 'https://mistral.ai/news/agents-api'}} },
       { data: { id: 'LeChat', label: 'Le Chat', type: 'Product', properties: { url: "https://chat.mistral.ai/"}}},
       { data: { id: 'MistralCode', label: 'Mistral Code', type: 'Product', properties: { url: "https://mistral.ai/products/mistral-code"}}},
-
+      { data: { id: 'MistralAPI', label: 'Mistral API', type: 'Product', properties: { url: "https://docs.mistral.ai/api/"}}},
+      { data: { id: 'OpenAI-API', label: 'OpenAI API', type: 'Product', properties: { url: "https://openai.com/api/"}}},
+      { data: { id: 'AnthropicAPI', label: 'Anthropic API', type: 'Product', properties: { url: "https://www.anthropic.com/api"}}},
+      { data: { id: 'Glean', label: 'Glean', type: 'Product', properties: { url: "https://www.glean.com/"}}},
+      { data: { id: 'Perplexity', label: 'Perplexity', type: 'Product', properties: { url: "https://www.perplexity.ai/"}}},
+      { data: { id: 'Liner', label: 'Liner', type: 'Product', properties: { url: "https://getliner.com/"}}},
+      { data: { id: 'GoogleAIMode', label: 'Google AI Mode in Search', type: 'Product', properties: { url: "https://google.com/"}}},
 
       
 
@@ -236,9 +242,28 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'ConnectVentures', label: 'Connect Ventures', type: 'Investor', properties: { url: "https://www.connectventures.co/" }} },
       { data: { id: 'GravityFund', label: 'Gravity Fund', type: 'Investor', properties: { url: "https://gravityfund.vc/" }} },
       { data: { id: 'PioneerFund', label: 'Pioneer Fund', type: 'Investor', properties: { url: "https://www.pioneerfund.vc/" }} },
-  
+      { data: { id: 'WellingtonManagement', label: 'WellingtonManagement', type: 'Investor', properties: { url: "https://www.wellington.com/" }} },
+      { data: { id: 'KhoslaVentures', label: 'Khosla Ventures', type: 'Investor', properties: { url: "https://www.khoslaventures.com/" }} },
+      { data: { id: 'BicycleCapital', label: 'Bicycle Capital', type: 'Investor', properties: { url: "https://bicycle.capital/" }} },
+      { data: { id: 'GeodesicCapital', label: 'Geodesic Capital', type: 'Investor', properties: { url: "https://geodesiccap.com/" }} },
+      { data: { id: 'ArchermanCapital', label: 'Archerman Capital', type: 'Investor', properties: { url: "https://www.archermancap.com/" }} },
+      { data: { id: 'CapitalOneVentures', label: 'Capital One Ventures', type: 'Investor', properties: { url: "https://capitaloneventures.com/" }} },
+      { data: { id: 'CitiVentures', label: 'Citi Ventures', type: 'Investor', properties: { url: "https://www.citi.com/ventures/" }} },
+      { data: { id: 'Coatue', label: 'Coatue', type: 'Investor', properties: { url: "https://www.coatue.com/" }} },
+      { data: { id: 'DSTGlobal', label: 'DST Global', type: 'Investor', properties: { url: "https://dst-global.com/" }} },
+      { data: { id: 'Iconiq', label: 'Iconiq', type: 'Investor', properties: { url: "https://www.iconiqcapital.com/" }} },
+      { data: { id: 'IVP', label: 'IVP', type: 'Investor', properties: { url: "https://www.ivp.com/" }} },
+      { data: { id: 'LatitudeCapital', label: 'Latitude Capital', type: 'Investor', properties: { url: "https://www.latitudecp.com/" }} },
+      { data: { id: 'Lightspeed', label: 'Lightspeed', type: 'Investor', properties: { url: "https://lsvp.com/" }} },
+      { data: { id: 'SapphireVentures', label: 'Sapphire Ventures', type: 'Investor', properties: { url: "https://sapphireventures.com/" }} },
       
-      
+
+
+
+
+
+
+
 
 
       // Companies
@@ -307,6 +332,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'MineDojo', label: 'MineDojo', type: 'Company', properties: { url: "", country: "US" }}},
       { data: { id: 'LiteLLMCompany', label: 'LiteLLM', type: 'Company', properties: { url: "https://www.litellm.ai/", country: "US" }}},
       { data: { id: 'MistralAI', label: 'Mistral AI', type: 'Company', properties: { url: "https://mistral.ai/", country: "France" }}},
+      { data: { id: 'GleanCompany', label: 'Glean Technologies, Inc.', type: 'Company', properties: { url: "https://www.glean.com/", country: "US" }}},
+      { data: { id: 'PerplexityAI', label: 'Perplexity AI', type: 'Company', properties: { url: "https://www.perplexity.ai/", country: "US" }}},
       
 
 
@@ -357,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'MultimodalAgents', label: 'Multimodal Agents', type: 'UseCase' }},
       { data: { id: 'TestingEvaluation', label: 'Testing and Evaluation', type: 'UseCase' }},
       { data: { id: 'LLMSecurity', label: 'LLM Security', type: 'UseCase' }},
+      { data: { id: 'AISearch', label: 'AI Search', type: 'UseCase' }},
 
 
 
@@ -378,7 +406,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+        // Services - Mainly MCP servers
+      { data: { id: 'OpenMCP', label: 'OpenMCP', type: 'Service', properties: { url: "https://www.open-mcp.org/", github: "https://github.com/wegotdocs/open-mcp", license: ""}} }, 
 
 
 
@@ -579,8 +608,6 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e193', source: 'Groq', target: 'ChipDesign', label: 'IN_AREA' }},
       { data: { id: 'e194', source: 'Groq', target: 'ModelServing', label: 'IN_AREA' }},
       { data: { id: 'e195', source: 'MaitaiCompany', target: 'ModelServing', label: 'IN_AREA' }},
-      { data: { id: 'e196', source: 'openai', target: 'ModelServing', label: 'IN_AREA' }},
-      { data: { id: 'e197', source: 'Anthropic', target: 'ModelServing', label: 'IN_AREA' }},
       { data: { id: 'e198', source: 'Google', target: 'ModelServing', label: 'IN_AREA' }},
       { data: { id: 'e199', source: 'Anthropic', target: 'ClaudeCode', label: 'DEVELOPED' }},
       { data: { id: 'e200', source: 'ClaudeCode', target: 'AICodding', label: 'IN_AREA' }},
@@ -722,11 +749,50 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-mistral-le-chat', source: 'MistralAI', target: 'LeChat', label: 'DEVELOPED' }},
       { data: { id: 'e-mistral-mistral-code', source: 'MistralAI', target: 'MistralCode', label: 'DEVELOPED' }},
       { data: { id: 'e-mistral-code-use-case', source: 'MistralCode', target: 'AICodding', label: 'IN_AREA' }},
-      { data: { id: 'e-mistral-use-case', source: 'MistralAI', target: 'ModelServing', label: 'IN_AREA' }}
+      { data: { id: 'e-mistral-mistral-api', source: 'MistralAI', target: 'MistralAPI', label: 'DEVELOPED' }},
+      { data: { id: 'e-mistral-use-case', source: 'MistralAPI', target: 'ModelServing', label: 'IN_AREA' }},
+      { data: { id: 'e-openai-api', source: 'openai', target: 'OpenAI-API', label: 'DEVELOPED' }},
+      { data: { id: 'e-anthropic-api', source: 'Anthropic', target: 'AnthropicAPI', label: 'DEVELOPED' }},
+      { data: { id: 'e-openai-api-use-case', source: 'OpenAI-API', target: 'ModelServing', label: 'IN_AREA' }},
+      { data: { id: 'e-anthropic-api-use-case', source: 'AnthropicAPI', target: 'ModelServing', label: 'IN_AREA' }},
+      { data: { id: 'e-glean-company-glean', source: 'GleanCompany', target: 'Glean', label: 'DEVELOPED' }},
+      { data: { id: 'e-glean-use-case', source: 'Glean', target: 'KnowledgeManagement', label: 'IN_AREA' }},
+      { data: { id: 'e-glean-use-case-2', source: 'Glean', target: 'Automation', label: 'IN_AREA' }},
+      { data: { id: 'e-sequoia-glean', source: 'Sequoia', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-altimeter-glean', source: 'Altimeter', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-kleiner-glean', source: 'KleinerPerkins', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-general-catalyst-glean', source: 'GeneralCatalyst', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-WellingtonManagement-glean', source: 'WellingtonManagement', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-KhoslaVentures-glean', source: 'KhoslaVentures', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-BicycleCapital-glean', source: 'BicycleCapital', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-GeodesicCapital-glean', source: 'GeodesicCapital', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-ArchermanCapital-glean', source: 'ArchermanCapital', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-CapitalOneVentures-glean', source: 'CapitalOneVentures', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-CitiVentures-glean', source: 'CitiVentures', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-Coatue-glean', source: 'Coatue', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-DSTGlobal-glean', source: 'DSTGlobal', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-Iconiq-glean', source: 'Iconiq', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-IVP-glean', source: 'IVP', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-LatitudeCapital-glean', source: 'LatitudeCapital', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-Lightspeed-glean', source: 'Lightspeed', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-SapphireVentures-glean', source: 'SapphireVentures', target: 'GleanCompany', label: 'INVESTED_IN' }},
+      { data: { id: 'e-vectara-framework', source: 'vectara-agentic', target: 'AgentFramework', label: 'IN_AREA' }},
+      { data: { id: 'e-chatgpt-llm-client', source: 'ChatGPT', target: 'LLMClient', label: 'IN_AREA' }},
+      { data: { id: 'e-chatgpt-MCP', source: 'ChatGPT', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-microsoft-openai', source: 'Microsoft', target: 'openai', label: 'INVESTED_IN' }},
+      { data: { id: 'e-perplexity-product', source: 'PerplexityAI', target: 'Perplexity', label: 'DEVELOPED' }},
+      { data: { id: 'e-perplexity-use-case', source: 'Perplexity', target: 'AISearch', label: 'IN_AREA' }},
+      { data: { id: 'e-liner-use-case', source: 'Liner', target: 'AISearch', label: 'IN_AREA' }},
+      { data: { id: 'e-google-ai-search-use-case', source: 'GoogleAIMode', target: 'AISearch', label: 'IN_AREA' }},
+      { data: { id: 'e-google-ai-search', source: 'Google', target: 'GoogleAIMode', label: 'DEVELOPED' }},
 
       
 
+      { data: { id: 'e-OpenMCP-MCP', source: 'OpenMCP', target: 'MCP', label: 'SERVER' }},
+
       
+
+
  
     ]
   };
@@ -737,7 +803,8 @@ document.addEventListener('DOMContentLoaded', function() {
     'Product': { 'background-color': '#66aaff', 'shape': 'ellipse' },
     'Investor': { 'background-color': '#ff6666', 'shape': 'round-rectangle' },
     'UseCase': { 'background-color': '#ff66ff', 'shape': 'round-pentagon' },
-    'Protocol': { 'background-color': '#239b56', 'shape': 'round-triangle' }
+    'Protocol': { 'background-color': '#239b56', 'shape': 'round-triangle' },
+    'Service': { 'background-color': '#f39c12', 'shape': 'round-octagon' },
   };
   
   // Initialize Cytoscape
