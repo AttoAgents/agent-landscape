@@ -5,327 +5,120 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-  <style>
-  #app {
-    margin-top: 5px;
-    position: relative;
-    gap: 10px;
-  }
-  
-  #cy {
-    width: 100%;
-    height: calc(100vh - 120px);
-    display: block;
-  }
-  
-  #info {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100%;
-    overflow-y: auto;
-    padding: 10px;
-    background: #f8f8f8;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    font-family: "Outfit", sans-serif;
-    word-break: break-word;
-    white-space: pre-wrap;
-    box-sizing: border-box;
-    z-index: 100;
-  }
-  
-  #close-info {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    z-index: 10;
-  }
-  
-  #close-info:hover {
-    background-color: #e0e0e0;
-  }
-  
-  #info-content {
-    top: 35px;
-    position: absolute;
-  }
-
-  .nodeTitle {
-    font-family: "Outfit", sans-serif;
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-
-  .property {
-    margin-bottom: 5px;
-  }
-
-    .controls {
-      font-family: "Outfit", sans-serif;
-      padding: 10px;
-      background: #f8f8f8;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-    .search-container {
-      font-family: "Outfit", sans-serif;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .checkbox-container {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-    }
-    .slider-container {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 14px;
-    }
-    .legend {
-      display: flex;
-      gap: 10px;
-      width: 20%;
-      margin-left: auto;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-    }
-    .color-box {
-      width: 15px;
-      height: 15px;
-      border-radius: 3px;
-    }
-    button {
-      background-color: #e6e6e6; /* Green */
-      font-family: "Outfit", sans-serif;
-      border: 1px solid #ccc;
-      color: #000;
-      padding-left: 5px;
-      padding-right: 5px;
-      padding-top: 2px;
-      padding-bottom: 2px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      /* font-size: 16px; */
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #2140bc;
-      border: 1px solid #1c3184;
-      color: #fff;
-    }
-    input[type="text"] {
-      width: 200px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: "Outfit", sans-serif;
-    }
-    input[type="range"] {
-      width: 200px;
-      margin-left: 10px;
-    }
-    input[type="checkbox"] {
-      margin-right: 5px;
-    }
-    input[type="checkbox"]:checked + label {
-      color: #2140bc;
-    }
-    input[type="checkbox"] + label {
-      cursor: pointer;
-    }
-    input[type="checkbox"] + label:hover {
-      color: #1c3184;
-    }
-    input[type="checkbox"] {
-      cursor: pointer;
-    }
-    input[type="checkbox"]:focus {
-      outline: none;
-      box-shadow: 0 0 2px #2140bc;
-    }
-    input[type="text"]:focus {
-      outline: none;
-      box-shadow: 0 0 2px #2140bc;
-    }
-    input[type="range"]:focus {
-      outline: none;
-      box-shadow: 0 0 2px #2140bc;
-    }
-    .slider-container label {
-      font-size: 14px;
-    }
-    .slider-container span {
-      font-size: 14px;
-      margin-left: 5px;
-    }
- 
-    .search-options {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .navigation {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-
-
-    .filters {
-      display: flex;
-      gap: 10px;
-      margin-left: auto;
-      position: relative;
-      padding-right: 20px;
-      padding-left: 20px;
-    }
-    .filters::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10%; /* Adjust to control vertical position */
-      height: 80%;
-      width: 1px;
-      background-color: #ddd;
-    }
-    .filters:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 10%; /* Adjust to control vertical position */
-      height: 100%;
-      width: 1px;
-      background-color: #ddd;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="controls">
-    <div class="navigation">
-      <div class="search-container">
-        <input type="text" id="search" placeholder="Search nodes...">
-        <div class="search-options">
-          <div class="checkbox-container">
-            <input type="checkbox" id="includeConnected" checked>
-            <label for="includeConnected">Highlight connected nodes</label>
+  <!-- Wrapper div to enable sticky footer -->
+  <div class="page-container">
+    <!-- Main content wrapper -->
+    <div class="content-wrap">
+      <div class="controls">
+        <div class="navigation">
+          <div class="search-container">
+            <input type="text" id="search" placeholder="Search nodes...">
+            <div class="search-options">
+              <div class="checkbox-container">
+                <input type="checkbox" id="includeConnected" checked>
+                <label for="includeConnected">Highlight connected nodes</label>
+              </div>
+              <div class="checkbox-container">
+                <input type="checkbox" id="includeReachable" checked>
+                <label for="includeReachable">Highlight all reachable paths</label>
+              </div>
+            </div>
           </div>
-          <div class="checkbox-container">
-            <input type="checkbox" id="includeReachable" checked>
-            <label for="includeReachable">Highlight all reachable paths</label>
+          
+          <div>
+            <div class="slider-container">
+              <label for="maxDepth">Max path depth:</label>
+              <input type="range" id="maxDepth" min="1" max="5" value="3">
+              <span id="depthValue">3</span>
+            </div>
+            
+            <button id="clearSearch">Clear</button>
+            <button id="fit">Fit View</button>
+            <button id="layout">Re-layout</button>
+          </div>
+        </div>
+        
+        <div class="filters">
+          <button id="filterUseCase">Show Use Case</button>
+          <button id="filterProtocol">Show Protocol</button>
+          <button id="filterInvestor">Show Investor</button>
+          <button id="filterCompany">Show Company</button>
+          <button id="filterService">Show Service</button>
+          <button id="filterProduct">Show Product</button>
+          <button id="filterAll">Show All</button>
+        </div>
+        
+        <div class="legend">
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #ff7f00;"></div>
+            <span>Connected</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #5ba316;"></div>
+            <span>Reachable</span>
+          </div>
+          
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #a126c6;"></div>
+            <span>Use Case</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #66aaff;"></div>
+            <span>Product</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #66ddff;"></div>
+            <span>Company</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #239b56;"></div>
+            <span>Protocol</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #f39c12;"></div>
+            <span>Service</span>
+          </div>
+          <div class="legend-item">
+            <div class="color-box" style="background-color: #ff6666;"></div>
+            <span>Investor</span>
           </div>
         </div>
       </div>
-      
-      <div>
-      <div class="slider-container">
-        <label for="maxDepth">Max path depth:</label>
-        <input type="range" id="maxDepth" min="1" max="5" value="3">
-        <span id="depthValue">3</span>
-      </div>
-      
-      <button id="clearSearch">Clear</button>
-      <button id="fit">Fit View</button>
-      <button id="layout">Re-layout</button>
+
+      <div id="app">
+        <div id="cy"></div>
+        <div id="loading" style="display: none; text-align: center; padding: 20px;">Loading graph data...</div>
+        <div id="info">
+          <button id="close-info" aria-label="Close info panel">
+            <span>&times;</span>
+          </button>
+          <div id="info-content">
+            
+          </div>
+        </div>
       </div>
     </div>
     
-    <div class="filters">
-      <button id="filterUseCase">Show Use Case</button>
-      <button id="filterProtocol">Show Protocol</button>
-      <button id="filterInvestor">Show Investor</button>
-      <button id="filterAll">Show All</button>
-    </div>
-    
-    
-    <div class="legend">
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #ff7f00;"></div>
-        <span>Connected</span>
+    <!-- Sticky Footer -->
+    <footer class="footer">
+      <div class="footer-content footer-links">
+        <p>&copy; 2025 Agent Landscape Dataset by AttoAgents <a href="https://attoagents.io" target="_blank">attoagents.io</a> </p>
+        <div class="footer-links">
+          <a href="#">Documentation</a>
+          <a href="mailto:info@attoagents.io">Contact</a>
+        </div>
       </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #5ba316;"></div>
-        <span>Reachable</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #a126c6;"></div>
-        <span>Use Case</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #66aaff;"></div>
-        <span>Product</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #66ddff;"></div>
-        <span>Company</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #239b56;"></div>
-        <span>Protocol</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #f39c12;"></div>
-        <span>Service</span>
-      </div>
-      <div class="legend-item">
-        <div class="color-box" style="background-color: #ff6666;"></div>
-        <span>Investor</span>
-      </div>
-    </div>
+    </footer>
   </div>
 
-  <div id="app">
-  <div id="cy"></div>
-  <div id="loading" style="display: none; text-align: center; padding: 20px;">Loading graph data...</div>
-  <div id="info">
-    <button id="close-info" aria-label="Close info panel">
-      <span>&times;</span>
-    </button>
-    <div id="info-content">
-      
-    </div>
-  </div>
-</div>
   <!-- Use specific compatible versions -->
-<script src="js/cytoscape.min.js"></script>
-<script src="js/layout-base.js"></script>
-<script src="js/cose-base.js"></script>
-<script src="js/cytoscape-cose-bilkent.js"></script>
-
+  <script src="js/cytoscape.min.js"></script>
+  <script src="js/layout-base.js"></script>
+  <script src="js/cose-base.js"></script>
+  <script src="js/cytoscape-cose-bilkent.js"></script>
   <script src="js/cytoscape-context-menus.js"></script>
   <script src="app.js"></script>
 </body>

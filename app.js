@@ -311,6 +311,21 @@ function loadGraphData(jsonFile) {
     if (filterProtocolButton) {
       filterProtocolButton.addEventListener('click', () => filterByType(['Protocol']));
     }
+
+    const filterCompanyButton = document.getElementById('filterCompany');
+    if (filterCompanyButton) {
+      filterCompanyButton.addEventListener('click', () => filterByType(['Company']));
+    }
+
+    const filterServiceButton = document.getElementById('filterService');
+    if (filterServiceButton) {
+      filterServiceButton.addEventListener('click', () => filterByType(['Service']));
+    }
+
+    const filterProductButton = document.getElementById('filterProduct');
+    if (filterProductButton) {
+      filterProductButton.addEventListener('click', () => filterByType(['Product']));
+    }
     
     const filterAllButton = document.getElementById('filterAll');
     if (filterAllButton) {
