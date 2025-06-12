@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Register the layout
   cytoscape.use(cytoscapeCoseBilkent);
   
-  // Sample data - in a real app, you'd fetch this from your backend
+  // Data for the graph - to load from a JSON file later
   const graphData = {
     nodes: [
       // Products
@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'GoogleAIMode', label: 'Google AI Mode in Search', type: 'Product', properties: { url: "https://google.com/"}}},
       { data: { id: 'Athenic', label: 'Athenic', type: 'Product', properties: { url: "https://www.athenic.com/"}}},
       { data: { id: 'Graphiti', label: 'Graphiti', type: 'Product', properties: { github: "https://github.com/getzep/graphiti", url: "https://help.getzep.com/graphiti/graphiti/overview", license: "Apache License 2.0"}}},
+      { data: { id: 'OpenAgentPlatform', label: 'Open Agent Platform', type: 'Product', properties: { url: "https://docs.oap.langchain.com/", github: "https://github.com/langchain-ai/open-agent-platform", license: "MIT License"}}},
       
 
       
@@ -854,6 +855,9 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-zep-company-graphiti', source: 'ZepCompany', target: 'Graphiti', label: 'DEVELOPED' }},
       { data: { id: 'e-YCombinator-ZepCompany', source: 'YCombinator', target: 'ZepCompany', label: 'INVESTED_IN' }},
       { data: { id: 'e-graphiti-use-case', source: 'Graphiti', target: 'AgentInfrastructure', label: 'IN_AREA' }},
+      { data: { id: 'e-langchain-open-agent', source: 'LangChainCompany', target: 'OpenAgentPlatform', label: 'DEVELOPED' }},
+      { data: { id: 'e-open-agent-mcp', source: 'OpenAgentPlatform', target: 'MCP', label: 'CLIENT' }},
+      { data: { id: 'e-open-agent-use-case', source: 'OpenAgentPlatform', target: 'AgentPlatform', label: 'IN_AREA' }},
       
       
 
@@ -864,7 +868,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ]
   };
   
-  // Define node styles based on types (like Neo4j/Memgraph)
+  // Styles based on types 
   const nodeStyles = {
     'Company': { 'background-color': '#66ddff', 'shape': 'round-hexagon' },
     'Product': { 'background-color': '#66aaff', 'shape': 'ellipse' },
@@ -893,7 +897,7 @@ document.addEventListener('DOMContentLoaded', function() {
               let currentLine = '';
               
               for (let word of words) {
-                if (currentLine.length + word.length > 10) { // Adjust this number as needed
+                if (currentLine.length + word.length > 10) { 
                   lines.push(currentLine);
                   currentLine = word;
                 } else {
@@ -976,7 +980,7 @@ document.addEventListener('DOMContentLoaded', function() {
           'width': 2,
           'transition-property': 'line-color, target-arrow-color, width',
           'transition-duration': '0.5s',
-          'z-index': 9999 // Bring highlighted edges to the front
+          'z-index': 9999 
         }
       },
       {
@@ -1175,7 +1179,7 @@ document.addEventListener('DOMContentLoaded', function() {
         propertiesText += `<div class="property"><strong>${key}</strong>: ${properties[key]}</div>`;
       }
     }
-    // alert(`${node.data('label')} (${node.data('type')})\n\n${propertiesText}`);
+    
     infoDiv.innerHTML = `<div class="nodeTitle"><strong>${node.data('label')}</strong> (${node.data('type')})</div>`;
     infoDiv.innerHTML += `${propertiesText}`;
     infoBlock.style.display = 'block';
@@ -1196,12 +1200,12 @@ document.addEventListener('DOMContentLoaded', function() {
       cy.layout({ name: 'cose-bilkent' }).run();
   });
   
-       document.getElementById('search').addEventListener('input', performSearch);
-      document.getElementById('includeConnected').addEventListener('change', performSearch);
-      document.getElementById('includeReachable').addEventListener('change', performSearch);
+  document.getElementById('search').addEventListener('input', performSearch);
+  document.getElementById('includeConnected').addEventListener('change', performSearch);
+  document.getElementById('includeReachable').addEventListener('change', performSearch);
       
-      document.getElementById('clearSearch').addEventListener('click', () => {
-        document.getElementById('search').value = '';
-        cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
-      });
+  document.getElementById('clearSearch').addEventListener('click', () => {
+    document.getElementById('search').value = '';
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+  });
 });

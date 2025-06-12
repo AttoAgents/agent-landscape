@@ -1,5 +1,5 @@
 /**
- * Enhanced Link Verification Tool for AI Agent Ecosystem Dataset
+ * Enhanced Link Verification Tool for AI Agent Landscape Dataset
  * 
  * This standalone Node.js script verifies all URLs in the dataset with:
  * 1. Loading the dataset from a JSON file
