@@ -105,9 +105,11 @@
     }
     .legend {
       display: flex;
-      gap: 15px;
+      gap: 10px;
+      width: 20%;
       margin-left: auto;
       align-items: center;
+      flex-wrap: wrap;
     }
     .legend-item {
       display: flex;
@@ -125,7 +127,10 @@
       font-family: "Outfit", sans-serif;
       border: 1px solid #ccc;
       color: #000;
-      padding: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-top: 2px;
+      padding-bottom: 2px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
@@ -144,10 +149,17 @@
       flex-direction: column;
       gap: 5px;
     }
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
   <div class="controls">
+    <div class="navigation">
     <div class="search-container">
       <input type="text" id="search" placeholder="Search nodes...">
       <div class="search-options">
@@ -171,6 +183,15 @@
     <button id="clearSearch">Clear</button>
     <button id="fit">Fit View</button>
     <button id="layout">Re-layout</button>
+    </div>
+
+    <div>
+    <button id="filterUseCase">Show Use Case</button>
+    <button id="filterProtocol">Show Protocol</button>
+    <button id="filterInvestor">Show Investor</button>
+    <button id="filterAll">Show All</button>
+    </div>
+    
     
     <div class="legend">
       <div class="legend-item">
@@ -180,6 +201,30 @@
       <div class="legend-item">
         <div class="color-box" style="background-color: #5ba316;"></div>
         <span>Reachable</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #a126c6;"></div>
+        <span>Use Case</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #66aaff;"></div>
+        <span>Product</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #66ddff;"></div>
+        <span>Company</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #239b56;"></div>
+        <span>Protocol</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #f39c12;"></div>
+        <span>Service</span>
+      </div>
+      <div class="legend-item">
+        <div class="color-box" style="background-color: #ff6666;"></div>
+        <span>Investor</span>
       </div>
     </div>
   </div>

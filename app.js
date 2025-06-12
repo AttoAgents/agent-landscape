@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'Athenic', label: 'Athenic', type: 'Product', properties: { url: "https://www.athenic.com/"}}},
       { data: { id: 'Graphiti', label: 'Graphiti', type: 'Product', properties: { github: "https://github.com/getzep/graphiti", url: "https://help.getzep.com/graphiti/graphiti/overview", license: "Apache License 2.0"}}},
       { data: { id: 'OpenAgentPlatform', label: 'Open Agent Platform', type: 'Product', properties: { url: "https://docs.oap.langchain.com/", github: "https://github.com/langchain-ai/open-agent-platform", license: "MIT License"}}},
+      { data: { id: 'Langtrace', label: 'Langtrace', type: 'Product', properties: { url: "https://www.langtrace.ai/", github: "https://github.com/Scale3-Labs/langtrace", license: "AGPL-3.0 License"}}},
       
 
       
@@ -345,6 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'MindsDBCompany', label: 'MindsDB', type: 'Company', properties: { url: "https://mindsdb.com/", country: "US"}}},
       { data: { id: 'PipedreamCompany', label: 'Pipedream, Inc.', type: 'Company', properties: { url: "https://pipedream.com/", country: "US", github: "https://github.com/PipedreamHQ"}}},
       { data: { id: 'ZepCompany', label: 'Zep AI', type: 'Company', properties: { url: "https://www.getzep.com/", country: "US", github: "https://github.com/getzep"}} },
+      { data: { id: 'LangtraceAICompany', label: 'Langtrace AI', type: 'Company', properties: { url: "https://www.langtrace.ai/", country: "US", github: "https://github.com/Scale3-Labs"}}},
       
       
 
@@ -387,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'ModelServing', label: 'Model Serving', type: "UseCase"} },
       { data: { id: 'PromptEngineering', label: 'Prompt Engineering', type: "UseCase"} },
       { data: { id: 'AgentPlatform', label: 'Agent Platform', type: "UseCase"} },
-      { data: { id: 'Observability', label: 'Model Observability', type: "UseCase"} },
+      { data: { id: 'Observability', label: 'Agent/Model Observability', type: "UseCase"} },
       { data: { id: 'AILegal', label: 'AI in Law', type: "UseCase"}},
       { data: { id: 'AICLM', label: 'Contract Lifecycle Management', type: "UseCase"}},
       { data: { id: 'VoiceAgents', label: 'Voice Agents', type: "UseCase"}},
@@ -663,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e204', source: 'LangfuseCompany', target: 'Langfuse', label: 'DEVELOPED' }},
       { data: { id: 'e205', source: 'YCombinator', target: 'LangfuseCompany', label: 'INVESTED_IN' }},
       { data: { id: 'e206', source: 'Rowboat', target: 'AgentPlatform', label: 'IN_AREA' }},
-      { data: { id: 'e207', source: 'LangSmith', target: 'Observability', label: 'DEVELOPED' }},
+      { data: { id: 'e207', source: 'LangSmith', target: 'Observability', label: 'IN_AREA' }},
       { data: { id: 'e208', source: 'LangChainCompany', target: 'LangSmith', label: 'DEVELOPED' }},
       { data: { id: 'e209', source: 'LangChainCompany', target: 'LangChain', label: 'DEVELOPED' }},
       { data: { id: 'e210', source: 'LangChainCompany', target: 'LangGraph', label: 'DEVELOPED' }},
@@ -859,7 +861,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { data: { id: 'e-open-agent-mcp', source: 'OpenAgentPlatform', target: 'MCP', label: 'CLIENT' }},
       { data: { id: 'e-open-agent-use-case', source: 'OpenAgentPlatform', target: 'AgentPlatform', label: 'IN_AREA' }},
       
-      
+      { data: { id: 'e-langtrace-observability', source: 'Langtrace', target: 'Observability', label: 'IN_AREA'} },
+      { data: { id: 'e-langtrace-company', source: 'LangtraceAICompany', target: 'Langtrace', label: 'DEVELOPED' }},
 
       
 
@@ -873,7 +876,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'Company': { 'background-color': '#66ddff', 'shape': 'round-hexagon' },
     'Product': { 'background-color': '#66aaff', 'shape': 'ellipse' },
     'Investor': { 'background-color': '#ff6666', 'shape': 'round-rectangle' },
-    'UseCase': { 'background-color': '#ff66ff', 'shape': 'round-pentagon' },
+    'UseCase': { 'background-color': '#a126c6', 'shape': 'round-pentagon' },
     'Protocol': { 'background-color': '#239b56', 'shape': 'round-triangle' },
     'Service': { 'background-color': '#f39c12', 'shape': 'round-octagon' },
   };
@@ -1039,6 +1042,38 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('depthValue').textContent = this.value;
     performSearch(); // Re-run search with new depth
   });
+
+  // Display only nodes of a given type provided by in the list as an argument
+  function filterByType(types) {
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    
+    // Filter nodes by type
+    const filteredNodes = cy.nodes().filter(node => types.includes(node.data('type')));
+    
+    if (filteredNodes.length === 0) {
+      cy.elements().addClass('faded');
+      return;
+    }
+    
+    // Highlight filtered nodes
+    filteredNodes.addClass('highlighted');
+    
+    // Get connected edges and nodes
+    const connectedEdges = filteredNodes.connectedEdges();
+    connectedEdges.addClass('connected-edge');
+    
+    const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+      !filteredNodes.contains(node)
+    );
+    connectedNodes.addClass('connected');
+    
+    // Fade out all other elements
+    cy.elements().difference(filteredNodes.union(connectedEdges).union(connectedNodes)).addClass('faded');
+    
+    // Fit view to highlighted elements
+    cy.fit(filteredNodes.union(connectedEdges).union(connectedNodes), 50);
+  }
+  
   
   // Advanced search function with reachability
   function performSearch() {
@@ -1207,5 +1242,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('clearSearch').addEventListener('click', () => {
     document.getElementById('search').value = '';
     cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+  });
+
+  // Add event listeners for type filters
+  // document.getElementById('filterCompany').addEventListener('click', () => filterByType(['Company']));
+  // document.getElementById('filterProduct').addEventListener('click', () => filterByType(['Product']));
+  document.getElementById('filterInvestor').addEventListener('click', () => filterByType(['Investor']));
+  document.getElementById('filterUseCase').addEventListener('click', () => filterByType(['UseCase']));
+  document.getElementById('filterProtocol').addEventListener('click', () => filterByType(['Protocol']));
+  // document.getElementById('filterService').addEventListener('click', () => filterByType(['Service']));
+  document.getElementById('filterAll').addEventListener('click', () => {
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    cy.fit();
   });
 });
