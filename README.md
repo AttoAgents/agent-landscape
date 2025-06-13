@@ -9,6 +9,7 @@ Holistic view on the current Generative AI application landscape including produ
 - `data.json` - Dataset file read by `app.js` for visualization.
 - `show.sh` - The simplest local HTTP server to run the application on your system ( this can be modified to any other server )
 - `style.css` - CSS file with styles definition.
+- `scripts` - Helper scripts for verifying the data, for example `verify-links.js` may be used for checking if links used in the data are correct.
 
 ## Data
 
@@ -30,27 +31,33 @@ Middle component of the navigation header includes buttons to filter the data an
 
 Right part includes the legend of colors used for edges and nodes of the visualized graph.
 
-<img src="media/01-initial-view-of-data-graph.png" alt="Initial view of the graph with all nodes displayed." width="100%">
+<img src="media/01--initial-view-of-data-graph.png" alt="Initial view of the graph with all nodes displayed." width="100%">
 
 ### Search 
 
-<img src="media/02-search-for-company-or-product.png" alt="Filter data to highlight only product of companies that match the search phrase." width="100%">
+<img src="media/02--search-for-company-or-product.png" alt="Filter data to highlight only product of companies that match the search phrase." width="100%">
 
 ### Extended environment 
 
-<img src="media/03-extended-paths-view-and-node-details.png" alt="Display extended paths in addition to the directly connected nodes." width="100%">
+<img src="media/03--extended-paths-view-and-node-details.png" alt="Display extended paths in addition to the directly connected nodes." width="100%">
 
 ### Investor portfolio
 
-<img src="media/04-vc-investment-in-companies.png" alt="Investigate VC's investment portfolio and types of products that they are selecting." width="100%">
+<img src="media/04--vc-investment-in-companies.png" alt="Investigate VC's investment portfolio and types of products that they are selecting." width="100%">
 
 ### Startup investors
 
-<img src="media/05-startup-funding-sources.png" alt="Find information about funding sources for startup and information about the involved VCs." width="100%">
+<img src="media/05--startup-funding-sources.png" alt="Find information about funding sources for startup and information about the involved VCs." width="100%">
 
 ### Application Area
 
-<img src="media/06-products-in-a-given-application-area.png" alt="List products in a given application area." width="100%">
+<img src="media/06--products-in-a-given-application-area.png" alt="List products in a given application area." width="100%">
+
+
+### Predefined filters
+
+<img src="media/07--data-filtered-for-all-application-areas.png" alt="List all application areas using predefined button." width="100%">
+
 
 ## Contributions 
 
