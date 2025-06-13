@@ -227,7 +227,7 @@ function loadGraphData(jsonFile) {
       'Product': { 'background-color': '#66aaff', 'shape': 'ellipse' },
       'Investor': { 'background-color': '#ff6666', 'shape': 'round-rectangle' },
       'UseCase': { 'background-color': '#a126c6', 'shape': 'round-pentagon' },
-      'Protocol': { 'background-color': '#239b56', 'shape': 'round-triangle' },
+      'Protocol': { 'background-color': '#616a6b', 'shape': 'round-triangle' },
       'Service': { 'background-color': '#f39c12', 'shape': 'round-octagon' },
     };
     
