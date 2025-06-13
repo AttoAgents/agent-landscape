@@ -1,4 +1,4 @@
-# Agent Landscape Dataset
+# Agent Landscape 
 
 Holistic view on the current Generative AI application landscape including products, companies, use cases, investors and technologies related to AI agents. 
 
@@ -7,6 +7,8 @@ Holistic view on the current Generative AI application landscape including produ
 - `index.html` - visualization of the graph relation of data with products, use cases, companies, investors, protocols as nodes and their relations.
 - `app.js` - embedded datasource and helper functions for visualization and searches for direct connection and most relevant paths.
 - `js` - JS files for visualization of the data graph.
+- `data.json` - Dataset file read by `app.js` for visualization.
+- `show.sh` - The simplest local HTTP server to run the application on your system ( this can be modified to any other server )
 
 ## How to use the dataset 
 

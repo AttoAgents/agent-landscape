@@ -16,26 +16,18 @@
  *   --no-html       Skip HTML report generation
  */
 
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
-const http = require('http');
-const { URL } = require('url');
-const chalk = require('chalk'); // For colored console output
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
+import http from 'http';
+import { URL } from 'url';
+import chalk from 'chalk'; 
 
-// Check if chalk is installed, if not, provide instructions
-try {
-  require.resolve('chalk');
-} catch (e) {
-  console.error('The "chalk" package is required for this script.');
-  console.error('Please install it using: npm install chalk');
-  process.exit(1);
-}
 
 // Parse command line arguments
 const datasetPath = process.argv.find(arg => !arg.startsWith('--') && 
                                       !arg.includes('node') && 
-                                      !arg.includes('verify-links')) || './dataset.json';
+                                      !arg.includes('verify-links')) || './data.json';
 const shouldFix = process.argv.includes('--fix');
 const verbose = process.argv.includes('--verbose');
 const skipHtml = process.argv.includes('--no-html');
@@ -119,6 +111,7 @@ function isValidUrlFormat(url) {
     new URL(url);
     return true;
   } catch (e) {
+    console.log(e.message);
     return false;
   }
 }

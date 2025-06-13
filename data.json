@@ -17,7 +17,7 @@
                 "label": "Witsy",
                 "type": "Product",
                 "properties": {
-                    "url": "https://www.witsai.com/",
+                    "url": "https://www.witsyai.com/",
                     "github": "https://github.com/nbonamy/witsy"
                 }
             }
@@ -291,7 +291,9 @@
                 "label": "Llama Index",
                 "type": "Product",
                 "properties": {
-                    "url": "https://www.llamaindex.ai/"
+                    "url": "https://www.llamaindex.ai/",
+                    "github": "https://github.com/run-llama/llama_index",
+                    "license": "MIT License"
                 }
             }
         },
@@ -527,7 +529,7 @@
                 "type": "Product",
                 "properties": {
                     "url": "",
-                    "github": "ttps://github.com/plandex-ai/plandex",
+                    "github": "https://github.com/plandex-ai/plandex",
                     "license": "MIT License"
                 }
             }
@@ -660,7 +662,7 @@
                 "properties": {
                     "url": "",
                     "github": "https://github.com/ErikBjare/gptme",
-                    "license": "MIT Licence"
+                    "license": "MIT License"
                 }
             }
         },
@@ -1040,7 +1042,7 @@
                 "label": "Transformers Agents",
                 "type": "Product",
                 "properties": {
-                    "url": "https://huggingface.co/docs/transformers/transformers_agents",
+                    "url": "https://huggingface.co/docs/transformers/agents",
                     "github": "https://github.com/huggingface/transformers",
                     "license": "Apache License 2.0"
                 }
@@ -1222,7 +1224,8 @@
                 "label": "ChatGPT",
                 "type": "Product",
                 "properties": {
-                    "url": "https://chat.openai.com/"
+                    "url": "https://chatgpt.com/",
+                    "license": "Proprietary"
                 }
             }
         },
@@ -1232,7 +1235,8 @@
                 "label": "Claude",
                 "type": "Product",
                 "properties": {
-                    "url": "https://claude.ai/"
+                    "url": "https://claude.ai/",
+                    "license": "Proprietary"
                 }
             }
         },
@@ -3671,7 +3675,7 @@
                 "properties": {
                     "url": "https://www.agentops.ai/",
                     "github": "https://github.com/AgentOps-AI/agentops",
-                    "license": "MIT Licence"
+                    "license": "MIT License"
                 }
             }
         },
@@ -3755,7 +3759,7 @@
                 "properties": {
                     "url": "https://portkey.ai/",
                     "github": "https://github.com/Portkey-AI/portkey-python-sdk",
-                    "license": "MIT Licence"
+                    "license": "MIT License"
                 }
             }
         },
@@ -3767,7 +3771,7 @@
                 "properties": {
                     "url": "https://portkey.ai/features/ai-gateway",
                     "github": "https://github.com/Portkey-AI/gateway",
-                    "license": "MIT Licence"
+                    "license": "MIT License"
                 }
             }
         },
@@ -3996,12 +4000,12 @@
         },
         {
             "data": {
-                "id": "vectordb",
-                "label": "VectorDB",
+                "id": "vectorchord",
+                "label": "VectorChord",
                 "type": "Product",
                 "properties": {
-                    "url": "https://github.com/tensorchord/vectordb",
-                    "github": "https://github.com/tensorchord/vectordb",
+                    "url": "https://docs.vectorchord.ai/",
+                    "github": "https://github.com/tensorchord/vectorchord/",
                     "license": "Apache License 2.0"
                 }
             }
@@ -7551,7 +7555,7 @@
         {
             "data": {
                 "id": "e-vectordb-use-case",
-                "source": "vectordb",
+                "source": "vectorchord",
                 "target": "VectorDB",
                 "label": "IN_AREA"
             }
