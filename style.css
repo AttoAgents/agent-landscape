@@ -6,8 +6,7 @@
 
 #cy {
     width: 100%;
-    height: calc(100vh - 160px);
-    /* height: 80%; */
+    height: calc(100vh - 140px);
     display: block;
 }
 
@@ -199,8 +198,6 @@ input[type="range"]:focus {
     flex-wrap: wrap;
 }
 
-
-
 .filters {
     display: flex;
     flex-wrap: wrap;
@@ -215,8 +212,8 @@ input[type="range"]:focus {
     content: "";
     position: absolute;
     left: 0;
-    top: 10%; /* Adjust to control vertical position */
-    height: 80%;
+    top: 0; 
+    height: 100%;
     width: 1px;
     background-color: #ddd;
 }
@@ -224,7 +221,7 @@ input[type="range"]:focus {
     content: "";
     position: absolute;
     right: 0;
-    top: 10%; /* Adjust to control vertical position */
+    top: 0; 
     height: 100%;
     width: 1px;
     background-color: #ddd;
