@@ -3777,6 +3777,18 @@
         },
         {
             "data": {
+                "id": "PydanticAI",
+                "label": "Pydantic AI",
+                "type": "Product",
+                "properties": {
+                    "url": "https://ai.pydantic.dev/",
+                    "github": "https://github.com/pydantic/pydantic-ai",
+                    "license": "MIT License"
+                }
+            }
+        },
+        {
+            "data": {
                 "id": "KeywordsAICompany",
                 "label": "KeywordsAI",
                 "type": "Company",
@@ -7629,6 +7641,14 @@
                 "id": "e-clickhouse-use-case",
                 "source": "clickhouse",
                 "target": "VectorDB",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-pydanticai-use-case",
+                "source": "PydanticAI",
+                "target": "AgentFramework",
                 "label": "IN_AREA"
             }
         }
