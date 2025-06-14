@@ -138,6 +138,7 @@ function loadGraphData(jsonFile) {
             'background-color': '#ff7f00',
             'text-outline-color': '#ff7f00',
             'color': '#000',
+            'z-index': 20,
             'transition-property': 'background-color, text-outline-color',
             'transition-duration': '0.5s'
           }
@@ -218,6 +219,21 @@ function loadGraphData(jsonFile) {
         animate: true,
         randomize: true,
         nodeDimensionsIncludeLabels: true,
+
+        // Separate the type nodes from connected nodes
+      nodeRepulsion: 8000,
+      idealEdgeLength: 100,
+      edgeElasticity: 0.45,
+      nestingFactor: 0.1,
+      gravity: 0.25,
+      numIter: 2500,
+      tile: true,
+      tilingPaddingVertical: 10,
+      tilingPaddingHorizontal: 10,
+      gravityRangeCompound: 1.5,
+      gravityCompound: 1.0,
+      gravityRange: 3.8,
+      initialEnergyOnIncremental: 0.5
       }
     });
     
@@ -296,44 +312,96 @@ function loadGraphData(jsonFile) {
       });
     }
 
-    // Add event listeners for type filters
-    const filterInvestorButton = document.getElementById('filterInvestor');
-    if (filterInvestorButton) {
-      filterInvestorButton.addEventListener('click', () => filterByType(['Investor']));
-    }
-    
-    const filterUseCaseButton = document.getElementById('filterUseCase');
-    if (filterUseCaseButton) {
-      filterUseCaseButton.addEventListener('click', () => filterByType(['UseCase']));
-    }
-    
-    const filterProtocolButton = document.getElementById('filterProtocol');
-    if (filterProtocolButton) {
-      filterProtocolButton.addEventListener('click', () => filterByType(['Protocol']));
-    }
+    // Add event listener for the subgraph view button
+  const openSubgraphViewButton = document.getElementById('openSubgraphView');
+  if (openSubgraphViewButton) {
+    openSubgraphViewButton.addEventListener('click', () => {
+      // If no type is filtered, show a message
+      if (!currentFilteredType) {
+        alert('Please select a node type first by clicking one of the filter buttons.');
+        return;
+      }
+      
+      openSubgraphModal(currentFilteredType);
+    });
+  }
+  
+  // Add event listener for closing the modal
+  const closeModalButton = document.querySelector('.close-modal');
+  if (closeModalButton) {
+    closeModalButton.addEventListener('click', () => {
+      const modal = document.getElementById('subgraph-modal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
 
-    const filterCompanyButton = document.getElementById('filterCompany');
-    if (filterCompanyButton) {
-      filterCompanyButton.addEventListener('click', () => filterByType(['Company']));
+    // Close the modal when clicking outside of it
+  window.addEventListener('click', (event) => {
+    const modal = document.getElementById('subgraph-modal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
     }
+  });
 
-    const filterServiceButton = document.getElementById('filterService');
-    if (filterServiceButton) {
-      filterServiceButton.addEventListener('click', () => filterByType(['Service']));
-    }
+    // Update the filter functions to set the current filtered type
+  const filterInvestorButton = document.getElementById('filterInvestor');
+  if (filterInvestorButton) {
+    filterInvestorButton.addEventListener('click', () => {
+      currentFilteredType = 'Investor';
+      filterByType(['Investor']);
+    });
+  }
+  
+  const filterUseCaseButton = document.getElementById('filterUseCase');
+  if (filterUseCaseButton) {
+    filterUseCaseButton.addEventListener('click', () => {
+      currentFilteredType = 'UseCase';
+      filterByType(['UseCase']);
+    });
+  }
+  
+  const filterProtocolButton = document.getElementById('filterProtocol');
+  if (filterProtocolButton) {
+    filterProtocolButton.addEventListener('click', () => {
+      currentFilteredType = 'Protocol';
+      filterByType(['Protocol']);
+    });
+  }
 
-    const filterProductButton = document.getElementById('filterProduct');
-    if (filterProductButton) {
-      filterProductButton.addEventListener('click', () => filterByType(['Product']));
-    }
-    
-    const filterAllButton = document.getElementById('filterAll');
-    if (filterAllButton) {
-      filterAllButton.addEventListener('click', () => {
-        cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
-        cy.fit();
-      });
-    }
+  const filterCompanyButton = document.getElementById('filterCompany');
+  if (filterCompanyButton) {
+    filterCompanyButton.addEventListener('click', () => {
+      currentFilteredType = 'Company';
+      filterByType(['Company']);
+    });
+  }
+
+  const filterServiceButton = document.getElementById('filterService');
+  if (filterServiceButton) {
+    filterServiceButton.addEventListener('click', () => {
+      currentFilteredType = 'Service';
+      filterByType(['Service']);
+    });
+  }
+
+  const filterProductButton = document.getElementById('filterProduct');
+  if (filterProductButton) {
+    filterProductButton.addEventListener('click', () => {
+      currentFilteredType = 'Product';
+      filterByType(['Product']);
+    });
+  }
+  
+  const filterAllButton = document.getElementById('filterAll');
+  if (filterAllButton) {
+    filterAllButton.addEventListener('click', () => {
+      currentFilteredType = null;
+      cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+      cy.fit();
+    });
+  }
 
     // Set up node click handler for info panel
     const closeButton = document.getElementById('close-info');
@@ -373,6 +441,384 @@ function loadGraphData(jsonFile) {
       });
     }
   }
+
+  // Global variable to track currently filtered type
+let currentFilteredType = null;
+
+// Function to open the subgraph modal
+function openSubgraphModal(nodeType) {
+  if (!cy) return;
+  
+  // Set the current filtered type
+  currentFilteredType = nodeType;
+  
+  // Update modal title
+  const modalTitle = document.getElementById('modal-title');
+  if (modalTitle) {
+    modalTitle.textContent = `${nodeType} Subgraph View`;
+  }
+  
+  // Get nodes of the selected type
+  const typeNodes = cy.nodes().filter(node => node.data('type') === nodeType);
+  
+  // Get connected nodes and edges
+  const connectedEdges = typeNodes.connectedEdges();
+  const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+    node.data('type') !== nodeType
+  );
+  
+  // Show the modal
+  const modal = document.getElementById('subgraph-modal');
+  if (modal) {
+    modal.style.display = 'block';
+  }
+  
+  // Initialize subgraph
+  initializeSubgraph(typeNodes, connectedNodes, connectedEdges);
+  
+  // Populate the table
+  populateConnectedNodesTable(typeNodes, connectedNodes, connectedEdges);
+}
+
+// Function to initialize the subgraph visualization
+function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
+  // If there's an existing subgraph, destroy it
+  if (window.subgraphCy) {
+    try {
+      window.subgraphCy.destroy();
+    } catch (e) {
+      console.warn('Could not properly clean up previous subgraph:', e);
+    }
+  }
+  
+  // Create elements for the subgraph
+  const elements = [];
+  
+  // Add the type nodes
+  typeNodes.forEach(node => {
+    elements.push({
+      data: {
+        id: node.id(),
+        label: node.data('label'),
+        type: node.data('type'),
+        properties: node.data('properties')
+      }
+    });
+  });
+  
+  // Add the connected nodes
+  connectedNodes.forEach(node => {
+    elements.push({
+      data: {
+        id: node.id(),
+        label: node.data('label'),
+        type: node.data('type'),
+        properties: node.data('properties')
+      }
+    });
+  });
+  
+  // Add the edges
+  connectedEdges.forEach(edge => {
+    elements.push({
+      data: {
+        id: edge.id(),
+        source: edge.source().id(),
+        target: edge.target().id(),
+        label: edge.data('label')
+      }
+    });
+  });
+  
+  // Initialize the subgraph cytoscape instance
+  window.subgraphCy = cytoscape({
+    container: document.getElementById('subgraph-cy'),
+    elements: elements,
+    style: [
+      {
+        selector: 'node',
+        style: {
+          'label': function(ele) {
+            const label = ele.data('label');
+            if (!label) return '';
+            
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = '';
+            
+            for (let word of words) {
+              if (currentLine.length + word.length > 10) { 
+                lines.push(currentLine);
+                currentLine = word;
+              } else {
+                currentLine += (currentLine ? ' ' : '') + word;
+              }
+            }
+            if (currentLine) lines.push(currentLine);
+            
+            return lines.join('\n');
+          },
+          'text-valign': 'center',
+          'text-halign': 'center',
+          'background-color': '#666',
+          'color': '#000',
+          'font-size': 10,
+          'text-wrap': 'wrap',
+          'text-max-width': 80,
+          'text-overflow-wrap': 'whitespace',
+          'text-background-color': '#fff',
+          'text-background-opacity': 0.7,
+          'text-background-padding': 2,
+          'text-background-shape': 'roundrectangle',
+        }
+      },
+      {
+        selector: 'edge',
+        style: {
+          'width': 1,
+          'line-color': '#999',
+          'target-arrow-color': '#999',
+          'target-arrow-shape': 'chevron',
+          'curve-style': 'bezier',
+          'label': 'data(label)',
+          'font-size': 8,
+          'text-rotation': 'autorotate',
+          'text-background-color': '#fff',
+          'text-background-opacity': 0.7,
+          'text-background-padding': 2
+        }
+      }
+    ],
+    layout: {
+      name: 'cose-bilkent',
+      animate: true,
+      randomize: true,
+      nodeDimensionsIncludeLabels: true,
+      // Separate the type nodes from connected nodes
+      nodeRepulsion: 8000,
+      idealEdgeLength: 100,
+      edgeElasticity: 0.45,
+      nestingFactor: 0.1,
+      gravity: 0.25,
+      numIter: 2500,
+      tile: true,
+      tilingPaddingVertical: 10,
+      tilingPaddingHorizontal: 10,
+      gravityRangeCompound: 1.5,
+      gravityCompound: 1.0,
+      gravityRange: 3.8,
+      initialEnergyOnIncremental: 0.5
+    }
+  });
+  
+  // Apply node styles based on type
+  const nodeStyles = {
+    'Company': { 'background-color': '#66ddff', 'shape': 'round-hexagon' },
+    'Product': { 'background-color': '#66aaff', 'shape': 'ellipse' },
+    'Investor': { 'background-color': '#ff6666', 'shape': 'round-rectangle' },
+    'UseCase': { 'background-color': '#a126c6', 'shape': 'round-pentagon' },
+    'Protocol': { 'background-color': '#616a6b', 'shape': 'round-triangle' },
+    'Service': { 'background-color': '#f39c12', 'shape': 'round-octagon' },
+  };
+  
+  // Apply styles to nodes
+  Object.keys(nodeStyles).forEach(type => {
+    window.subgraphCy.style()
+      .selector(`node[type="${type}"]`)
+      .style(nodeStyles[type])
+      .update();
+  });
+  
+  // Highlight the type nodes
+  window.subgraphCy.nodes(`[type="${currentFilteredType}"]`).style({
+    'border-width': 3,
+    'border-color': '#ff7f00',
+    'z-index': 10
+  });
+  
+  // Add click event to nodes in subgraph
+  window.subgraphCy.on('tap', 'node', function(evt) {
+    const node = evt.target;
+    highlightConnections(node);
+  });
+  
+  // Fit the view
+  window.subgraphCy.fit();
+}
+
+// Function to highlight connections in the subgraph
+function highlightConnections(node) {
+  // Reset all styles
+  window.subgraphCy.elements().removeClass('highlighted connected-edge');
+  
+  // Highlight the selected node
+  node.addClass('highlighted');
+  
+  // Highlight connected edges and nodes
+  const connectedEdges = node.connectedEdges();
+  connectedEdges.addClass('connected-edge');
+  
+  const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
+  connectedNodes.addClass('highlighted');
+  
+  // Update the table to show only connections for this node
+  if (node.data('type') === currentFilteredType) {
+    // If it's a type node, show its connections
+    updateTableForNode(node);
+  } else {
+    // If it's a connected node, show type nodes connected to it
+    const typeNodes = window.subgraphCy.nodes(`[type="${currentFilteredType}"]`);
+    const connectedTypeNodes = typeNodes.filter(n => 
+      connectedNodes.contains(n)
+    );
+    
+    // Highlight these in the graph
+    connectedTypeNodes.addClass('highlighted');
+    
+    // Update the table
+    updateTableForConnectedNode(node, connectedTypeNodes);
+  }
+}
+
+// Function to update the table for a selected type node
+function updateTableForNode(node) {
+  const tableBody = document.getElementById('connected-nodes-body');
+  if (!tableBody) return;
+  
+  // Clear the table
+  tableBody.innerHTML = '';
+  
+  // Get connected nodes
+  const connectedEdges = node.connectedEdges();
+  const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
+  
+  // Add rows for each connected node
+  connectedNodes.forEach(connNode => {
+    // Find the edge between these nodes
+    const edge = connectedEdges.filter(e => 
+      (e.source().id() === node.id() && e.target().id() === connNode.id()) ||
+      (e.target().id() === node.id() && e.source().id() === connNode.id())
+    );
+    
+    // Determine relationship direction
+    let relationship = edge.data('label') || '';
+    if (edge.source().id() === node.id()) {
+      relationship += ' →'; // Outgoing
+    } else {
+      relationship += ' ←'; // Incoming
+    }
+    
+    // Create table row
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${connNode.data('label')}</td>
+      <td>${connNode.data('type')}</td>
+      <td>${relationship}</td>
+    `;
+    
+    // Add click event to highlight this node in the graph
+    row.addEventListener('click', () => {
+      highlightConnections(connNode);
+    });
+    
+    tableBody.appendChild(row);
+  });
+}
+
+// Function to update the table for a selected connected node
+function updateTableForConnectedNode(node, connectedTypeNodes) {
+  const tableBody = document.getElementById('connected-nodes-body');
+  if (!tableBody) return;
+  
+  // Clear the table
+  tableBody.innerHTML = '';
+  
+  // Add rows for each connected type node
+  connectedTypeNodes.forEach(typeNode => {
+    // Find the edge between these nodes
+    const edge = node.connectedEdges().filter(e => 
+      (e.source().id() === node.id() && e.target().id() === typeNode.id()) ||
+      (e.target().id() === node.id() && e.source().id() === typeNode.id())
+    );
+    
+    // Determine relationship direction
+    let relationship = edge.data('label') || '';
+    if (edge.source().id() === typeNode.id()) {
+      relationship += ' ←'; // Incoming to this node
+    } else {
+      relationship += ' →'; // Outgoing from this node
+    }
+    
+    // Create table row
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${typeNode.data('label')}</td>
+      <td>${typeNode.data('type')}</td>
+      <td>${relationship}</td>
+    `;
+    
+    // Add click event to highlight this node in the graph
+    row.addEventListener('click', () => {
+      highlightConnections(typeNode);
+    });
+    
+    tableBody.appendChild(row);
+  });
+}
+
+// Function to populate the connected nodes table
+function populateConnectedNodesTable(typeNodes, connectedNodes, connectedEdges) {
+  const tableBody = document.getElementById('connected-nodes-body');
+  if (!tableBody) return;
+  
+  // Clear the table
+  tableBody.innerHTML = '';
+  
+  // Group connected nodes by type
+  const nodesByType = {};
+  connectedNodes.forEach(node => {
+    const type = node.data('type');
+    if (!nodesByType[type]) {
+      nodesByType[type] = [];
+    }
+    nodesByType[type].push(node);
+  });
+  
+  // Add a header row for each type
+  Object.keys(nodesByType).sort().forEach(type => {
+    // Add type header
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+      <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">${type} (${nodesByType[type].length})</td>
+    `;
+    tableBody.appendChild(headerRow);
+    
+    // Add nodes of this type
+    nodesByType[type].forEach(node => {
+      // Count connections to the filtered type
+      const connections = node.connectedEdges().filter(edge => {
+        const otherNode = edge.source().id() === node.id() ? edge.target() : edge.source();
+        return otherNode.data('type') === currentFilteredType;
+      }).length;
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${node.data('label')}</td>
+        <td>${connections} connections</td>
+        <td><button class="view-btn">View</button></td>
+      `;
+      
+      // Add click event to the view button
+      const viewBtn = row.querySelector('.view-btn');
+      viewBtn.addEventListener('click', () => {
+        highlightConnections(node);
+      });
+      
+      tableBody.appendChild(row);
+    });
+  });
+}
+
 
   // Display only nodes of a given type provided by in the list as an argument
   function filterByType(types) {

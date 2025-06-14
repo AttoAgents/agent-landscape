@@ -49,6 +49,8 @@
           <button id="filterService">Show Service</button>
           <button id="filterProduct">Show Product</button>
           <button id="filterAll">Show All</button>
+
+          <button id="openSubgraphView" class="subgraph-button">Open Subgraph View</button>
         </div>
         
         <div class="legend">
@@ -100,6 +102,39 @@
           </div>
         </div>
       </div>
+
+      <!-- Subgraph Modal -->
+      <div id="subgraph-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-title">Subgraph View</h2>
+            <span class="close-modal">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="subgraph-container">
+              <div id="subgraph-cy"></div>
+            </div>
+            <div class="connected-nodes-table">
+              <h3>Connected Nodes</h3>
+              <div class="table-container">
+                <table id="connected-nodes">
+                  <thead>
+                    <tr>
+                      <th>Label</th>
+                      <th>Type</th>
+                      <th>Relationship</th>
+                    </tr>
+                  </thead>
+                  <tbody id="connected-nodes-body">
+                    <!-- Table rows will be added dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     
     <!-- Sticky Footer -->

@@ -290,3 +290,146 @@ html, body {
     gap: 10px;
   }
 }
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: "Outfit", sans-serif;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.close-modal {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.modal-body {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.subgraph-container {
+  flex: 3;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+#subgraph-cy {
+  width: 100%;
+  height: 100%;
+}
+
+.connected-nodes-table {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.connected-nodes-table h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.table-container {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#connected-nodes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#connected-nodes th, 
+#connected-nodes td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#connected-nodes th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+}
+
+#connected-nodes tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.subgraph-button {
+  background-color: #2140bc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subgraph-button:hover {
+  background-color: #1c3184;
+}
+
+.view-btn {
+  background-color: #2140bc;
+  color: white;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #1c3184;
+}
