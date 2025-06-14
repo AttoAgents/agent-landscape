@@ -47,18 +47,34 @@ The extended environment of a given node is enabled with reachable paths. In the
 
 ### Investor portfolio
 
+Searching for a node that represents an investor displays the portfolio of the companies that this particular organization supported. An extended paths will also lead to products and application areas in which this investment effectively took place.
+
+On the image below we search phrase *y combinator* and get highlighted subgraph of central node as the investor with the portfolio companies connected to it. Reachable paths lead to products and application areas.
+
+After clicking on the node a panel with detailed properties of this node will be open on the right side of the window.
+
 <img src="media/04--vc-investment-in-companies.png" alt="Investigate VC's investment portfolio and types of products that they are selecting." width="100%">
 
 ### Startup investors
+
+An inverse information to the above example may be obtained by searching for a company. The list of known investor nodes are highlighted after the search. The reachable paths in this case lead to other investments from a given investor node.
+
+On the example below we show search for phrase *glen technologies* which highlights the company and their investor list. Reachable paths here show similar investments, sometimes by several funds.
 
 <img src="media/05--startup-funding-sources.png" alt="Find information about funding sources for startup and information about the involved VCs." width="100%">
 
 ### Application Area
 
+Search for an application area (use case) highlights all products that are related to this area. In the example below we use *AI codding* to display list of all products related to the AI assisted or automated codding.
+
 <img src="media/06--products-in-a-given-application-area.png" alt="List products in a given application area." width="100%">
 
 
 ### Predefined filters
+
+Predefined filters present in the middle section of the top panel highlight all nodes of particular type and all their direct connections. This is present for **Use Case**, **Protocol**, **Investor**, **Company**, **Service** (special case of product related to MCP services), and **Product**. 
+
+The example below displays all use cases and the products related to them.
 
 <img src="media/07--data-filtered-for-all-application-areas.png" alt="List all application areas using predefined button." width="100%">
 
