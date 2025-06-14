@@ -1,6 +1,6 @@
 # Used Data Sets
 
-This file documents the sources of previous work we have included in the data and the license credits of the original sources.
+This file documents the sources of previous work we have in full or partially (due to the scope of this project) included in the data and the license credits of the original sources.
 
 ## awesome-mcp-servers
 
