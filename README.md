@@ -97,4 +97,4 @@ work. If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
 ## Attribution 
 
-Agent Landscape Dataset by AttoAgents (https://attoagents.io).
+Agent Landscape by AttoAgents (https://attoagents.io).
