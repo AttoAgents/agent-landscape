@@ -1,5 +1,5 @@
 /**
- * Enhanced Link Verification Tool for AI Agent Landscape Dataset
+ * Link Verification Tool for Agent Landscape Dataset
  * 
  * This standalone Node.js script verifies all URLs in the dataset with:
  * 1. Loading the dataset from a JSON file
@@ -9,7 +9,7 @@
  * 5. Generating a detailed HTML report with clickable links
  * 6. Checking for duplicate nodes and orphaned nodes
  * 
- * Usage: node verify-links-enhanced.js [path-to-dataset.json] [options]
+ * Usage: node verify-links.js [path-to-dataset.json] [options]
  * Options:
  *   --fix           Automatically fix common URL issues and save updated dataset
  *   --verbose       Show detailed information about all links
