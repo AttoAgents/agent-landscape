@@ -35,9 +35,13 @@ Right part includes the legend of colors used for edges and nodes of the visuali
 
 ### Search 
 
+Search field at the top left corner can be used to filter the graph to nodes that include search phrase in the node name. Two control switches are given below as **Highlight connected nodes** and **Highlight all reachable paths**. The first one will also display all nodes connected to the found nodes. The second will also include all nodes in paths that originate at the directly connected nodes following order of the connections. Both switches will include all node types. Direct connections will be highlighted in orange and reachable paths in green.
+
+The image below shows search result for phrase *openai* which occurs several times in the name of the company and their products. All directly connected nodes are also highlighted and their connections marked in orange.
+
 <img src="media/02--search-for-company-or-product.png" alt="Filter data to highlight only product of companies that match the search phrase." width="100%">
 
-### Extended environment 
+The extended environment of a given node is enabled with reachable paths. In the image below we use the same *openai* search phrase but enable the reachable paths. This for example includes paths originating from "Microsoft" as OpenAI's investor.
 
 <img src="media/03--extended-paths-view-and-node-details.png" alt="Display extended paths in addition to the directly connected nodes." width="100%">
 
