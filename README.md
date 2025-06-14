@@ -65,7 +65,7 @@ On the example below we show search for phrase *glen technologies* which highlig
 
 ### Application Area
 
-Search for an application area (use case) highlights all products that are related to this area. In the example below we use *AI codding* to display list of all products related to the AI assisted or automated codding.
+Search for an application area (use case) highlights all products that are related to this area. In the example below we use *AI coding* to display list of all products related to the AI assisted or automated coding.
 
 <img src="media/06--products-in-a-given-application-area.png" alt="List products in a given application area." width="100%">
 
