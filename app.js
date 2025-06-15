@@ -312,103 +312,106 @@ function loadGraphData(jsonFile) {
       });
     }
 
-    // Add event listener for the subgraph view button
+    const backButton = document.getElementById('back-to-list');
+    if (backButton) {
+      backButton.addEventListener('click', backToListView);
+    }
 
-    // Add event listener for the back button
-  const backButton = document.getElementById('back-to-list');
-  if (backButton) {
-    backButton.addEventListener('click', backToListView);
-  }
+    const openSubgraphViewButton = document.getElementById('openSubgraphView');
+    if (openSubgraphViewButton) {
+      openSubgraphViewButton.addEventListener('click', () => {
+        // If no type is filtered, show a notification
+        if (!currentFilteredType) {
+          showNotification('Please select a node type first by clicking one of the filter buttons.', 'warning');
+          return;
+        }
+        
+        openSubgraphModal(currentFilteredType);
+      });
+    }
+
+    // Event listener for notification close button
+    const notificationClose = document.getElementById('notification-close');
+    if (notificationClose) {
+      notificationClose.addEventListener('click', hideNotification);
+    }
   
-  const openSubgraphViewButton = document.getElementById('openSubgraphView');
-  if (openSubgraphViewButton) {
-    openSubgraphViewButton.addEventListener('click', () => {
-      // If no type is filtered, show a message
-      if (!currentFilteredType) {
-        alert('Please select a node type first by clicking one of the filter buttons.');
-        return;
-      }
-      
-      openSubgraphModal(currentFilteredType);
-    });
-  }
-  
-  // Add event listener for closing the modal
-  const closeModalButton = document.querySelector('.close-modal');
-  if (closeModalButton) {
-    closeModalButton.addEventListener('click', () => {
+    // Event listener for closing the modal
+    const closeModalButton = document.querySelector('.close-modal');
+    if (closeModalButton) {
+      closeModalButton.addEventListener('click', () => {
+        const modal = document.getElementById('subgraph-modal');
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', (event) => {
       const modal = document.getElementById('subgraph-modal');
-      if (modal) {
+      if (event.target === modal) {
         modal.style.display = 'none';
       }
     });
-  }
-
-    // Close the modal when clicking outside of it
-  window.addEventListener('click', (event) => {
-    const modal = document.getElementById('subgraph-modal');
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
 
     // Update the filter functions to set the current filtered type
-  const filterInvestorButton = document.getElementById('filterInvestor');
-  if (filterInvestorButton) {
-    filterInvestorButton.addEventListener('click', () => {
-      currentFilteredType = 'Investor';
-      filterByType(['Investor']);
-    });
-  }
+    const filterInvestorButton = document.getElementById('filterInvestor');
+    if (filterInvestorButton) {
+      filterInvestorButton.addEventListener('click', () => {
+        currentFilteredType = 'Investor';
+        filterByType(['Investor']);
+      });
+    }
   
-  const filterUseCaseButton = document.getElementById('filterUseCase');
-  if (filterUseCaseButton) {
-    filterUseCaseButton.addEventListener('click', () => {
-      currentFilteredType = 'UseCase';
-      filterByType(['UseCase']);
-    });
-  }
+    const filterUseCaseButton = document.getElementById('filterUseCase');
+    if (filterUseCaseButton) {
+      filterUseCaseButton.addEventListener('click', () => {
+        currentFilteredType = 'UseCase';
+        filterByType(['UseCase']);
+      });
+    }
   
-  const filterProtocolButton = document.getElementById('filterProtocol');
-  if (filterProtocolButton) {
-    filterProtocolButton.addEventListener('click', () => {
-      currentFilteredType = 'Protocol';
-      filterByType(['Protocol']);
-    });
-  }
+    const filterProtocolButton = document.getElementById('filterProtocol');
+    if (filterProtocolButton) {
+      filterProtocolButton.addEventListener('click', () => {
+        currentFilteredType = 'Protocol';
+        filterByType(['Protocol']);
+      });
+    }
 
-  const filterCompanyButton = document.getElementById('filterCompany');
-  if (filterCompanyButton) {
-    filterCompanyButton.addEventListener('click', () => {
-      currentFilteredType = 'Company';
-      filterByType(['Company']);
-    });
-  }
+    const filterCompanyButton = document.getElementById('filterCompany');
+    if (filterCompanyButton) {
+      filterCompanyButton.addEventListener('click', () => {
+        currentFilteredType = 'Company';
+        filterByType(['Company']);
+      });
+    }
 
-  const filterServiceButton = document.getElementById('filterService');
-  if (filterServiceButton) {
-    filterServiceButton.addEventListener('click', () => {
-      currentFilteredType = 'Service';
-      filterByType(['Service']);
-    });
-  }
+    const filterServiceButton = document.getElementById('filterService');
+    if (filterServiceButton) {
+      filterServiceButton.addEventListener('click', () => {
+        currentFilteredType = 'Service';
+        filterByType(['Service']);
+      });
+    }
 
-  const filterProductButton = document.getElementById('filterProduct');
-  if (filterProductButton) {
-    filterProductButton.addEventListener('click', () => {
-      currentFilteredType = 'Product';
-      filterByType(['Product']);
-    });
-  }
+    const filterProductButton = document.getElementById('filterProduct');
+    if (filterProductButton) {
+      filterProductButton.addEventListener('click', () => {
+        currentFilteredType = 'Product';
+        filterByType(['Product']);
+      });
+    }
   
-  const filterAllButton = document.getElementById('filterAll');
-  if (filterAllButton) {
-    filterAllButton.addEventListener('click', () => {
-      currentFilteredType = null;
-      cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
-      cy.fit();
-    });
-  }
+    const filterAllButton = document.getElementById('filterAll');
+    if (filterAllButton) {
+      filterAllButton.addEventListener('click', () => {
+        currentFilteredType = null;
+        cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+        cy.fit();
+      });
+    }
 
     // Set up node click handler for info panel
     const closeButton = document.getElementById('close-info');
@@ -449,10 +452,10 @@ function loadGraphData(jsonFile) {
     }
   }
 
-// Global variables to track state
-let currentFilteredType = null;
-let currentDetailNode = null;
-let allTypeNodes = null;
+  // Global variables to track state
+  let currentFilteredType = null;
+  let currentDetailNode = null;
+  let allTypeNodes = null;
 
 // Function to open the subgraph modal
 function openSubgraphModal(nodeType) {
@@ -544,6 +547,45 @@ function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null,
         }
       });
     });
+  }
+  
+  // Choose appropriate layout based on view type
+  let layoutOptions;
+  
+  if (detailNode) {
+    // Detail view - use a radial layout with the detail node at the center
+    layoutOptions = {
+      name: 'cose-bilkent',
+      animate: true,
+      randomize: false,
+      nodeDimensionsIncludeLabels: true,
+      nodeRepulsion: 8000,
+      idealEdgeLength: 100,
+      edgeElasticity: 0.45,
+      nestingFactor: 0.1,
+      gravity: 0.25,
+      numIter: 2500,
+      // Use these settings to position the detail node in the center
+      // and arrange connected nodes around it
+      initialEnergyOnIncremental: 0.5,
+      ready: function() {
+        // This function is called when the layout is ready
+        // We can use it to ensure the detail node is positioned well
+      }
+    };
+  } else {
+    // List view - use a grid layout for better visibility
+    layoutOptions = {
+      name: 'grid',
+      fit: true,
+      padding: 30,
+      avoidOverlap: true,
+      nodeDimensionsIncludeLabels: true,
+      spacingFactor: 1.2,
+      condense: true,
+      rows: Math.ceil(Math.sqrt(typeNodes.length)),
+      cols: Math.ceil(Math.sqrt(typeNodes.length))
+    };
   }
   
   // Initialize the subgraph cytoscape instance
@@ -638,31 +680,7 @@ function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null,
         }
       }
     ],
-    layout: detailNode ? {
-      name: 'cose-bilkent',
-      animate: true,
-      randomize: false,
-      nodeDimensionsIncludeLabels: true,
-      nodeRepulsion: 8000,
-      idealEdgeLength: 100,
-      edgeElasticity: 0.45,
-      nestingFactor: 0.1,
-      gravity: 0.25,
-      numIter: 2500,
-      tile: true,
-      tilingPaddingVertical: 10,
-      tilingPaddingHorizontal: 10
-    } : {
-      name: 'grid',
-      fit: true,
-      padding: 30,
-      avoidOverlap: true,
-      nodeDimensionsIncludeLabels: true,
-      spacingFactor: 1.2,
-      condense: true,
-      rows: Math.ceil(Math.sqrt(typeNodes.length)),
-      cols: Math.ceil(Math.sqrt(typeNodes.length))
-    }
+    layout: layoutOptions
   });
   
   // Apply node styles based on type
@@ -688,6 +706,17 @@ function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null,
     const detailNodeInSubgraph = window.subgraphCy.getElementById(detailNode.id());
     if (detailNodeInSubgraph.length > 0) {
       detailNodeInSubgraph.addClass('detail-node');
+      
+      // Run a special layout to position the detail node in the center
+      window.subgraphCy.layout({
+        name: 'concentric',
+        concentric: function(node) {
+          return node.id() === detailNode.id() ? 10 : 0;
+        },
+        levelWidth: function() { return 1; },
+        minNodeSpacing: 50,
+        animate: true
+      }).run();
     }
   }
   
@@ -705,8 +734,11 @@ function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null,
   });
   
   // Fit the view
-  window.subgraphCy.fit();
+  setTimeout(() => {
+    window.subgraphCy.fit();
+  }, 100);
 }
+
 
 // Function to populate the table with all nodes of the selected type
 function populateTypeNodesTable(typeNodes) {
@@ -795,12 +827,17 @@ function showNodeDetail(nodeId) {
     `;
   }
   
-  // Reinitialize subgraph with detail node and its connections
-  initializeSubgraph(allTypeNodes, detailNode, connectedNodes, connectedEdges);
+  // Create a collection with just the detail node
+  const detailNodeCollection = cy.collection().add(detailNode);
+  
+  // Reinitialize subgraph with ONLY the detail node and its connections
+  // (not all nodes of the same type)
+  initializeSubgraph(detailNodeCollection, detailNode, connectedNodes, connectedEdges);
   
   // Populate the table with connections
   populateConnectionsTable(detailNode, connectedNodes, connectedEdges);
 }
+
 
 // Function to populate the table with connections for a specific node
 function populateConnectionsTable(detailNode, connectedNodes, connectedEdges) {
@@ -890,6 +927,28 @@ function populateConnectionsTable(detailNode, connectedNodes, connectedEdges) {
   });
 }
 
+// Create a better layout for the detail view
+function applyDetailLayout(detailNodeId) {
+  if (!window.subgraphCy) return;
+  
+  // First, position the detail node in the center
+  const detailNode = window.subgraphCy.getElementById(detailNodeId);
+  if (!detailNode.length) return;
+  
+  // Run a concentric layout with the detail node at the center
+  window.subgraphCy.layout({
+    name: 'concentric',
+    concentric: function(node) {
+      return node.id() === detailNodeId ? 10 : 0;
+    },
+    levelWidth: function() { return 1; },
+    minNodeSpacing: 50,
+    animate: true,
+    animationDuration: 500
+  }).run();
+}
+
+
 // Function to highlight connections in the subgraph
 function highlightConnections(node) {
   if (!window.subgraphCy) return;
@@ -906,7 +965,72 @@ function highlightConnections(node) {
   
   const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
   connectedNodes.addClass('highlighted');
+  
+  // If this is not the detail node, update the table to show its connection to the detail node
+  if (currentDetailNode && node.id() !== currentDetailNode.id()) {
+    // Find the edge between this node and the detail node
+    const detailNodeInSubgraph = window.subgraphCy.getElementById(currentDetailNode.id());
+    const edgeToDetailNode = node.edgesWith(detailNodeInSubgraph);
+    
+    if (edgeToDetailNode.length > 0) {
+      // Highlight this specific connection more prominently
+      edgeToDetailNode.addClass('connected-edge');
+      
+      // Update the table to show information about this specific connection
+      const tableBody = document.getElementById('connected-nodes-body');
+      if (tableBody) {
+        // Clear the table
+        tableBody.innerHTML = '';
+        
+        // Add a header
+        const headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+          <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">
+            Connection Details
+          </td>
+        `;
+        tableBody.appendChild(headerRow);
+        
+        // Determine relationship direction
+        let relationship = edgeToDetailNode.data('label') || 'connected to';
+        if (edgeToDetailNode.source().id() === currentDetailNode.id()) {
+          relationship = `${currentDetailNode.data('label')} ${relationship} ${node.data('label')}`;
+        } else {
+          relationship = `${node.data('label')} ${relationship} ${currentDetailNode.data('label')}`;
+        }
+        
+        // Add connection details
+        const detailRow = document.createElement('tr');
+        detailRow.innerHTML = `
+          <td colspan="3">${relationship}</td>
+        `;
+        tableBody.appendChild(detailRow);
+        
+        // Add properties if available
+        const properties = node.data('properties') || {};
+        if (Object.keys(properties).length > 0) {
+          const propertiesHeader = document.createElement('tr');
+          propertiesHeader.innerHTML = `
+            <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">
+              Node Properties
+            </td>
+          `;
+          tableBody.appendChild(propertiesHeader);
+          
+          for (const [key, value] of Object.entries(properties)) {
+            const propertyRow = document.createElement('tr');
+            propertyRow.innerHTML = `
+              <td><strong>${key}</strong></td>
+              <td colspan="2">${value}</td>
+            `;
+            tableBody.appendChild(propertyRow);
+          }
+        }
+      }
+    }
+  }
 }
+
 
 // Function to go back to the list view
 function backToListView() {
@@ -925,6 +1049,7 @@ function backToListView() {
   // Repopulate the table with all nodes of the selected type
   populateTypeNodesTable(allTypeNodes);
 }
+
 
 // Function to update the table for a selected type node
 function updateTableForNode(node) {
@@ -1223,3 +1348,67 @@ function populateConnectedNodesTable(typeNodes, connectedNodes, connectedEdges) 
     }
   }
 });
+
+// Function to show a notification instead of using alert
+function showNotification(message, type = 'info', duration = 3000) {
+  const notification = document.getElementById('notification');
+  const notificationMessage = document.getElementById('notification-message');
+  const notificationClose = document.getElementById('notification-close');
+  
+  if (!notification || !notificationMessage) return;
+  
+  // Clear any existing timeout
+  if (window.notificationTimeout) {
+    clearTimeout(window.notificationTimeout);
+  }
+  
+  // Remove any existing classes and add the new type
+  notification.className = 'notification';
+  if (['error', 'success', 'warning'].includes(type)) {
+    notification.classList.add(type);
+  }
+  
+  // Set the message
+  notificationMessage.textContent = message;
+  
+  // Show the notification
+  notification.style.display = 'block';
+  
+  // Set up auto-hide after duration
+  window.notificationTimeout = setTimeout(() => {
+    hideNotification();
+  }, duration);
+  
+  // Set up close button
+  if (notificationClose) {
+    notificationClose.onclick = hideNotification;
+  }
+}
+
+// Function to hide the notification with animation
+function hideNotification() {
+  const notification = document.getElementById('notification');
+  if (!notification) return;
+  
+  // Add the hiding class for animation
+  notification.classList.add('hiding');
+  
+  // After animation completes, hide the element
+  setTimeout(() => {
+    notification.style.display = 'none';
+    notification.classList.remove('hiding');
+  }, 300); // Match the animation duration
+}
+
+// Convenience functions for different notification types
+function showErrorNotification(message, duration = 4000) {
+  showNotification(message, 'error', duration);
+}
+
+function showSuccessNotification(message, duration = 3000) {
+  showNotification(message, 'success', duration);
+}
+
+function showWarningNotification(message, duration = 3500) {
+  showNotification(message, 'warning', duration);
+}

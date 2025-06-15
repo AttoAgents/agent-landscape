@@ -311,7 +311,7 @@ html, body {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 90%;
+  width: 95%;
   max-width: 1200px;
   height: 85vh;
   display: flex;
@@ -324,12 +324,12 @@ html, body {
   align-items: center;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .modal-header h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .close-modal {
@@ -357,7 +357,8 @@ html, body {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  height: 100%;
+  /* height: 100%; */
+  padding: 5px;
 }
 
 #subgraph-cy {
@@ -419,6 +420,7 @@ html, body {
 
 .subgraph-button:hover {
   background-color: #1c3184;
+  border: none;
 }
 
 .view-btn {
@@ -432,6 +434,7 @@ html, body {
 
 .view-btn:hover {
   background-color: #1c3184;
+  border: none;
 }
 
 .modal-controls {
@@ -452,19 +455,16 @@ html, body {
   align-items: center;
 }
 
-.back-button:before {
-  content: "←";
-  margin-right: 5px;
-}
-
 .back-button:hover {
   background-color: #45a049;
+  border: none;
 }
 
 #table-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
 }
 
 .node-count {
@@ -487,17 +487,12 @@ html, body {
   color: #333;
 }
 
-/* Additional modal styling */
 .modal-content {
   max-height: 90vh;
 }
 
-.subgraph-container {
-  min-height: 400px;
-}
-
 .table-container {
-  max-height: 300px;
+  max-height: 90%;
 }
 
 #connected-nodes {
@@ -528,4 +523,82 @@ html, body {
 tr:hover td {
   white-space: normal;
   overflow: visible;
+}
+
+.notification {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  min-width: 300px;
+  max-width: 80%;
+  background-color: #f8f8f8;
+  border-left: 4px solid #2140bc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Outfit", sans-serif;
+  animation: notification-slide-in 0.3s ease-out forwards;
+}
+
+.notification.error {
+  border-left-color: #e74c3c;
+}
+
+.notification.success {
+  border-left-color: #2ecc71;
+}
+
+.notification.warning {
+  border-left-color: #f39c12;
+}
+
+.notification-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+  line-height: 1;
+}
+
+.notification-close:hover {
+  color: #333;
+  background: none;
+}
+
+@keyframes notification-slide-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes notification-slide-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+.notification.hiding {
+  animation: notification-slide-out 0.3s ease-in forwards;
 }
