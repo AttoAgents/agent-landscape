@@ -312,7 +312,7 @@ html, body {
   border: 1px solid #888;
   border-radius: 10px;
   width: 95%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   height: 85vh;
   display: flex;
   flex-direction: column;
