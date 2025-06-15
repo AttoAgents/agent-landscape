@@ -108,21 +108,24 @@
         <div class="modal-content">
           <div class="modal-header">
             <h2 id="modal-title">Subgraph View</h2>
-            <span class="close-modal">&times;</span>
+            <div class="modal-controls">
+              <button id="back-to-list" class="back-button" style="display: none;">Back to List</button>
+              <span class="close-modal">&times;</span>
+            </div>
           </div>
           <div class="modal-body">
             <div class="subgraph-container">
               <div id="subgraph-cy"></div>
             </div>
             <div class="connected-nodes-table">
-              <h3>Connected Nodes</h3>
+              <h3 id="table-title">All Nodes</h3>
               <div class="table-container">
                 <table id="connected-nodes">
-                  <thead>
+                  <thead id="table-header">
                     <tr>
                       <th>Label</th>
-                      <th>Type</th>
-                      <th>Relationship</th>
+                      <th>Connections</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody id="connected-nodes-body">
@@ -134,6 +137,7 @@
           </div>
         </div>
       </div>
+
 
     </div>
     

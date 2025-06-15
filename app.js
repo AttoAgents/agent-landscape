@@ -313,6 +313,13 @@ function loadGraphData(jsonFile) {
     }
 
     // Add event listener for the subgraph view button
+
+    // Add event listener for the back button
+  const backButton = document.getElementById('back-to-list');
+  if (backButton) {
+    backButton.addEventListener('click', backToListView);
+  }
+  
   const openSubgraphViewButton = document.getElementById('openSubgraphView');
   if (openSubgraphViewButton) {
     openSubgraphViewButton.addEventListener('click', () => {
@@ -442,8 +449,10 @@ function loadGraphData(jsonFile) {
     }
   }
 
-  // Global variable to track currently filtered type
+// Global variables to track state
 let currentFilteredType = null;
+let currentDetailNode = null;
+let allTypeNodes = null;
 
 // Function to open the subgraph modal
 function openSubgraphModal(nodeType) {
@@ -451,21 +460,17 @@ function openSubgraphModal(nodeType) {
   
   // Set the current filtered type
   currentFilteredType = nodeType;
+  currentDetailNode = null;
   
   // Update modal title
   const modalTitle = document.getElementById('modal-title');
   if (modalTitle) {
-    modalTitle.textContent = `${nodeType} Subgraph View`;
+    modalTitle.textContent = `${nodeType} Nodes`;
   }
   
   // Get nodes of the selected type
   const typeNodes = cy.nodes().filter(node => node.data('type') === nodeType);
-  
-  // Get connected nodes and edges
-  const connectedEdges = typeNodes.connectedEdges();
-  const connectedNodes = connectedEdges.connectedNodes().filter(node => 
-    node.data('type') !== nodeType
-  );
+  allTypeNodes = typeNodes; // Store for later use
   
   // Show the modal
   const modal = document.getElementById('subgraph-modal');
@@ -473,15 +478,21 @@ function openSubgraphModal(nodeType) {
     modal.style.display = 'block';
   }
   
-  // Initialize subgraph
-  initializeSubgraph(typeNodes, connectedNodes, connectedEdges);
+  // Hide back button initially
+  const backButton = document.getElementById('back-to-list');
+  if (backButton) {
+    backButton.style.display = 'none';
+  }
   
-  // Populate the table
-  populateConnectedNodesTable(typeNodes, connectedNodes, connectedEdges);
+  // Initialize subgraph with just the type nodes
+  initializeSubgraph(typeNodes);
+  
+  // Populate the table with all nodes of the selected type
+  populateTypeNodesTable(typeNodes);
 }
 
 // Function to initialize the subgraph visualization
-function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
+function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null, connectedEdges = null) {
   // If there's an existing subgraph, destroy it
   if (window.subgraphCy) {
     try {
@@ -506,29 +517,34 @@ function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
     });
   });
   
-  // Add the connected nodes
-  connectedNodes.forEach(node => {
-    elements.push({
-      data: {
-        id: node.id(),
-        label: node.data('label'),
-        type: node.data('type'),
-        properties: node.data('properties')
+  // If we're showing detail view, add connected nodes and edges
+  if (detailNode && connectedNodes && connectedEdges) {
+    // Add the connected nodes
+    connectedNodes.forEach(node => {
+      if (!elements.some(el => el.data && el.data.id === node.id())) {
+        elements.push({
+          data: {
+            id: node.id(),
+            label: node.data('label'),
+            type: node.data('type'),
+            properties: node.data('properties')
+          }
+        });
       }
     });
-  });
-  
-  // Add the edges
-  connectedEdges.forEach(edge => {
-    elements.push({
-      data: {
-        id: edge.id(),
-        source: edge.source().id(),
-        target: edge.target().id(),
-        label: edge.data('label')
-      }
+    
+    // Add the edges
+    connectedEdges.forEach(edge => {
+      elements.push({
+        data: {
+          id: edge.id(),
+          source: edge.source().id(),
+          target: edge.target().id(),
+          label: edge.data('label')
+        }
+      });
     });
-  });
+  }
   
   // Initialize the subgraph cytoscape instance
   window.subgraphCy = cytoscape({
@@ -587,14 +603,46 @@ function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
           'text-background-opacity': 0.7,
           'text-background-padding': 2
         }
+      },
+      {
+        selector: '.highlighted',
+        style: {
+          'background-color': '#ff7f00',
+          'text-outline-color': '#ff7f00',
+          'color': '#000',
+          'z-index': 20,
+          'transition-property': 'background-color, text-outline-color',
+          'transition-duration': '0.5s'
+        }
+      },
+      {
+        selector: '.connected-edge',
+        style: {
+          'line-color': '#ff7f00',
+          'color': '#ff7f00',
+          'target-arrow-color': '#ff7f00',
+          'font-weight': 'bold',
+          'width': 3,
+          'z-index': 15,
+          'transition-property': 'line-color, target-arrow-color, width',
+          'transition-duration': '0.5s'
+        }
+      },
+      {
+        selector: '.detail-node',
+        style: {
+          'background-color': '#ff7f00',
+          'border-width': 3,
+          'border-color': '#ff0000',
+          'z-index': 30
+        }
       }
     ],
-    layout: {
+    layout: detailNode ? {
       name: 'cose-bilkent',
       animate: true,
-      randomize: true,
+      randomize: false,
       nodeDimensionsIncludeLabels: true,
-      // Separate the type nodes from connected nodes
       nodeRepulsion: 8000,
       idealEdgeLength: 100,
       edgeElasticity: 0.45,
@@ -603,11 +651,17 @@ function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
       numIter: 2500,
       tile: true,
       tilingPaddingVertical: 10,
-      tilingPaddingHorizontal: 10,
-      gravityRangeCompound: 1.5,
-      gravityCompound: 1.0,
-      gravityRange: 3.8,
-      initialEnergyOnIncremental: 0.5
+      tilingPaddingHorizontal: 10
+    } : {
+      name: 'grid',
+      fit: true,
+      padding: 30,
+      avoidOverlap: true,
+      nodeDimensionsIncludeLabels: true,
+      spacingFactor: 1.2,
+      condense: true,
+      rows: Math.ceil(Math.sqrt(typeNodes.length)),
+      cols: Math.ceil(Math.sqrt(typeNodes.length))
     }
   });
   
@@ -629,25 +683,217 @@ function initializeSubgraph(typeNodes, connectedNodes, connectedEdges) {
       .update();
   });
   
-  // Highlight the type nodes
-  window.subgraphCy.nodes(`[type="${currentFilteredType}"]`).style({
-    'border-width': 3,
-    'border-color': '#ff7f00',
-    'z-index': 10
-  });
+  // If we're in detail view, highlight the detail node
+  if (detailNode) {
+    const detailNodeInSubgraph = window.subgraphCy.getElementById(detailNode.id());
+    if (detailNodeInSubgraph.length > 0) {
+      detailNodeInSubgraph.addClass('detail-node');
+    }
+  }
   
   // Add click event to nodes in subgraph
   window.subgraphCy.on('tap', 'node', function(evt) {
     const node = evt.target;
-    highlightConnections(node);
+    
+    // If we're in the list view, show detail view for this node
+    if (!currentDetailNode) {
+      showNodeDetail(node.id());
+    } else {
+      // If we're already in detail view, just highlight connections
+      highlightConnections(node);
+    }
   });
   
   // Fit the view
   window.subgraphCy.fit();
 }
 
+// Function to populate the table with all nodes of the selected type
+function populateTypeNodesTable(typeNodes) {
+  const tableBody = document.getElementById('connected-nodes-body');
+  const tableTitle = document.getElementById('table-title');
+  const tableHeader = document.getElementById('table-header');
+  
+  if (!tableBody || !tableTitle || !tableHeader) return;
+  
+  // Update table title
+  tableTitle.innerHTML = `${currentFilteredType} Nodes <span class="node-count">(${typeNodes.length})</span>`;
+  
+  // Update table header
+  tableHeader.innerHTML = `
+    <tr>
+      <th>Label</th>
+      <th>Connections</th>
+      <th>Action</th>
+    </tr>
+  `;
+  
+  // Clear the table
+  tableBody.innerHTML = '';
+  
+  // Sort nodes by label
+  const sortedNodes = typeNodes.sort((a, b) => {
+    const labelA = a.data('label') || '';
+    const labelB = b.data('label') || '';
+    return labelA.localeCompare(labelB);
+  });
+  
+  // Add rows for each node
+  sortedNodes.forEach(node => {
+    // Count connections
+    const connections = node.connectedEdges().length;
+    
+    // Create table row
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${node.data('label')}</td>
+      <td>${connections}</td>
+      <td><button class="view-btn">View</button></td>
+    `;
+    
+    // Add click event to the view button
+    const viewBtn = row.querySelector('.view-btn');
+    viewBtn.addEventListener('click', () => {
+      showNodeDetail(node.id());
+    });
+    
+    tableBody.appendChild(row);
+  });
+}
+
+// Function to show detail view for a specific node
+function showNodeDetail(nodeId) {
+  if (!cy) return;
+  
+  // Get the node
+  const detailNode = cy.getElementById(nodeId);
+  if (!detailNode.length) return;
+  
+  // Set current detail node
+  currentDetailNode = detailNode;
+  
+  // Get connected nodes and edges
+  const connectedEdges = detailNode.connectedEdges();
+  const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+    node.id() !== detailNode.id()
+  );
+  
+  // Show back button
+  const backButton = document.getElementById('back-to-list');
+  if (backButton) {
+    backButton.style.display = 'block';
+  }
+  
+  // Update table title
+  const tableTitle = document.getElementById('table-title');
+  if (tableTitle) {
+    tableTitle.innerHTML = `
+      <div class="node-detail-header">
+        <span>${detailNode.data('label')}</span>
+        <span class="node-type-badge">${detailNode.data('type')}</span>
+      </div>
+    `;
+  }
+  
+  // Reinitialize subgraph with detail node and its connections
+  initializeSubgraph(allTypeNodes, detailNode, connectedNodes, connectedEdges);
+  
+  // Populate the table with connections
+  populateConnectionsTable(detailNode, connectedNodes, connectedEdges);
+}
+
+// Function to populate the table with connections for a specific node
+function populateConnectionsTable(detailNode, connectedNodes, connectedEdges) {
+  const tableBody = document.getElementById('connected-nodes-body');
+  const tableHeader = document.getElementById('table-header');
+  
+  if (!tableBody || !tableHeader) return;
+  
+  // Update table header
+  tableHeader.innerHTML = `
+    <tr>
+      <th>Connected Node</th>
+      <th>Type</th>
+      <th>Relationship</th>
+    </tr>
+  `;
+  
+  // Clear the table
+  tableBody.innerHTML = '';
+  
+  // Group connected nodes by type
+  const nodesByType = {};
+  connectedNodes.forEach(node => {
+    const type = node.data('type');
+    if (!nodesByType[type]) {
+      nodesByType[type] = [];
+    }
+    nodesByType[type].push(node);
+  });
+  
+  // If no connections, show a message
+  if (Object.keys(nodesByType).length === 0) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td colspan="3" style="text-align: center; padding: 20px;">No connections found</td>
+    `;
+    tableBody.appendChild(row);
+    return;
+  }
+  
+  // Add rows grouped by type
+  Object.keys(nodesByType).sort().forEach(type => {
+    // Add type header
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `
+      <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">${type} (${nodesByType[type].length})</td>
+    `;
+    tableBody.appendChild(headerRow);
+    
+    // Sort nodes by label
+    const sortedNodes = nodesByType[type].sort((a, b) => {
+      const labelA = a.data('label') || '';
+      const labelB = b.data('label') || '';
+      return labelA.localeCompare(labelB);
+    });
+    
+    // Add nodes of this type
+    sortedNodes.forEach(node => {
+      // Find the edge between these nodes
+      const edge = connectedEdges.filter(e => 
+        (e.source().id() === detailNode.id() && e.target().id() === node.id()) ||
+        (e.target().id() === detailNode.id() && e.source().id() === node.id())
+      );
+      
+      // Determine relationship direction
+      let relationship = edge.data('label') || 'connected to';
+      if (edge.source().id() === detailNode.id()) {
+        relationship += ' →'; // Outgoing
+      } else {
+        relationship += ' ←'; // Incoming
+      }
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${node.data('label')}</td>
+        <td>${node.data('type')}</td>
+        <td>${relationship}</td>
+      `;
+      
+      // Add click event to highlight this node in the graph
+      row.addEventListener('click', () => {
+        highlightConnections(node);
+      });
+      
+      tableBody.appendChild(row);
+    });
+  });
+}
+
 // Function to highlight connections in the subgraph
 function highlightConnections(node) {
+  if (!window.subgraphCy) return;
+  
   // Reset all styles
   window.subgraphCy.elements().removeClass('highlighted connected-edge');
   
@@ -660,24 +906,24 @@ function highlightConnections(node) {
   
   const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
   connectedNodes.addClass('highlighted');
+}
+
+// Function to go back to the list view
+function backToListView() {
+  // Reset current detail node
+  currentDetailNode = null;
   
-  // Update the table to show only connections for this node
-  if (node.data('type') === currentFilteredType) {
-    // If it's a type node, show its connections
-    updateTableForNode(node);
-  } else {
-    // If it's a connected node, show type nodes connected to it
-    const typeNodes = window.subgraphCy.nodes(`[type="${currentFilteredType}"]`);
-    const connectedTypeNodes = typeNodes.filter(n => 
-      connectedNodes.contains(n)
-    );
-    
-    // Highlight these in the graph
-    connectedTypeNodes.addClass('highlighted');
-    
-    // Update the table
-    updateTableForConnectedNode(node, connectedTypeNodes);
+  // Hide back button
+  const backButton = document.getElementById('back-to-list');
+  if (backButton) {
+    backButton.style.display = 'none';
   }
+  
+  // Reinitialize subgraph with just the type nodes
+  initializeSubgraph(allTypeNodes);
+  
+  // Repopulate the table with all nodes of the selected type
+  populateTypeNodesTable(allTypeNodes);
 }
 
 // Function to update the table for a selected type node
