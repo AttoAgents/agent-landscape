@@ -82,6 +82,22 @@ The example below displays all use cases and the products related to them.
 
 <img src="media/07--data-filtered-for-all-application-areas.png" alt="List all application areas using predefined button." width="100%">
 
+### Subgraphs and tabular data
+
+Top navigation middle section includes button **Open Subgraph View** which can be used together with any filter buttons. After selecting for example **Use Case**, a filter will be set to include all use case nodes. After using **Open Subgraph View** a modal will be open that will include table view of all nodes of the selected type. In case of **Use Case**, this will be a table of all application areas. 
+
+<img src="media/08--tabularized-data-fitered-for-subgraph.png" alt="Table view of the nodes for a given filter (node type)." width="100%">
+
+The presented table includes all entries for a given node type and each of them lists a **View** button. Using it present a detailed view of the selected node with a table including details on the left and subgraph on the right. 
+
+**View All Connections** button can be used to switch from the summary of the central node to the list of connections.
+
+<img src="media/09--subgraph-of-selected-data.png" alt="Subgraph of the selected node and all of nodes connected to it." width="100%">
+
+
+Alternatively a click on the node or item on the list of subgraph nodes (from previous step), will display details of the selected node (for example details of the central node).
+
+<img src="media/10--node-properties-and-details-of-product-or-company.png" alt="Properties of the selected element of the subgraph." width="100%">
 
 ## Contributions 
 
