@@ -483,8 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentDetailNode = null;
   let allTypeNodes = null;
 
-
-  // Function to open the subgraph modal
+  // Function to filter nodes by type and display modal
   function openSubgraphModal(nodeType) {
     if (!cy) return;
     
@@ -514,8 +513,18 @@ document.addEventListener('DOMContentLoaded', function() {
       backButton.style.display = 'none';
     }
     
-    // Initialize subgraph with just the type nodes
-    initializeSubgraph(typeNodes);
+    // Set modal to table-only view
+    const modalBody = document.querySelector('.modal-body');
+    if (modalBody) {
+      modalBody.classList.add('table-only');
+      modalBody.classList.remove('split-view');
+    }
+    
+    // Hide graph view
+    const graphView = document.getElementById('graph-view');
+    if (graphView) {
+      graphView.style.display = 'none';
+    }
     
     // Populate the table with all nodes of the selected type
     populateTypeNodesTable(typeNodes);
@@ -771,7 +780,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  // Function to populate the table with all nodes of the selected type
+  // Function to highlight connections for a node
   function populateTypeNodesTable(typeNodes) {
     const tableBody = document.getElementById('connected-nodes-body');
     const tableTitle = document.getElementById('table-title');
@@ -793,6 +802,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clear the table
     tableBody.innerHTML = '';
+    
+    // Add the toggle graph button first
+    addToggleGraphButton();
     
     // Sort nodes by label
     const sortedNodes = typeNodes.sort((a, b) => {
@@ -825,7 +837,130 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  // Function to show detail view for a specific node
+  // Function to add a toggle graph button
+  function addToggleGraphButton() {
+    const tableBody = document.getElementById('connected-nodes-body');
+    if (!tableBody) return;
+    
+    // Find existing button row
+    const existingBtnRow = tableBody.querySelector('.toggle-graph-btn-row');
+    
+    // Determine if graph is currently visible
+    const graphView = document.getElementById('graph-view');
+    const isGraphVisible = graphView && graphView.style.display !== 'none';
+    
+    // If we already have a button row, just update it
+    if (existingBtnRow) {
+      const toggleBtn = existingBtnRow.querySelector('#toggle-graph-btn');
+      if (toggleBtn) {
+        // Update button class and text
+        toggleBtn.className = `toggle-graph-btn ${isGraphVisible ? 'hide-graph-btn' : 'show-graph-btn'}`;
+        toggleBtn.textContent = isGraphVisible ? 'Hide Graph View' : 'Show Graph View';
+        
+        // Remove old event listeners to prevent duplicates
+        const newToggleBtn = toggleBtn.cloneNode(true);
+        toggleBtn.parentNode.replaceChild(newToggleBtn, toggleBtn);
+        
+        // Add fresh event listener
+        newToggleBtn.addEventListener('click', toggleGraphView);
+        
+        // No need to create a new row
+        return;
+      }
+    }
+    
+    // If we reach here, we need to create a new button row
+    const buttonRow = document.createElement('tr');
+    buttonRow.className = 'toggle-graph-btn-row'; // Add a class for easy identification
+    buttonRow.innerHTML = `
+      <td colspan="3" style="text-align: center;">
+        <button id="toggle-graph-btn" class="toggle-graph-btn ${isGraphVisible ? 'hide-graph-btn' : 'show-graph-btn'}">
+          ${isGraphVisible ? 'Hide Graph View' : 'Show Graph View'}
+        </button>
+      </td>
+    `;
+    
+    // Insert at the beginning of the table
+    if (tableBody.firstChild) {
+      tableBody.insertBefore(buttonRow, tableBody.firstChild);
+    } else {
+      tableBody.appendChild(buttonRow);
+    }
+    
+    // Add event listener
+    const toggleGraphBtn = document.getElementById('toggle-graph-btn');
+    if (toggleGraphBtn) {
+      toggleGraphBtn.addEventListener('click', toggleGraphView);
+    }
+  }
+
+
+  // Function to toggle graph view
+  function toggleGraphView(event) {
+    // Prevent default behavior and stop propagation
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    console.log('Toggle graph view called');
+    
+    const graphView = document.getElementById('graph-view');
+    const modalBody = document.querySelector('.modal-body');
+    
+    if (!graphView || !modalBody) {
+      console.error('Graph view or modal body not found');
+      return;
+    }
+    
+    const isGraphVisible = graphView.style.display !== 'none';
+    console.log('Graph is currently visible:', isGraphVisible);
+    
+    if (isGraphVisible) {
+      // Hide graph
+      console.log('Hiding graph');
+      graphView.style.display = 'none';
+      modalBody.classList.add('table-only');
+      modalBody.classList.remove('split-view');
+    } else {
+      // Show graph
+      console.log('Showing graph');
+      graphView.style.display = 'block';
+      modalBody.classList.remove('table-only');
+      modalBody.classList.add('split-view');
+      
+      // If we have a detail node but haven't initialized the graph yet
+      if (currentDetailNode && (!window.subgraphCy || window.subgraphCy.elements().length === 0)) {
+        console.log('Initializing subgraph for detail node:', currentDetailNode.id());
+        const connectedEdges = currentDetailNode.connectedEdges();
+        const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+          node.id() !== currentDetailNode.id()
+        );
+        
+        // Create a collection with just the detail node
+        const detailNodeCollection = cy.collection().add(currentDetailNode);
+        
+        // Initialize subgraph
+        initializeSubgraph(detailNodeCollection, currentDetailNode, connectedNodes, connectedEdges);
+      }
+    }
+    
+    // Update the toggle button directly
+    const toggleBtn = document.getElementById('toggle-graph-btn');
+    if (toggleBtn) {
+      console.log('Updating toggle button');
+      // Update button class and text
+      toggleBtn.className = `toggle-graph-btn ${!isGraphVisible ? 'hide-graph-btn' : 'show-graph-btn'}`;
+      toggleBtn.textContent = !isGraphVisible ? 'Hide Graph View' : 'Show Graph View';
+    } else {
+      console.error('Toggle button not found');
+    }
+    
+    return false; // Prevent default
+  }
+
+
+  // Update showNodeDetail function to use the toggle button
   function showNodeDetail(nodeId) {
     if (!cy) return;
     
@@ -859,14 +994,87 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
     }
     
+    // Switch to split view
+    const modalBody = document.querySelector('.modal-body');
+    if (modalBody) {
+      modalBody.classList.remove('table-only');
+      modalBody.classList.add('split-view');
+    }
+    
+    // Show graph view
+    const graphView = document.getElementById('graph-view');
+    if (graphView) {
+      graphView.style.display = 'block';
+    }
+    
     // Create a collection with just the detail node
     const detailNodeCollection = cy.collection().add(detailNode);
     
-    // Reinitialize subgraph with ONLY the detail node and its connections
+    // Initialize subgraph with the detail node and its connections
     initializeSubgraph(detailNodeCollection, detailNode, connectedNodes, connectedEdges);
     
-    // Initially show the node details
+    // Update the node details table
     updateNodeDetailsTable(detailNode);
+    
+    // Ensure the toggle button is properly initialized with the correct state
+    // and event listener after the table has been updated
+    setTimeout(() => {
+      const toggleBtn = document.getElementById('toggle-graph-btn');
+      if (toggleBtn) {
+        toggleBtn.className = 'toggle-graph-btn hide-graph-btn';
+        toggleBtn.textContent = 'Hide Graph View';
+        
+        // Remove old event listeners to prevent duplicates
+        const newToggleBtn = toggleBtn.cloneNode(true);
+        toggleBtn.parentNode.replaceChild(newToggleBtn, toggleBtn);
+        
+        // Add fresh event listener
+        newToggleBtn.addEventListener('click', toggleGraphView);
+      } else {
+        // If button doesn't exist for some reason, add it
+        addToggleGraphButton();
+      }
+    }, 0);
+  }
+
+
+  document.addEventListener('click', function(event) {
+    // Check if the clicked element is the toggle graph button
+    if (event.target && event.target.id === 'toggle-graph-btn') {
+      console.log('Toggle button clicked via delegation');
+      toggleGraphView(event);
+    }
+  });
+
+
+  // Update backToListView to maintain the toggle button
+  function backToListView() {
+    // Reset current detail node
+    currentDetailNode = null;
+    
+    // Hide back button
+    const backButton = document.getElementById('back-to-list');
+    if (backButton) {
+      backButton.style.display = 'none';
+    }
+    
+    // Switch to table-only view
+    const modalBody = document.querySelector('.modal-body');
+    if (modalBody) {
+      modalBody.classList.add('table-only');
+      modalBody.classList.remove('split-view');
+    }
+    
+    // Hide graph view
+    const graphView = document.getElementById('graph-view');
+    if (graphView) {
+      graphView.style.display = 'none';
+    }
+    
+    // Repopulate the table with all nodes of the selected type
+    populateTypeNodesTable(allTypeNodes);
+    
+    // The toggle button will be added by populateTypeNodesTable
   }
 
 
@@ -888,6 +1096,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clear the table
     tableBody.innerHTML = '';
+    
+    // Add the toggle graph button first
+    addToggleGraphButton();
     
     // Add a back to details button
     const backRow = document.createElement('tr');
@@ -1007,7 +1218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Clear the table
     tableBody.innerHTML = '';
-    
+        
     // Add a header with node information
     const headerRow = document.createElement('tr');
     headerRow.innerHTML = `
@@ -1019,6 +1230,21 @@ document.addEventListener('DOMContentLoaded', function() {
       </td>
     `;
     tableBody.appendChild(headerRow);
+
+    // Add the toggle graph button with the correct state
+    const graphView = document.getElementById('graph-view');
+    const isGraphVisible = graphView && graphView.style.display !== 'none';
+  
+    const buttonRow = document.createElement('tr');
+    buttonRow.className = 'toggle-graph-btn-row';
+    buttonRow.innerHTML = `
+      <td colspan="3" style="text-align: center;">
+        <button id="toggle-graph-btn" class="toggle-graph-btn ${isGraphVisible ? 'hide-graph-btn' : 'show-graph-btn'}">
+          ${isGraphVisible ? 'Hide Graph View' : 'Show Graph View'}
+        </button>
+      </td>
+    `;
+    tableBody.appendChild(buttonRow);
     
     // Add node properties if available
     const properties = node.data('properties') || {};
@@ -1143,6 +1369,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 0);
       }
     }
+
+    // Ensure the toggle button has the event listener
+  setTimeout(() => {
+    const toggleBtn = document.getElementById('toggle-graph-btn');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', toggleGraphView);
+    }
+  }, 0);
   }
 
 

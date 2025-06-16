@@ -702,3 +702,75 @@ button.active-filter:hover {
   background-color: #45a049;
   border: none;
 }
+
+.modal-body.table-only .connected-nodes-table {
+  flex: 1;
+  width: 100%;
+}
+
+.modal-body.split-view .connected-nodes-table {
+  flex: 2;
+}
+
+.modal-body.split-view .subgraph-container {
+  flex: 3;
+  display: block;
+}
+
+.back-to-table-btn {
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.back-to-table-btn:hover {
+  background-color: #e67e22;
+  border: none;
+}
+
+/* Toggle graph view button styles */
+.toggle-graph-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.show-graph-btn {
+  background-color: #2140bc;
+  color: white;
+}
+
+.show-graph-btn:hover {
+  background-color: #1c3184;
+  border: none;
+}
+
+.hide-graph-btn {
+  background-color: #f39c12;
+  color: white;
+}
+
+.hide-graph-btn:hover {
+  background-color: #e67e22;
+  border: none;
+}
+
+/* Icon for the toggle button */
+.toggle-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  position: relative;
+}

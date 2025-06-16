@@ -113,11 +113,9 @@
               <span class="close-modal">&times;</span>
             </div>
           </div>
-          <div class="modal-body">
-            <div class="subgraph-container">
-              <div id="subgraph-cy"></div>
-            </div>
-            <div class="connected-nodes-table">
+          <div class="modal-body table-only">
+            <!-- Table view -->
+            <div class="connected-nodes-table" id="table-view">
               <h3 id="table-title">All Nodes</h3>
               <div class="table-container">
                 <table id="connected-nodes">
@@ -134,9 +132,16 @@
                 </table>
               </div>
             </div>
+            
+            <!-- Graph view (initially hidden) -->
+            <div class="subgraph-container" id="graph-view" style="display: none;">
+              <div id="subgraph-cy"></div>
+            </div>
           </div>
         </div>
       </div>
+
+
 
       <!-- Custom notification -->
       <div id="notification" class="notification">
