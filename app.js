@@ -584,7 +584,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let layoutOptions;
     
     if (detailNode) {
-      // Detail view - use a radial layout with the detail node at the center
       layoutOptions = {
         name: 'cose-bilkent',
         animate: true,
@@ -663,13 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'transition-duration': '0.2s'
           }
         },
-        // {
-        //   selector: 'node:hover',
-        //   style: {
-        //     'border-width': 2,
-        //     'border-color': '#ff7f00'
-        //   }
-        // },
         {
           selector: 'edge',
           style: {
@@ -714,21 +706,12 @@ document.addEventListener('DOMContentLoaded', function() {
           selector: '.detail-node',
           style: {
             'background-color': '#ff7f00',
-            // 'border-width': 3,
-            // 'border-color': '#ff0000',
             'z-index': 30
           }
         }
       ],
       layout: layoutOptions,
       
-      // Disable node dragging and configure interaction options
-      // userZoomingEnabled: true,
-      // userPanningEnabled: true,
-      // boxSelectionEnabled: false,
-      // selectionType: 'single',
-      // autoungrabify: true,  // This prevents nodes from being grabbed/dragged
-      // autounselectify: false  // We still want nodes to be selectable
     });
     
     // Apply node styles based on type
@@ -780,15 +763,6 @@ document.addEventListener('DOMContentLoaded', function() {
         highlightConnections(node);
       }
     });
-    
-    // Prevent any node dragging behavior
-    // window.subgraphCy.on('mousedown', 'node', function(evt) {
-    //   // Prevent the default mousedown behavior which initiates dragging
-    //   evt.preventDefault();
-    // });
-    
-    // Ensure all nodes are ungrabifiable
-    // window.subgraphCy.nodes().ungrabify();
     
     // Fit the view
     setTimeout(() => {
