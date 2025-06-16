@@ -1067,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isUrl) {
           propertyRow.innerHTML = `
             <td><strong>${key}</strong></td>
-            <td colspan="2"><a href="${value}" target="_blank" rel="noopener noreferrer">${value}</a></td>
+            <td colspan="2"><a href="${value}" target="_blank" rel="noopener noreferrer nofollow">${value}</a></td>
           `;
         } else {
           propertyRow.innerHTML = `
