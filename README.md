@@ -55,8 +55,6 @@ Searching for a node that represents an investor displays the portfolio of the c
 
 On the image below we search phrase *y combinator* and get highlighted subgraph of central node as the investor with the portfolio companies connected to it. Reachable paths lead to products and application areas.
 
-After clicking on the node a panel with detailed properties of this node will be open on the right side of the window.
-
 <img src="media/04--vc-investment-in-companies.png" alt="Investigate VC's investment portfolio and types of products that they are selecting." width="100%">
 
 ### Startup investors
@@ -64,6 +62,8 @@ After clicking on the node a panel with detailed properties of this node will be
 An inverse information to the above example may be obtained by searching for a company. The list of known investor nodes are highlighted after the search. The reachable paths in this case lead to other investments from a given investor node.
 
 On the example below we show search for phrase *glen technologies* which highlights the company and their investor list. Reachable paths here show similar investments, sometimes by several funds.
+
+After clicking on the node a panel with detailed properties of this node will be open on the right side of the window.
 
 <img src="media/05--startup-funding-sources.png" alt="Find information about funding sources for startup and information about the involved VCs." width="100%">
 
