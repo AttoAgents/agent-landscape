@@ -659,7 +659,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'text-background-opacity': 0.7,
             'text-background-padding': 2,
             'text-background-shape': 'roundrectangle',
-            'cursor': 'pointer', // Indicate nodes are clickable
             'transition-property': 'background-color, border-color, border-width',
             'transition-duration': '0.2s'
           }
@@ -1005,28 +1004,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  // Create a better layout for the detail view
-  function applyDetailLayout(detailNodeId) {
-    if (!window.subgraphCy) return;
-    
-    // First, position the detail node in the center
-    const detailNode = window.subgraphCy.getElementById(detailNodeId);
-    if (!detailNode.length) return;
-    
-    // Run a concentric layout with the detail node at the center
-    window.subgraphCy.layout({
-      name: 'concentric',
-      concentric: function(node) {
-        return node.id() === detailNodeId ? 10 : 0;
-      },
-      levelWidth: function() { return 1; },
-      minNodeSpacing: 50,
-      animate: true,
-      animationDuration: 500
-    }).run();
-  }
-
-
   // Function to highlight connections in the subgraph
   function highlightConnections(node) {
     if (!window.subgraphCy) return;
@@ -1211,148 +1188,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Repopulate the table with all nodes of the selected type
     populateTypeNodesTable(allTypeNodes);
-  }
-
-
-  // Function to update the table for a selected type node
-  function updateTableForNode(node) {
-    const tableBody = document.getElementById('connected-nodes-body');
-    if (!tableBody) return;
-    
-    // Clear the table
-    tableBody.innerHTML = '';
-    
-    // Get connected nodes
-    const connectedEdges = node.connectedEdges();
-    const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
-    
-    // Add rows for each connected node
-    connectedNodes.forEach(connNode => {
-      // Find the edge between these nodes
-      const edge = connectedEdges.filter(e => 
-        (e.source().id() === node.id() && e.target().id() === connNode.id()) ||
-        (e.target().id() === node.id() && e.source().id() === connNode.id())
-      );
-      
-      // Determine relationship direction
-      let relationship = edge.data('label') || '';
-      if (edge.source().id() === node.id()) {
-        relationship += ' →'; // Outgoing
-      } else {
-        relationship += ' ←'; // Incoming
-      }
-      
-      // Create table row
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${connNode.data('label')}</td>
-        <td>${connNode.data('type')}</td>
-        <td>${relationship}</td>
-      `;
-      
-      // Add click event to highlight this node in the graph
-      row.addEventListener('click', () => {
-        highlightConnections(connNode);
-      });
-      
-      tableBody.appendChild(row);
-    });
-  }
-
-
-  // Function to update the table for a selected connected node
-  function updateTableForConnectedNode(node, connectedTypeNodes) {
-    const tableBody = document.getElementById('connected-nodes-body');
-    if (!tableBody) return;
-    
-    // Clear the table
-    tableBody.innerHTML = '';
-    
-    // Add rows for each connected type node
-    connectedTypeNodes.forEach(typeNode => {
-      // Find the edge between these nodes
-      const edge = node.connectedEdges().filter(e => 
-        (e.source().id() === node.id() && e.target().id() === typeNode.id()) ||
-        (e.target().id() === node.id() && e.source().id() === typeNode.id())
-      );
-      
-      // Determine relationship direction
-      let relationship = edge.data('label') || '';
-      if (edge.source().id() === typeNode.id()) {
-        relationship += ' ←'; // Incoming to this node
-      } else {
-        relationship += ' →'; // Outgoing from this node
-      }
-      
-      // Create table row
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${typeNode.data('label')}</td>
-        <td>${typeNode.data('type')}</td>
-        <td>${relationship}</td>
-      `;
-      
-      // Add click event to highlight this node in the graph
-      row.addEventListener('click', () => {
-        highlightConnections(typeNode);
-      });
-      
-      tableBody.appendChild(row);
-    });
-  }
-
-
-  // Function to populate the connected nodes table
-  function populateConnectedNodesTable(typeNodes, connectedNodes, connectedEdges) {
-    const tableBody = document.getElementById('connected-nodes-body');
-    if (!tableBody) return;
-    
-    // Clear the table
-    tableBody.innerHTML = '';
-    
-    // Group connected nodes by type
-    const nodesByType = {};
-    connectedNodes.forEach(node => {
-      const type = node.data('type');
-      if (!nodesByType[type]) {
-        nodesByType[type] = [];
-      }
-      nodesByType[type].push(node);
-    });
-    
-    // Add a header row for each type
-    Object.keys(nodesByType).sort().forEach(type => {
-      // Add type header
-      const headerRow = document.createElement('tr');
-      headerRow.innerHTML = `
-        <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">${type} (${nodesByType[type].length})</td>
-      `;
-      tableBody.appendChild(headerRow);
-      
-      // Add nodes of this type
-      nodesByType[type].forEach(node => {
-        // Count connections to the filtered type
-        const connections = node.connectedEdges().filter(edge => {
-          const otherNode = edge.source().id() === node.id() ? edge.target() : edge.source();
-          return otherNode.data('type') === currentFilteredType;
-        }).length;
-        
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${node.data('label')}</td>
-          <td>${connections} connections</td>
-          <td><button class="view-btn">View</button></td>
-        `;
-        
-        // Add click event to the view button
-        const viewBtn = row.querySelector('.view-btn');
-        viewBtn.addEventListener('click', () => {
-          highlightConnections(node);
-        });
-        
-        tableBody.appendChild(row);
-      });
-    });
   }
 
 
