@@ -1,3 +1,7 @@
+<div align="center"> 
+<img src="media/agent-landscape-logo-horizontal.png" width="500px" alt="Agent Landscape Logo">
+</div>
+
 # Agent Landscape 
 
 Holistic view on the current Generative AI application landscape including products, companies, use cases, investors and technologies related to AI agents. 
