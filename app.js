@@ -982,9 +982,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Determine relationship direction
         let relationship = edge.data('label') || 'connected to';
         if (edge.source().id() === detailNode.id()) {
-          relationship += ' →'; // Outgoing
+          relationship += ' &rarr;'; // Outgoing
         } else {
-          relationship += ' ←'; // Incoming
+          relationship += ' &larr;'; // Incoming
         }
         
         const row = document.createElement('tr');
@@ -1027,26 +1027,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-// Function to highlight connections in the subgraph
-function highlightConnections(node) {
-  if (!window.subgraphCy) return;
-  
-  // Reset all styles
-  window.subgraphCy.elements().removeClass('highlighted connected-edge');
-  
-  // Highlight the selected node
-  node.addClass('highlighted');
-  
-  // Highlight connected edges and nodes
-  const connectedEdges = node.connectedEdges();
-  connectedEdges.addClass('connected-edge');
-  
-  const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
-  connectedNodes.addClass('highlighted');
-  
-  // Update the table to show node details
-  updateNodeDetailsTable(node);
-}
+  // Function to highlight connections in the subgraph
+  function highlightConnections(node) {
+    if (!window.subgraphCy) return;
+    
+    // Reset all styles
+    window.subgraphCy.elements().removeClass('highlighted connected-edge');
+    
+    // Highlight the selected node
+    node.addClass('highlighted');
+    
+    // Highlight connected edges and nodes
+    const connectedEdges = node.connectedEdges();
+    connectedEdges.addClass('connected-edge');
+    
+    const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
+    connectedNodes.addClass('highlighted');
+    
+    // Update the table to show node details
+    updateNodeDetailsTable(node);
+  }
 
 
   // Function to update the table with node details
@@ -1516,70 +1516,71 @@ function highlightConnections(node) {
 });
 
 
-// Function to show a notification instead of using alert
-function showNotification(message, type = 'info', duration = 3000) {
-  const notification = document.getElementById('notification');
-  const notificationMessage = document.getElementById('notification-message');
-  const notificationClose = document.getElementById('notification-close');
-  
-  if (!notification || !notificationMessage) return;
-  
-  // Clear any existing timeout
-  if (window.notificationTimeout) {
-    clearTimeout(window.notificationTimeout);
+  // Function to show a notification instead of using alert
+  function showNotification(message, type = 'info', duration = 3000) {
+    const notification = document.getElementById('notification');
+    const notificationMessage = document.getElementById('notification-message');
+    const notificationClose = document.getElementById('notification-close');
+    
+    if (!notification || !notificationMessage) return;
+    
+    // Clear any existing timeout
+    if (window.notificationTimeout) {
+      clearTimeout(window.notificationTimeout);
+    }
+    
+    // Remove any existing classes and add the new type
+    notification.className = 'notification';
+    if (['error', 'success', 'warning'].includes(type)) {
+      notification.classList.add(type);
+    }
+    
+    // Set the message
+    notificationMessage.textContent = message;
+    
+    // Show the notification
+    notification.style.display = 'block';
+    
+    // Set up auto-hide after duration
+    window.notificationTimeout = setTimeout(() => {
+      hideNotification();
+    }, duration);
+    
+    // Set up close button
+    if (notificationClose) {
+      notificationClose.onclick = hideNotification;
+    }
   }
-  
-  // Remove any existing classes and add the new type
-  notification.className = 'notification';
-  if (['error', 'success', 'warning'].includes(type)) {
-    notification.classList.add(type);
+
+
+  // Function to hide the notification with animation
+  function hideNotification() {
+    const notification = document.getElementById('notification');
+    if (!notification) return;
+    
+    // Add the hiding class for animation
+    notification.classList.add('hiding');
+    
+    // After animation completes, hide the element
+    setTimeout(() => {
+      notification.style.display = 'none';
+      notification.classList.remove('hiding');
+    }, 300); // Match the animation duration
   }
-  
-  // Set the message
-  notificationMessage.textContent = message;
-  
-  // Show the notification
-  notification.style.display = 'block';
-  
-  // Set up auto-hide after duration
-  window.notificationTimeout = setTimeout(() => {
-    hideNotification();
-  }, duration);
-  
-  // Set up close button
-  if (notificationClose) {
-    notificationClose.onclick = hideNotification;
+
+
+  // Convenience functions for different notification types
+  function showErrorNotification(message, duration = 4000) {
+    showNotification(message, 'error', duration);
   }
-}
 
 
-// Function to hide the notification with animation
-function hideNotification() {
-  const notification = document.getElementById('notification');
-  if (!notification) return;
-  
-  // Add the hiding class for animation
-  notification.classList.add('hiding');
-  
-  // After animation completes, hide the element
-  setTimeout(() => {
-    notification.style.display = 'none';
-    notification.classList.remove('hiding');
-  }, 300); // Match the animation duration
-}
+  function showSuccessNotification(message, duration = 3000) {
+    showNotification(message, 'success', duration);
+  }
 
 
-// Convenience functions for different notification types
-function showErrorNotification(message, duration = 4000) {
-  showNotification(message, 'error', duration);
-}
+  function showWarningNotification(message, duration = 3500) {
+    showNotification(message, 'warning', duration);
+  }
 
-
-function showSuccessNotification(message, duration = 3000) {
-  showNotification(message, 'success', duration);
-}
-
-
-function showWarningNotification(message, duration = 3500) {
-  showNotification(message, 'warning', duration);
-}
