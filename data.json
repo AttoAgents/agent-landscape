@@ -1475,7 +1475,7 @@
                 "properties": {
                     "url": "https://mastra.ai/",
                     "github": "https://github.com/mastra-ai/mastra",
-                    "license": "MIT License",
+                    "license": "Elastic License 2.0 (ELv2)",
                     "description": "The TypeScript AI agent framework. Assistants, RAG, observability. Supports any LLM: GPT-4, Claude, Gemini, Llama."
                 }
             }
