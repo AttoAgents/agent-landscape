@@ -1,0 +1,250 @@
+{
+    "nodes": [
+        {
+            "data": {
+                "id": "c1",
+                "label": "Company 1",
+                "type": "Company",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "c2",
+                "label": "Company 2",
+                "type": "Company",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "i1",
+                "label": "Investor 1",
+                "type": "Investor",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "i2",
+                "label": "Investor 2",
+                "type": "Investor",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "p1",
+                "label": "Product 1",
+                "type": "Product",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "p2",
+                "label": "Product 2",
+                "type": "Product",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "s1",
+                "label": "MCP Service 1",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "s2",
+                "label": "MCP Service 2",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "u1",
+                "label": "Application Area 1",
+                "type": "UseCase",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "u2",
+                "label": "Application Area 2",
+                "type": "UseCase",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+         {
+            "data": {
+                "id": "proto1",
+                "label": "Protocol 1",
+                "type": "Protocol",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        }
+    ],
+    "edges": [
+        {
+            "data": {
+                "id": "e1",
+                "source": "i1",
+                "target": "c1",
+                "label": "INVESTED_IN"
+            }
+        },
+        {
+            "data": {
+                "id": "e2",
+                "source": "c2",
+                "target": "c1",
+                "label": "ACQUIRED"
+            }
+        },
+        {
+            "data": {
+                "id": "e3",
+                "source": "c1",
+                "target": "p1",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e4",
+                "source": "c2",
+                "target": "p2",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e5",
+                "source": "c1",
+                "target": "s1",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e6",
+                "source": "c2",
+                "target": "s2",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e7",
+                "source": "i2",
+                "target": "c1",
+                "label": "INVESTED_IN"
+            }
+        },
+        {
+            "data": {
+                "id": "e8",
+                "source": "p1",
+                "target": "u1",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e9",
+                "source": "p2",
+                "target": "u2",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e10",
+                "source": "s1",
+                "target": "proto1",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "e11",
+                "source": "s2",
+                "target": "proto1",
+                "label": "CLIENT"
+            }
+        },
+        {
+            "data": {
+                "id": "e12",
+                "source": "p2",
+                "target": "p1",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "e13",
+                "source": "s1",
+                "target": "u1",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e14",
+                "source": "s2",
+                "target": "u2",
+                "label": "IN_AREA"
+            }
+        }
+    ]
+}

@@ -22,21 +22,11 @@ Agent Landscape is similar to **Awesome** pages and repositories, with differenc
 
 The data is by far not complete and will be updated with new products, companies and related information on an ongoing basis.
 
-Data is organized in the graph with several types of node types as: `Company`, `Product`, `Service`, `Investor`, `UseCase`. Example of simple data may look like this 
+Data is organized in the graph with several types of node types as: `Company` (Hexagon), `Product` (Circle), `Service` (Octagon), `Investor` (Square), `UseCase` (Pentagon). Example of simple data may look like this 
 
-```mermaid
-stateDiagram
-    Company1 --> Product1: DEVELOPED
-    Company1 --> Service: DEVELOPED
-    Product1 --> UseCase1: IN_AREA
-    Investor --> Company1: INVESTED_IN
-    Company2 --> Company1: ACQUIRED
-    Service --> Protocol: SERVER
-    Company2 --> Product2: DEVELOPED
-    Product1 --> Product2: USE
-    Product2 --> UseCase2: IN_AREA
-    Protocol --> UseCase1: IN_AREA
-```
+<div align="center"> 
+<img src="media/agent-landscape-data-schema-example.png" alt="Example Dataset" width="60%">
+</div>
 
 ## How to use the dataset 
 

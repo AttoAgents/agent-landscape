@@ -4598,15 +4598,79 @@
         "description": ""
       }
     }
+  },
+      {
+    "data": {
+      "id": "HumanAILabs",
+      "label": "Human AI Labs, Inc.",
+      "type": "Company",
+      "properties": {
+        "url": "https://www.personal.ai/",
+        "github": "",
+        "description": ""
+      }
+    }
+  },
+{
+    "data": {
+      "id": "PersonalAI",
+      "label": "Personal AI",
+      "type": "Product",
+      "properties": {
+        "url": "https://www.personal.ai/",
+        "github": "",
+        "description": ""
+      }
+    }
   }
     ],
     "edges": [
+         {
+            "data": {
+                "id": "e-humanailabs-personalai",
+                "source": "HumanAILabs",
+                "target": "PersonalAI",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-personalai-use-case",
+                "source": "PersonalAI",
+                "target": "AgentPlatform",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-microsoft-microsoft-playwright-mcp",
+                "source": "Microsoft",
+                "target": "microsoft-playwright-mcp",
+                "label": "DEVELOPED"
+            }
+        },
         {
             "data": {
                 "id": "e-mastra-ag-ui",
                 "source": "Mastra",
                 "target": "ag-ui-protocol",
                 "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "e-mastra-mcp",
+                "source": "Mastra",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
+        {
+            "data": {
+                "id": "e-mastra-rag",
+                "source": "Mastra",
+                "target": "RAG",
+                "label": "IN_AREA"
             }
         },
          {
