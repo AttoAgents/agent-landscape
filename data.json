@@ -4605,7 +4605,7 @@
             "data": {
                 "id": "e-mastra-ag-ui",
                 "source": "Mastra",
-                "target": "AG-UI",
+                "target": "ag-ui-protocol",
                 "label": "USES"
             }
         },
@@ -4613,7 +4613,7 @@
             "data": {
                 "id": "e-AG2-ag-ui",
                 "source": "AG2",
-                "target": "AG-UI",
+                "target": "ag-ui-protocol",
                 "label": "USES"
             }
         },
@@ -4621,7 +4621,7 @@
             "data": {
                 "id": "e-langgraph-ag-ui",
                 "source": "LangGraph",
-                "target": "AG-UI",
+                "target": "ag-ui-protocol",
                 "label": "USES"
             }
         },
@@ -4629,7 +4629,7 @@
             "data": {
                 "id": "e-crewai-ag-ui",
                 "source": "CrewAI",
-                "target": "AG-UI",
+                "target": "ag-ui-protocol",
                 "label": "USES"
             }
         },
