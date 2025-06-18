@@ -6,18 +6,36 @@
 
 Holistic view on the current Generative AI application landscape including products, companies, use cases, investors and technologies related to AI agents. 
 
+Agent Landscape is similar to **Awesome** pages and repositories, with difference that it organizes data in a graph form. An application to visualize and search graph is included as part of the project.
+
 ## Structure 
 
 - `index.html` - Visualization of the graph relation of data with products, use cases, companies, investors, protocols as nodes and their relations.
-- `app.js` - helper functions for visualization and searches for direct connection and most relevant paths.
-- `data.json` - Dataset file read by `app.js` for visualization.
-- `show.sh` - The simplest local HTTP server to run the application on your system ( this can be modified to any other server )
+- `app.js` - Functions for visualization and searches for direct connection and most relevant paths, and generation of subgraphs and tables.
+- `data.json` - Dataset file read by `app.js` for visualization (main source of data).
+- `show.sh` - The simplest local HTTP server to run the application on your system ( this can be modified to any other server ).
 - `style.css` - CSS file with styles definition.
 - `scripts` - Helper scripts for verifying the data, for example `verify-links.js` may be used for checking if links used in the data are correct.
+- `media` - Images included on this page.
 
 ## Data
 
 The data is by far not complete and will be updated with new products, companies and related information on an ongoing basis.
+
+Data is organized in the graph with several types of node types as: `Company`, `Product`, `Service`, `Investor`, `UseCase`. Example of simple data may look like this 
+
+```mermaid
+stateDiagram
+    Company1 --> Product1: DEVELOPED
+    Company1 --> Service: DEVELOPED
+    Product1 --> UseCase1: IN_AREA
+    Investor --> Company1: INVESTED_IN
+    Company2 --> Company1: ACQUIRED
+    Service --> Protocol: SERVER
+    Company2 --> Product2: DEVELOPED
+    Product1 --> Product2: USE
+    Product2 --> UseCase2: IN_AREA
+```
 
 ## How to use the dataset 
 
