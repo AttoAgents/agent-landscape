@@ -1473,9 +1473,10 @@
                 "label": "Mastra",
                 "type": "Product",
                 "properties": {
-                    "url": "",
+                    "url": "https://mastra.ai/",
                     "github": "https://github.com/mastra-ai/mastra",
-                    "license": "MIT License"
+                    "license": "MIT License",
+                    "description": "The TypeScript AI agent framework. Assistants, RAG, observability. Supports any LLM: GPT-4, Claude, Gemini, Llama."
                 }
             }
         },
@@ -4573,9 +4574,65 @@
         "description": "A single-binary MCP server that converts source code into AST, regardless of language."
       }
     }
+  },
+    {
+    "data": {
+      "id": "ag-ui-protocol",
+      "label": "AG-UI",
+      "type": "Protocol",
+      "properties": {
+        "url": "https://ag-ui.com/",
+        "github": "https://github.com/ag-ui-protocol/ag-ui",
+        "description": "AG-UI is an open, lightweight, event-based protocol that standardizes how AI agents connect to front-end applications."
+      }
+    }
+  },
+     {
+    "data": {
+      "id": "AG2",
+      "label": "AG2",
+      "type": "Product",
+      "properties": {
+        "url": "",
+        "github": "",
+        "description": ""
+      }
+    }
   }
     ],
     "edges": [
+        {
+            "data": {
+                "id": "e-mastra-ag-ui",
+                "source": "Mastra",
+                "target": "AG-UI",
+                "label": "USES"
+            }
+        },
+         {
+            "data": {
+                "id": "e-AG2-ag-ui",
+                "source": "AG2",
+                "target": "AG-UI",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "e-langgraph-ag-ui",
+                "source": "LangGraph",
+                "target": "AG-UI",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "e-crewai-ag-ui",
+                "source": "CrewAI",
+                "target": "AG-UI",
+                "label": "USES"
+            }
+        },
         {
             "data": {
                 "id": "e-YCombinator-KeywordsAICompany",

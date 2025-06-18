@@ -35,6 +35,7 @@ stateDiagram
     Company2 --> Product2: DEVELOPED
     Product1 --> Product2: USE
     Product2 --> UseCase2: IN_AREA
+    Protocol --> UseCase1: IN_AREA
 ```
 
 ## How to use the dataset 
