@@ -588,12 +588,27 @@
                 "label": "agentscope",
                 "type": "Product",
                 "properties": {
-                    "url": "",
+                    "url": "https://doc.agentscope.io/",
                     "github": "https://github.com/modelscope/agentscope",
-                    "license": "Apache License 2.0"
+                    "license": "Apache License 2.0",
+                    "description": "Start building LLM-empowered multi-agent applications in an easier way."
                 }
             }
         },
+        {
+            "data": {
+                "id": "AlibabaCompany",
+                "label": "Alibaba",
+                "type": "Company",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "license": "",
+                    "description": ""
+                }
+            }
+        },
+
         {
             "data": {
                 "id": "agent-zero",
@@ -1259,7 +1274,9 @@
                 "type": "Product",
                 "properties": {
                     "url": "https://smith.langchain.com/",
-                    "github": "https://github.com/langchain-ai/langsmith-sdk"
+                    "github": "https://github.com/langchain-ai/langsmith-sdk",
+                    "license": "Proprietary",
+                    "description": "LangSmith is a unified observability & evals platform where teams can debug, test, and monitor AI app performance — whether building with LangChain or not."
                 }
             }
         },
@@ -3475,7 +3492,10 @@
                 "label": "Model Context Protocol",
                 "type": "Protocol",
                 "properties": {
-                    "url": "https://modelcontextprotocol.io/"
+                    "url": "https://modelcontextprotocol.io/",
+                    "github": "https://github.com/modelcontextprotocol",
+                    "license": "MIT License",
+                    "description": "MCP is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools."
                 }
             }
         },
@@ -3487,7 +3507,8 @@
                 "properties": {
                     "url": "https://agentcommunicationprotocol.dev/",
                     "github": "https://github.com/i-am-bee/acp",
-                    "license": "Apache License 2.0"
+                    "license": "Apache License 2.0",
+                    "description": "The Agent Communication Protocol (ACP) is an open standard with open governance for agent interoperability. It defines a standardized RESTful API supporting synchronous, asynchronous, and streaming interactions. In ACP, agents are services that exchange multimodal messages, with the protocol remaining agnostic to their internal implementations and requiring only minimal specifications for compatibility."
                 }
             }
         },
@@ -4131,501 +4152,615 @@
                 }
             }
         },
-          {
-    "data": {
-      "id": "julien040-anyquery",
-      "label": "AnyQuery",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/julien040/anyquery",
-        "description": "Query more than 40 apps with one binary using SQL. It can also connect to your PostgreSQL, MySQL, or SQLite compatible database. Local-first and private by design."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "metatool-ai-metatool-app",
-      "label": "MetaMCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/metatool-ai/metatool-app",
-        "description": "The one unified middleware MCP server that manages your MCP connections with GUI."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "mindsdb-mindsdb",
-      "label": "MindsDB",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/mindsdb/mindsdb",
-        "description": "Connect and unify data across various platforms and databases with MindsDB as a single MCP server."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "glenngillen-mcpmcp-server",
-      "label": "MCPMCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/glenngillen/mcpmcp-server",
-        "description": "A list of MCP servers so you can ask your client which servers you can use to improve your daily workflow."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "wegotdocs-open-mcp",
-      "label": "Open MCP",
-      "type": "Service",
-      "properties": {
-        "url": "https://open-mcp.org",
-        "github": "https://github.com/wegotdocs/open-mcp",
-        "description": "Turn a web API into an MCP server in 10 seconds and add it to the open source registry."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "pipedreamhq-pipedream",
-      "label": "Pipedream MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/PipedreamHQ/pipedream/tree/master/modelcontextprotocol",
-        "description": "Connect with 2,500 APIs with 8,000+ prebuilt tools, and manage servers for your users, in your own app."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "veritenik-pluggedin-mcp-proxy",
-      "label": "PluggedIn MCP Proxy",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/VeriTeknik/pluggedin-mcp-proxy",
-        "description": "A comprehensive proxy server that combines multiple MCP servers into a single interface with extensive visibility features."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "tigranbs-mcgravity",
-      "label": "MCGravity",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/tigranbs/mcgravity",
-        "description": "A proxy tool for composing multiple MCP servers into one unified endpoint. Scale your AI tools by load balancing requests across multiple MCP servers."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "waystation-ai-mcp",
-      "label": "WayStation MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/waystation-ai/mcp",
-        "description": "Seamlessly and securely connect Claude Desktop and other MCP hosts to your favorite apps (Notion, Slack, Monday, Airtable, etc.). Takes less than 90 secs."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "sxhxliang-mcp-access-point",
-      "label": "MCP Access Point",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/sxhxliang/mcp-access-point",
-        "description": "Turn a web service into an MCP server in one click without making any code changes."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "hamflx-imagen3-mcp",
-      "label": "Imagen3 MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/hamflx/imagen3-mcp",
-        "description": "A powerful image generation tool using Google's Imagen 3.0 API through MCP. Generate high-quality images from text prompts with advanced controls."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "surescaleai-openai-gpt-image-mcp",
-      "label": "OpenAI GPT Image MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/SureScaleAI/openai-gpt-image-mcp",
-        "description": "OpenAI GPT image generation/editing MCP server."
-      }
-    }
-},
-      {
-    "data": {
-      "id": "xspadex-bilibili-mcp",
-      "label": "Bilibili MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/xspadex/bilibili-mcp.git",
-        "description": "A FastMCP-based tool that fetches Bilibili's trending videos and exposes them via a standard MCP interface."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "34892002-bilibili-mcp-js",
-      "label": "Bilibili MCP JS",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/34892002/bilibili-mcp-js",
-        "description": "A MCP server that supports searching for Bilibili content. Provides LangChain integration examples and test scripts."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "aircodelabs-grasp",
-      "label": "Grasp",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/aircodelabs/grasp",
-        "description": "Self-hosted browser using agent with built-in MCP and A2A support."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "automatalabs-mcp-server-playwright",
-      "label": "Automata Labs Playwright MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/Automata-Labs-team/MCP-Server-Playwright",
-        "description": "An MCP server for browser automation using Playwright"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "blackwhite084-playwright-plus-python-mcp",
-      "label": "Playwright Plus Python MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/blackwhite084/playwright-plus-python-mcp",
-        "description": "An MCP python server using Playwright for browser automation, more suitable for LLM"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "browserbase-mcp-server-browserbase",
-      "label": "BrowserBase MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/browserbase/mcp-server-browserbase",
-        "description": "Automate browser interactions in the cloud (e.g. web navigation, data extraction, form filling, and more)"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "browsermcp-mcp",
-      "label": "Browser MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/browsermcp/mcp",
-        "description": "Automate your local Chrome browser"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "co-browser-browser-use-mcp-server",
-      "label": "Browser Use MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/co-browser/browser-use-mcp-server",
-        "description": "browser-use packaged as an MCP server with SSE transport. includes a dockerfile to run chromium in docker + a vnc server."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "executeautomation-playwright-mcp-server",
-      "label": "Execute Automation Playwright MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/executeautomation/mcp-playwright",
-        "description": "An MCP server using Playwright for browser automation and webscrapping"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "eyalzh-browser-control-mcp",
-      "label": "Browser Control MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/eyalzh/browser-control-mcp",
-        "description": "An MCP server paired with a browser extension that enables LLM clients to control the user's browser (Firefox)."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "fradser-mcp-server-apple-reminders",
-      "label": "Apple Reminders MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/FradSer/mcp-server-apple-reminders",
-        "description": "An MCP server for interacting with Apple Reminders on macOS"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "getrupt-ashra-mcp",
-      "label": "Ashra MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/getrupt/ashra-mcp",
-        "description": "Extract structured data from any website. Just prompt and get JSON."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "kimtaeyoon83-mcp-server-youtube-transcript",
-      "label": "YouTube Transcript MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/kimtaeyoon83/mcp-server-youtube-transcript",
-        "description": "Fetch YouTube subtitles and transcripts for AI analysis"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "kimtth-mcp-aoai-web-browsing",
-      "label": "Azure OpenAI Web Browsing MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/kimtth/mcp-aoai-web-browsing",
-        "description": "A minimal server/client MCP implementation using Azure OpenAI and Playwright."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "microsoft-playwright-mcp",
-      "label": "Microsoft Playwright MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/microsoft/playwright-mcp",
-        "description": "Official Microsoft Playwright MCP server, enabling LLMs to interact with web pages through structured accessibility snapshots"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "modelcontextprotocol-server-puppeteer",
-      "label": "Puppeteer MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
-        "description": "Browser automation for web scraping and interaction"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "ndthanhdev-mcp-browser-kit",
-      "label": "MCP Browser Kit",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/ndthanhdev/mcp-browser-kit",
-        "description": "An MCP Server for interacting with manifest v2 compatible browsers."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "pskill9-web-search",
-      "label": "Web Search MCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/pskill9/web-search",
-        "description": "An MCP server that enables free web searching using Google search results, with no API keys required."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "recursechat-mcp-server-apple-shortcuts",
-      "label": "Apple Shortcuts MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/recursechat/mcp-server-apple-shortcuts",
-        "description": "An MCP Server Integration with Apple Shortcuts"
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "oraios-serena",
-      "label": "Serena",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/oraios/serena",
-        "description": "A fully-featured coding agent that relies on symbolic code operations by using language servers."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "ezyang-codemcp",
-      "label": "CodeMCP",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/ezyang/codemcp",
-        "description": "Coding agent with basic read, write and command line tools."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "doggybee-mcp-server-leetcode",
-      "label": "LeetCode MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/doggybee/mcp-server-leetcode",
-        "description": "An MCP server that enables AI models to search, retrieve, and solve LeetCode problems. Supports metadata filtering, user profiles, submissions, and contest data access."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "jinzcdev-leetcode-mcp-server",
-      "label": "LeetCode MCP Server (Global+CN)",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/jinzcdev/leetcode-mcp-server",
-        "description": "MCP server enabling automated access to LeetCode's programming problems, solutions, submissions and public data with optional authentication for user-specific features (e.g., notes), supporting both leetcode.com (global) and leetcode.cn (China) sites."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "juehang-vscode-mcp-server",
-      "label": "VS Code MCP Server",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/juehang/vscode-mcp-server",
-        "description": "A MCP Server that allows AI such as Claude to read from the directory structure in a VS Code workspace, see problems picked up by linter(s) and the language server, read code files, and make edits."
-      }
-    }
-  },
-  {
-    "data": {
-      "id": "micl2e2-code-to-tree",
-      "label": "Code to Tree",
-      "type": "Service",
-      "properties": {
-        "url": "",
-        "github": "https://github.com/micl2e2/code-to-tree",
-        "description": "A single-binary MCP server that converts source code into AST, regardless of language."
-      }
-    }
-  },
-    {
-    "data": {
-      "id": "ag-ui-protocol",
-      "label": "AG-UI",
-      "type": "Protocol",
-      "properties": {
-        "url": "https://ag-ui.com/",
-        "github": "https://github.com/ag-ui-protocol/ag-ui",
-        "description": "AG-UI is an open, lightweight, event-based protocol that standardizes how AI agents connect to front-end applications."
-      }
-    }
-  },
-     {
-    "data": {
-      "id": "AG2",
-      "label": "AG2",
-      "type": "Product",
-      "properties": {
-        "url": "",
-        "github": "",
-        "description": ""
-      }
-    }
-  },
-      {
-    "data": {
-      "id": "HumanAILabs",
-      "label": "Human AI Labs, Inc.",
-      "type": "Company",
-      "properties": {
-        "url": "https://www.personal.ai/",
-        "github": "",
-        "description": ""
-      }
-    }
-  },
-{
-    "data": {
-      "id": "PersonalAI",
-      "label": "Personal AI",
-      "type": "Product",
-      "properties": {
-        "url": "https://www.personal.ai/",
-        "github": "",
-        "description": ""
-      }
-    }
-  }
+        {
+            "data": {
+                "id": "julien040-anyquery",
+                "label": "AnyQuery",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/julien040/anyquery",
+                    "description": "Query more than 40 apps with one binary using SQL. It can also connect to your PostgreSQL, MySQL, or SQLite compatible database. Local-first and private by design."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "metatool-ai-metatool-app",
+                "label": "MetaMCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/metatool-ai/metatool-app",
+                    "description": "The one unified middleware MCP server that manages your MCP connections with GUI."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "mindsdb-mindsdb",
+                "label": "MindsDB",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/mindsdb/mindsdb",
+                    "description": "Connect and unify data across various platforms and databases with MindsDB as a single MCP server."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "glenngillen-mcpmcp-server",
+                "label": "MCPMCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/glenngillen/mcpmcp-server",
+                    "description": "A list of MCP servers so you can ask your client which servers you can use to improve your daily workflow."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "wegotdocs-open-mcp",
+                "label": "Open MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "https://open-mcp.org",
+                    "github": "https://github.com/wegotdocs/open-mcp",
+                    "description": "Turn a web API into an MCP server in 10 seconds and add it to the open source registry."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "pipedreamhq-pipedream",
+                "label": "Pipedream MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/PipedreamHQ/pipedream/tree/master/modelcontextprotocol",
+                    "description": "Connect with 2,500 APIs with 8,000+ prebuilt tools, and manage servers for your users, in your own app."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "veritenik-pluggedin-mcp-proxy",
+                "label": "PluggedIn MCP Proxy",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/VeriTeknik/pluggedin-mcp-proxy",
+                    "description": "A comprehensive proxy server that combines multiple MCP servers into a single interface with extensive visibility features."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "tigranbs-mcgravity",
+                "label": "MCGravity",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/tigranbs/mcgravity",
+                    "description": "A proxy tool for composing multiple MCP servers into one unified endpoint. Scale your AI tools by load balancing requests across multiple MCP servers."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "waystation-ai-mcp",
+                "label": "WayStation MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/waystation-ai/mcp",
+                    "description": "Seamlessly and securely connect Claude Desktop and other MCP hosts to your favorite apps (Notion, Slack, Monday, Airtable, etc.). Takes less than 90 secs."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "sxhxliang-mcp-access-point",
+                "label": "MCP Access Point",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/sxhxliang/mcp-access-point",
+                    "description": "Turn a web service into an MCP server in one click without making any code changes."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "hamflx-imagen3-mcp",
+                "label": "Imagen3 MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/hamflx/imagen3-mcp",
+                    "description": "A powerful image generation tool using Google's Imagen 3.0 API through MCP. Generate high-quality images from text prompts with advanced controls."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "surescaleai-openai-gpt-image-mcp",
+                "label": "OpenAI GPT Image MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/SureScaleAI/openai-gpt-image-mcp",
+                    "description": "OpenAI GPT image generation/editing MCP server."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "xspadex-bilibili-mcp",
+                "label": "Bilibili MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/xspadex/bilibili-mcp.git",
+                    "description": "A FastMCP-based tool that fetches Bilibili's trending videos and exposes them via a standard MCP interface."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "34892002-bilibili-mcp-js",
+                "label": "Bilibili MCP JS",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/34892002/bilibili-mcp-js",
+                    "description": "A MCP server that supports searching for Bilibili content. Provides LangChain integration examples and test scripts."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "aircodelabs-grasp",
+                "label": "Grasp",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/aircodelabs/grasp",
+                    "description": "Self-hosted browser using agent with built-in MCP and A2A support."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "automatalabs-mcp-server-playwright",
+                "label": "Automata Labs Playwright MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/Automata-Labs-team/MCP-Server-Playwright",
+                    "description": "An MCP server for browser automation using Playwright"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "blackwhite084-playwright-plus-python-mcp",
+                "label": "Playwright Plus Python MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/blackwhite084/playwright-plus-python-mcp",
+                    "description": "An MCP python server using Playwright for browser automation, more suitable for LLM"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "browserbase-mcp-server-browserbase",
+                "label": "BrowserBase MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/browserbase/mcp-server-browserbase",
+                    "description": "Automate browser interactions in the cloud (e.g. web navigation, data extraction, form filling, and more)"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "browsermcp-mcp",
+                "label": "Browser MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/browsermcp/mcp",
+                    "description": "Automate your local Chrome browser"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "co-browser-browser-use-mcp-server",
+                "label": "Browser Use MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/co-browser/browser-use-mcp-server",
+                    "description": "browser-use packaged as an MCP server with SSE transport. includes a dockerfile to run chromium in docker + a vnc server."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "executeautomation-playwright-mcp-server",
+                "label": "Execute Automation Playwright MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/executeautomation/mcp-playwright",
+                    "description": "An MCP server using Playwright for browser automation and webscrapping"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "eyalzh-browser-control-mcp",
+                "label": "Browser Control MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/eyalzh/browser-control-mcp",
+                    "description": "An MCP server paired with a browser extension that enables LLM clients to control the user's browser (Firefox)."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "fradser-mcp-server-apple-reminders",
+                "label": "Apple Reminders MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/FradSer/mcp-server-apple-reminders",
+                    "description": "An MCP server for interacting with Apple Reminders on macOS"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "getrupt-ashra-mcp",
+                "label": "Ashra MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/getrupt/ashra-mcp",
+                    "description": "Extract structured data from any website. Just prompt and get JSON."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "kimtaeyoon83-mcp-server-youtube-transcript",
+                "label": "YouTube Transcript MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/kimtaeyoon83/mcp-server-youtube-transcript",
+                    "description": "Fetch YouTube subtitles and transcripts for AI analysis"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "kimtth-mcp-aoai-web-browsing",
+                "label": "Azure OpenAI Web Browsing MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/kimtth/mcp-aoai-web-browsing",
+                    "description": "A minimal server/client MCP implementation using Azure OpenAI and Playwright."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "microsoft-playwright-mcp",
+                "label": "Microsoft Playwright MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/microsoft/playwright-mcp",
+                    "description": "Official Microsoft Playwright MCP server, enabling LLMs to interact with web pages through structured accessibility snapshots"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "modelcontextprotocol-server-puppeteer",
+                "label": "Puppeteer MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+                    "description": "Browser automation for web scraping and interaction"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "ndthanhdev-mcp-browser-kit",
+                "label": "MCP Browser Kit",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/ndthanhdev/mcp-browser-kit",
+                    "description": "An MCP Server for interacting with manifest v2 compatible browsers."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "pskill9-web-search",
+                "label": "Web Search MCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/pskill9/web-search",
+                    "description": "An MCP server that enables free web searching using Google search results, with no API keys required."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "recursechat-mcp-server-apple-shortcuts",
+                "label": "Apple Shortcuts MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/recursechat/mcp-server-apple-shortcuts",
+                    "description": "An MCP Server Integration with Apple Shortcuts"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "oraios-serena",
+                "label": "Serena",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/oraios/serena",
+                    "description": "A fully-featured coding agent that relies on symbolic code operations by using language servers."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "ezyang-codemcp",
+                "label": "CodeMCP",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/ezyang/codemcp",
+                    "description": "Coding agent with basic read, write and command line tools."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "doggybee-mcp-server-leetcode",
+                "label": "LeetCode MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/doggybee/mcp-server-leetcode",
+                    "description": "An MCP server that enables AI models to search, retrieve, and solve LeetCode problems. Supports metadata filtering, user profiles, submissions, and contest data access."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "jinzcdev-leetcode-mcp-server",
+                "label": "LeetCode MCP Server (Global+CN)",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/jinzcdev/leetcode-mcp-server",
+                    "description": "MCP server enabling automated access to LeetCode's programming problems, solutions, submissions and public data with optional authentication for user-specific features (e.g., notes), supporting both leetcode.com (global) and leetcode.cn (China) sites."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "juehang-vscode-mcp-server",
+                "label": "VS Code MCP Server",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/juehang/vscode-mcp-server",
+                    "description": "A MCP Server that allows AI such as Claude to read from the directory structure in a VS Code workspace, see problems picked up by linter(s) and the language server, read code files, and make edits."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "micl2e2-code-to-tree",
+                "label": "Code to Tree",
+                "type": "Service",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/micl2e2/code-to-tree",
+                    "description": "A single-binary MCP server that converts source code into AST, regardless of language."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "ag-ui-protocol",
+                "label": "AG-UI",
+                "type": "Protocol",
+                "properties": {
+                    "url": "https://ag-ui.com/",
+                    "github": "https://github.com/ag-ui-protocol/ag-ui",
+                    "description": "AG-UI is an open, lightweight, event-based protocol that standardizes how AI agents connect to front-end applications."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "AG2",
+                "label": "AG2",
+                "type": "Product",
+                "properties": {
+                    "url": "",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "HumanAILabs",
+                "label": "Human AI Labs, Inc.",
+                "type": "Company",
+                "properties": {
+                    "url": "https://www.personal.ai/",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "PersonalAI",
+                "label": "Personal AI",
+                "type": "Product",
+                "properties": {
+                    "url": "https://www.personal.ai/",
+                    "github": "",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "agentle",
+                "label": "Agentle",
+                "type": "Product",
+                "properties": {
+                    "url": "https://paragon-intelligence.github.io/agentle/",
+                    "github": "https://github.com/paragon-intelligence/agentle",
+                    "description": "Build production-ready AI agents in days, not months. Python 3.13+. Save development time with minimal code, deploy anywhere with confidence, and scale from simple assistants to complex multi-agent systems without the headaches.",
+                    "license": "MIT License"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "lmcache",
+                "label": "LMCache",
+                "type": "Product",
+                "properties": {
+                    "url": "https://lmcache.ai/",
+                    "github": "https://github.com/LMCache/LMCache",
+                    "license": "Apache License 2.0",
+                    "description": "LMCache is an LLM serving engine extension to reduce TTFT and increase throughput, especially under long-context scenarios. By storing the KV caches of reusable texts across various locations, including (GPU, CPU DRAM, Local Disk), LMCache reuses the KV caches of any reused text (not necessarily prefix) in any serving engine instance. Thus, LMCache saves precious GPU cycles and reduces user response delay."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "ggmlai",
+                "label": "ggml.ai",
+                "type": "Company",
+                "properties": {
+                    "url": "https://ggml.ai/",
+                    "github": "https://github.com/ggml-org"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "WhisperCpp",
+                "label": "whisper.cpp",
+                "type": "Product",
+                "properties": {
+                    "github": "https://github.com/ggml-org/whisper.cpp",
+                    "license": "MIT License",
+                    "description": "Port of OpenAI's Whisper model in C/C++"
+                }
+            }
+        }
+
     ],
     "edges": [
-         {
+        {
+            "data": {
+                "id": "e-ggml-llama-cpp",
+                "source": "ggmlai",
+                "target": "LlamaCpp",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-ggml-whisper-cpp",
+                "source": "ggmlai",
+                "target": "WhisperCpp",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-whisper-cpp-use-case",
+                "source": "WhisperCpp",
+                "target": "InfEngine",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-lmcache-use-case",
+                "source": "lmcache",
+                "target": "ModelServing",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-alibaba-agentscope",
+                "source": "AlibabaCompany",
+                "target": "agentscope",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-agentle-langsmith",
+                "source": "agentle",
+                "target": "LangSmith",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "e-agentle-use-case",
+                "source": "agentle",
+                "target": "AgentFramework",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-agentle-mcp",
+                "source": "agentle",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
+        {
             "data": {
                 "id": "e-humanailabs-personalai",
                 "source": "HumanAILabs",
@@ -4673,7 +4808,7 @@
                 "label": "IN_AREA"
             }
         },
-         {
+        {
             "data": {
                 "id": "e-AG2-ag-ui",
                 "source": "AG2",
@@ -8218,502 +8353,500 @@
             }
         },
         {
-    "data": {
-      "id": "edge-julien040-anyquery-to-mcp",
-      "source": "julien040-anyquery",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-metatool-ai-metatool-app-to-mcp",
-      "source": "metatool-ai-metatool-app",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-mindsdb-mindsdb-to-mcp",
-      "source": "mindsdb-mindsdb",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-glenngillen-mcpmcp-server-to-mcp",
-      "source": "glenngillen-mcpmcp-server",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-wegotdocs-open-mcp-to-mcp",
-      "source": "wegotdocs-open-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-pipedreamhq-pipedream-to-mcp",
-      "source": "pipedreamhq-pipedream",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-veritenik-pluggedin-mcp-proxy-to-mcp",
-      "source": "veritenik-pluggedin-mcp-proxy",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-tigranbs-mcgravity-to-mcp",
-      "source": "tigranbs-mcgravity",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-waystation-ai-mcp-to-mcp",
-      "source": "waystation-ai-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-sxhxliang-mcp-access-point-to-mcp",
-      "source": "sxhxliang-mcp-access-point",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-hamflx-imagen3-mcp-to-mcp",
-      "source": "hamflx-imagen3-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-surescaleai-openai-gpt-image-mcp-to-mcp",
-      "source": "surescaleai-openai-gpt-image-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-xspadex-bilibili-mcp-to-mcp",
-      "source": "xspadex-bilibili-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-34892002-bilibili-mcp-js-to-mcp",
-      "source": "34892002-bilibili-mcp-js",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-aircodelabs-grasp-to-mcp",
-      "source": "aircodelabs-grasp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-automatalabs-mcp-server-playwright-to-mcp",
-      "source": "automatalabs-mcp-server-playwright",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-blackwhite084-playwright-plus-python-mcp-to-mcp",
-      "source": "blackwhite084-playwright-plus-python-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-browserbase-mcp-server-browserbase-to-mcp",
-      "source": "browserbase-mcp-server-browserbase",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-browsermcp-mcp-to-mcp",
-      "source": "browsermcp-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-co-browser-browser-use-mcp-server-to-mcp",
-      "source": "co-browser-browser-use-mcp-server",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-executeautomation-playwright-mcp-server-to-mcp",
-      "source": "executeautomation-playwright-mcp-server",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-eyalzh-browser-control-mcp-to-mcp",
-      "source": "eyalzh-browser-control-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-fradser-mcp-server-apple-reminders-to-mcp",
-      "source": "fradser-mcp-server-apple-reminders",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-getrupt-ashra-mcp-to-mcp",
-      "source": "getrupt-ashra-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-kimtaeyoon83-mcp-server-youtube-transcript-to-mcp",
-      "source": "kimtaeyoon83-mcp-server-youtube-transcript",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-kimtth-mcp-aoai-web-browsing-to-mcp",
-      "source": "kimtth-mcp-aoai-web-browsing",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-microsoft-playwright-mcp-to-mcp",
-      "source": "microsoft-playwright-mcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-modelcontextprotocol-server-puppeteer-to-mcp",
-      "source": "modelcontextprotocol-server-puppeteer",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-ndthanhdev-mcp-browser-kit-to-mcp",
-      "source": "ndthanhdev-mcp-browser-kit",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-pskill9-web-search-to-mcp",
-      "source": "pskill9-web-search",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-recursechat-mcp-server-apple-shortcuts-to-mcp",
-      "source": "recursechat-mcp-server-apple-shortcuts",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-xspadex-bilibili-mcp-to-computeruse",
-      "source": "xspadex-bilibili-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-34892002-bilibili-mcp-js-to-computeruse",
-      "source": "34892002-bilibili-mcp-js",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-aircodelabs-grasp-to-computeruse",
-      "source": "aircodelabs-grasp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-automatalabs-mcp-server-playwright-to-computeruse",
-      "source": "automatalabs-mcp-server-playwright",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-blackwhite084-playwright-plus-python-mcp-to-computeruse",
-      "source": "blackwhite084-playwright-plus-python-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-browserbase-mcp-server-browserbase-to-computeruse",
-      "source": "browserbase-mcp-server-browserbase",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-browsermcp-mcp-to-computeruse",
-      "source": "browsermcp-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-co-browser-browser-use-mcp-server-to-computeruse",
-      "source": "co-browser-browser-use-mcp-server",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-executeautomation-playwright-mcp-server-to-computeruse",
-      "source": "executeautomation-playwright-mcp-server",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-eyalzh-browser-control-mcp-to-computeruse",
-      "source": "eyalzh-browser-control-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-fradser-mcp-server-apple-reminders-to-computeruse",
-      "source": "fradser-mcp-server-apple-reminders",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-getrupt-ashra-mcp-to-computeruse",
-      "source": "getrupt-ashra-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-kimtaeyoon83-mcp-server-youtube-transcript-to-computeruse",
-      "source": "kimtaeyoon83-mcp-server-youtube-transcript",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-kimtth-mcp-aoai-web-browsing-to-computeruse",
-      "source": "kimtth-mcp-aoai-web-browsing",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-microsoft-playwright-mcp-to-computeruse",
-      "source": "microsoft-playwright-mcp",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-modelcontextprotocol-server-puppeteer-to-computeruse",
-      "source": "modelcontextprotocol-server-puppeteer",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-ndthanhdev-mcp-browser-kit-to-computeruse",
-      "source": "ndthanhdev-mcp-browser-kit",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-pskill9-web-search-to-computeruse",
-      "source": "pskill9-web-search",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-recursechat-mcp-server-apple-shortcuts-to-computeruse",
-      "source": "recursechat-mcp-server-apple-shortcuts",
-      "target": "ComputerUse",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-oraios-serena-to-mcp",
-      "source": "oraios-serena",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-ezyang-codemcp-to-mcp",
-      "source": "ezyang-codemcp",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-doggybee-mcp-server-leetcode-to-mcp",
-      "source": "doggybee-mcp-server-leetcode",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-jinzcdev-leetcode-mcp-server-to-mcp",
-      "source": "jinzcdev-leetcode-mcp-server",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-juehang-vscode-mcp-server-to-mcp",
-      "source": "juehang-vscode-mcp-server",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-micl2e2-code-to-tree-to-mcp",
-      "source": "micl2e2-code-to-tree",
-      "target": "MCP",
-      "label": "SERVER"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-oraios-serena-to-aicoding",
-      "source": "oraios-serena",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-ezyang-codemcp-to-aicoding",
-      "source": "ezyang-codemcp",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-doggybee-mcp-server-leetcode-to-aicoding",
-      "source": "doggybee-mcp-server-leetcode",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-jinzcdev-leetcode-mcp-server-to-aicoding",
-      "source": "jinzcdev-leetcode-mcp-server",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-juehang-vscode-mcp-server-to-aicoding",
-      "source": "juehang-vscode-mcp-server",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  },
-  {
-    "data": {
-      "id": "edge-micl2e2-code-to-tree-to-aicoding",
-      "source": "micl2e2-code-to-tree",
-      "target": "AICoding",
-      "label": "IN_AREA"
-    }
-  }
-]
-
-    
+            "data": {
+                "id": "edge-julien040-anyquery-to-mcp",
+                "source": "julien040-anyquery",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-metatool-ai-metatool-app-to-mcp",
+                "source": "metatool-ai-metatool-app",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-mindsdb-mindsdb-to-mcp",
+                "source": "mindsdb-mindsdb",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-glenngillen-mcpmcp-server-to-mcp",
+                "source": "glenngillen-mcpmcp-server",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-wegotdocs-open-mcp-to-mcp",
+                "source": "wegotdocs-open-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-pipedreamhq-pipedream-to-mcp",
+                "source": "pipedreamhq-pipedream",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-veritenik-pluggedin-mcp-proxy-to-mcp",
+                "source": "veritenik-pluggedin-mcp-proxy",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-tigranbs-mcgravity-to-mcp",
+                "source": "tigranbs-mcgravity",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-waystation-ai-mcp-to-mcp",
+                "source": "waystation-ai-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-sxhxliang-mcp-access-point-to-mcp",
+                "source": "sxhxliang-mcp-access-point",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-hamflx-imagen3-mcp-to-mcp",
+                "source": "hamflx-imagen3-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-surescaleai-openai-gpt-image-mcp-to-mcp",
+                "source": "surescaleai-openai-gpt-image-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-xspadex-bilibili-mcp-to-mcp",
+                "source": "xspadex-bilibili-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-34892002-bilibili-mcp-js-to-mcp",
+                "source": "34892002-bilibili-mcp-js",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-aircodelabs-grasp-to-mcp",
+                "source": "aircodelabs-grasp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-automatalabs-mcp-server-playwright-to-mcp",
+                "source": "automatalabs-mcp-server-playwright",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-blackwhite084-playwright-plus-python-mcp-to-mcp",
+                "source": "blackwhite084-playwright-plus-python-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-browserbase-mcp-server-browserbase-to-mcp",
+                "source": "browserbase-mcp-server-browserbase",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-browsermcp-mcp-to-mcp",
+                "source": "browsermcp-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-co-browser-browser-use-mcp-server-to-mcp",
+                "source": "co-browser-browser-use-mcp-server",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-executeautomation-playwright-mcp-server-to-mcp",
+                "source": "executeautomation-playwright-mcp-server",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-eyalzh-browser-control-mcp-to-mcp",
+                "source": "eyalzh-browser-control-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-fradser-mcp-server-apple-reminders-to-mcp",
+                "source": "fradser-mcp-server-apple-reminders",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-getrupt-ashra-mcp-to-mcp",
+                "source": "getrupt-ashra-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-kimtaeyoon83-mcp-server-youtube-transcript-to-mcp",
+                "source": "kimtaeyoon83-mcp-server-youtube-transcript",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-kimtth-mcp-aoai-web-browsing-to-mcp",
+                "source": "kimtth-mcp-aoai-web-browsing",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-microsoft-playwright-mcp-to-mcp",
+                "source": "microsoft-playwright-mcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-modelcontextprotocol-server-puppeteer-to-mcp",
+                "source": "modelcontextprotocol-server-puppeteer",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-ndthanhdev-mcp-browser-kit-to-mcp",
+                "source": "ndthanhdev-mcp-browser-kit",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-pskill9-web-search-to-mcp",
+                "source": "pskill9-web-search",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-recursechat-mcp-server-apple-shortcuts-to-mcp",
+                "source": "recursechat-mcp-server-apple-shortcuts",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-xspadex-bilibili-mcp-to-computeruse",
+                "source": "xspadex-bilibili-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-34892002-bilibili-mcp-js-to-computeruse",
+                "source": "34892002-bilibili-mcp-js",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-aircodelabs-grasp-to-computeruse",
+                "source": "aircodelabs-grasp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-automatalabs-mcp-server-playwright-to-computeruse",
+                "source": "automatalabs-mcp-server-playwright",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-blackwhite084-playwright-plus-python-mcp-to-computeruse",
+                "source": "blackwhite084-playwright-plus-python-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-browserbase-mcp-server-browserbase-to-computeruse",
+                "source": "browserbase-mcp-server-browserbase",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-browsermcp-mcp-to-computeruse",
+                "source": "browsermcp-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-co-browser-browser-use-mcp-server-to-computeruse",
+                "source": "co-browser-browser-use-mcp-server",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-executeautomation-playwright-mcp-server-to-computeruse",
+                "source": "executeautomation-playwright-mcp-server",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-eyalzh-browser-control-mcp-to-computeruse",
+                "source": "eyalzh-browser-control-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-fradser-mcp-server-apple-reminders-to-computeruse",
+                "source": "fradser-mcp-server-apple-reminders",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-getrupt-ashra-mcp-to-computeruse",
+                "source": "getrupt-ashra-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-kimtaeyoon83-mcp-server-youtube-transcript-to-computeruse",
+                "source": "kimtaeyoon83-mcp-server-youtube-transcript",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-kimtth-mcp-aoai-web-browsing-to-computeruse",
+                "source": "kimtth-mcp-aoai-web-browsing",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-microsoft-playwright-mcp-to-computeruse",
+                "source": "microsoft-playwright-mcp",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-modelcontextprotocol-server-puppeteer-to-computeruse",
+                "source": "modelcontextprotocol-server-puppeteer",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-ndthanhdev-mcp-browser-kit-to-computeruse",
+                "source": "ndthanhdev-mcp-browser-kit",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-pskill9-web-search-to-computeruse",
+                "source": "pskill9-web-search",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-recursechat-mcp-server-apple-shortcuts-to-computeruse",
+                "source": "recursechat-mcp-server-apple-shortcuts",
+                "target": "ComputerUse",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-oraios-serena-to-mcp",
+                "source": "oraios-serena",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-ezyang-codemcp-to-mcp",
+                "source": "ezyang-codemcp",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-doggybee-mcp-server-leetcode-to-mcp",
+                "source": "doggybee-mcp-server-leetcode",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-jinzcdev-leetcode-mcp-server-to-mcp",
+                "source": "jinzcdev-leetcode-mcp-server",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-juehang-vscode-mcp-server-to-mcp",
+                "source": "juehang-vscode-mcp-server",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-micl2e2-code-to-tree-to-mcp",
+                "source": "micl2e2-code-to-tree",
+                "target": "MCP",
+                "label": "SERVER"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-oraios-serena-to-aicoding",
+                "source": "oraios-serena",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-ezyang-codemcp-to-aicoding",
+                "source": "ezyang-codemcp",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-doggybee-mcp-server-leetcode-to-aicoding",
+                "source": "doggybee-mcp-server-leetcode",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-jinzcdev-leetcode-mcp-server-to-aicoding",
+                "source": "jinzcdev-leetcode-mcp-server",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-juehang-vscode-mcp-server-to-aicoding",
+                "source": "juehang-vscode-mcp-server",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-micl2e2-code-to-tree-to-aicoding",
+                "source": "micl2e2-code-to-tree",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        }
+    ]
 }
