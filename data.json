@@ -7,7 +7,8 @@
                 "type": "Product",
                 "properties": {
                     "url": "https://www.continue.dev/",
-                    "github": "https://github.com/continuedev/continue"
+                    "github": "https://github.com/continuedev/continue",
+                    "description": "Continue enables developers to create, share, and use custom AI code assistants with our open-source VS Code and JetBrains extensions and hub of models, rules, prompts, docs, and other building blocks."
                 }
             }
         },
@@ -18,7 +19,8 @@
                 "type": "Product",
                 "properties": {
                     "url": "https://www.witsyai.com/",
-                    "github": "https://github.com/nbonamy/witsy"
+                    "github": "https://github.com/nbonamy/witsy",
+                    "description": "Witsy: desktop AI assistant / universal MCP client."
                 }
             }
         },
@@ -58,7 +60,8 @@
                 "label": "Base44",
                 "type": "Product",
                 "properties": {
-                    "url": "https://base44.com/"
+                    "url": "https://base44.com/",
+                    "description": "The first all-in-one AI platform to easily build fully functioning apps - without coding."
                 }
             }
         },
@@ -1541,7 +1544,8 @@
                 "properties": {
                     "url": "",
                     "github": "https://github.com/stitionai/devika",
-                    "license": "MIT License"
+                    "license": "MIT License",
+                    "description": "Devika is an Agentic AI Software Engineer that can understand high-level human instructions, break them down into steps, research relevant information, and write code to achieve the given objective. Devika aims to be a competitive open-source alternative to Devin by Cognition AI."
                 }
             }
         },
@@ -1553,7 +1557,8 @@
                 "properties": {
                     "url": "",
                     "github": "https://github.com/OpenBMB/RepoAgent",
-                    "license": "Apache License 2.0"
+                    "license": "Apache License 2.0",
+                    "description": "An LLM-powered repository agent designed to assist developers and teams in generating documentation and understanding repositories quickly."
                 }
             }
         },
@@ -4692,10 +4697,96 @@
                     "description": "Port of OpenAI's Whisper model in C/C++"
                 }
             }
+        },
+        {
+            "data": {
+                "id": "AgentProtocol",
+                "label": "Agent Protocol",
+                "type": "Protocol",
+                "properties": {
+                    "github": "https://github.com/langchain-ai/agent-protocol",
+                    "license": "MIT License",
+                    "description": "Agent Protocol is our attempt at codifying the framework-agnostic APIs that are needed to serve LLM agents in production. This document explains the purpose of the protocol and makes the case for each of the endpoints in the spec. We finish by listing some roadmap items for the future."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "Agntcy",
+                "label": "Agntcy",
+                "type": "Protocol",
+                "properties": {
+                    "url": "https://agntcy.org/",
+                    "github": "https://github.com/agntcy",
+                    "description": "An open source collective for inter-agent collaboration. The AGNTCY is where we are building the Internet of Agents to be: A diverse, collaborative space to innovate, develop, and maintain software components and services for agentic workflows and multi-agent software."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "WixCompany",
+                "label": "Wix.com, Inc",
+                "type": "Company",
+                "properties": {
+                    "url": "https://wix.com/",
+                    "country": "Israel"
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "WixStudio",
+                "label": "Wix Studio",
+                "type": "Product",
+                "properties": {
+                    "url": "https://wix.com/",
+                    "description": "Wix Studio is our intuitive web platform for creative, fast-paced teams at agencies and enterprises to create, develop and manage exceptional web projects, with hyper efficiency. Agencies get advanced design capabilities, extensive AI solutions, flexible dev tools and custom CSS for complete creative control. Combined with an integrated workspace, the platform provides everything needed for a super seamless workflow. And teams in enterprises can work on a whole different scale with advanced multi-site management, account-level analytics, SSO, and shared CMS collections, as well as services like custom development and dedicated success managers."
+                }
+            }
         }
 
     ],
     "edges": [
+        {
+            "data": {
+                "id": "e-Wix-WixStudio",
+                "source": "WixCompany",
+                "target": "WixStudio",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-WixStudio-use-case",
+                "source": "WixStudio",
+                "target": "AICoding",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "e-Wix-Base44",
+                "source": "WixCompany",
+                "target": "base44",
+                "label": "ACQUIRED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-agent-protocol-lanchain",
+                "source": "LangChainCompany",
+                "target": "AgentProtocol",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-langgraph-agent-protocol",
+                "source": "LangGraph",
+                "target": "AgentProtocol",
+                "label": "USES"
+            }
+        },
         {
             "data": {
                 "id": "e-ggml-llama-cpp",
