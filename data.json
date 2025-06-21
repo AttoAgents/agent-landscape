@@ -1050,7 +1050,9 @@
                 "type": "Product",
                 "properties": {
                     "url": "https://code.visualstudio.com/",
-                    "github": ""
+                    "github": "https://github.com/microsoft/vscode",
+                    "description": "Visual Studio Code is a lightweight but powerful source code editor which runs on your desktop and is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET).",
+                    "license": "MIT License"
                 }
             }
         },
@@ -2543,7 +2545,7 @@
         {
             "data": {
                 "id": "Base44Company",
-                "label": "BASE44 Inc",
+                "label": "Base44 Inc",
                 "type": "Company",
                 "properties": {
                     "url": "https://base44.com/"
@@ -4743,10 +4745,2065 @@
                     "description": "Wix Studio is our intuitive web platform for creative, fast-paced teams at agencies and enterprises to create, develop and manage exceptional web projects, with hyper efficiency. Agencies get advanced design capabilities, extensive AI solutions, flexible dev tools and custom CSS for complete creative control. Combined with an integrated workspace, the platform provides everything needed for a super seamless workflow. And teams in enterprises can work on a whole different scale with advanced multi-site management, account-level analytics, SSO, and shared CMS collections, as well as services like custom development and dedicated success managers."
                 }
             }
+        },
+        
+{
+      "data": {
+        "id": "aiven-open-mcp-aiven",
+        "label": "Aiven Open MCP",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/Aiven-Open/mcp-aiven",
+          "github": "https://github.com/Aiven-Open/mcp-aiven",
+          "description": "Navigate your Aiven projects and interact with the PostgreSQL®, Apache Kafka®, ClickHouse® and OpenSearch® services"
         }
+      }
+    },
+    {
+      "data": {
+        "id": "alexanderzuev-supabase-mcp-server",
+        "label": "Supabase MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/alexanderzuev/supabase-mcp-server",
+          "github": "https://github.com/alexanderzuev/supabase-mcp-server",
+          "description": "Supabase MCP Server with support for SQL query execution and database exploration tools"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "aliyun-alibabacloud-tablestore-mcp-server",
+        "label": "Alibaba Cloud Tablestore MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/aliyun/alibabacloud-tablestore-mcp-server",
+          "github": "https://github.com/aliyun/alibabacloud-tablestore-mcp-server",
+          "description": "MCP service for Tablestore, features include adding documents, semantic search for documents based on vectors and scalars, RAG-friendly, and serverless"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "benborla29-mcp-server-mysql",
+        "label": "MySQL MCP Server (NodeJS)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/benborla29/mcp-server-mysql",
+          "github": "https://github.com/benborla29/mcp-server-mysql",
+          "description": "MySQL database integration in NodeJS with configurable access controls and schema inspection"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "bytebase-dbhub",
+        "label": "DBHub Universal Database MCP",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/bytebase/dbhub",
+          "github": "https://github.com/bytebase/dbhub",
+          "description": "Universal database MCP server supporting mainstream databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "c4pt0r-mcp-server-tidb",
+        "label": "TiDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/c4pt0r/mcp-server-tidb",
+          "github": "https://github.com/c4pt0r/mcp-server-tidb",
+          "description": "TiDB database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "canner-wren-engine",
+        "label": "Wren Engine Semantic MCP",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/Canner/wren-engine",
+          "github": "https://github.com/Canner/wren-engine",
+          "description": "The Semantic Engine for Model Context Protocol(MCP) Clients and AI Agents"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "centralmind-gateway",
+        "label": "CentralMind Gateway",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/centralmind/gateway",
+          "github": "https://github.com/centralmind/gateway",
+          "description": "MCP and MCP SSE Server that automatically generate API based on database schema and data. Supports PostgreSQL, Clickhouse, MySQL, Snowflake, BigQuery, Supabase"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "christianhinge-dicom-mcp",
+        "label": "DICOM MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/ChristianHinge/dicom-mcp",
+          "github": "https://github.com/ChristianHinge/dicom-mcp",
+          "description": "DICOM integration to query, read, and move medical images and reports from PACS and other DICOM compliant systems"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "chroma-core-chroma-mcp",
+        "label": "Chroma MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/chroma-core/chroma-mcp",
+          "github": "https://github.com/chroma-core/chroma-mcp",
+          "description": "Chroma MCP server to access local and cloud Chroma instances for retrieval capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "clickhouse-mcp-clickhouse",
+        "label": "ClickHouse MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/ClickHouse/mcp-clickhouse",
+          "github": "https://github.com/ClickHouse/mcp-clickhouse",
+          "description": "ClickHouse database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "confluentinc-mcp-confluent",
+        "label": "Confluent MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/confluentinc/mcp-confluent",
+          "github": "https://github.com/confluentinc/mcp-confluent",
+          "description": "Confluent integration to interact with Confluent Kafka and Confluent Cloud REST APIs"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "couchbase-ecosystem-mcp-server-couchbase",
+        "label": "Couchbase MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
+          "github": "https://github.com/Couchbase-Ecosystem/mcp-server-couchbase",
+          "description": "Couchbase MCP server provides unfied access to both Capella cloud and self-managed clusters for document operations, SQL++ queries and natural language data analysis"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "cr7258-elasticsearch-mcp-server",
+        "label": "Elasticsearch MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/cr7258/elasticsearch-mcp-server",
+          "github": "https://github.com/cr7258/elasticsearch-mcp-server",
+          "description": "MCP Server implementation that provides Elasticsearch interaction"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "crystaldba-postgres-mcp",
+        "label": "Postgres MCP (CrystalDBA)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/crystaldba/postgres-mcp",
+          "github": "https://github.com/crystaldba/postgres-mcp",
+          "description": "All-in-one MCP server for Postgres development and operations, with tools for performance analysis, tuning, and health checks"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "dataring-engineering-mcp-server-trino",
+        "label": "Trino MCP Server (Dataring)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/Dataring-engineering/mcp-server-trino",
+          "github": "https://github.com/Dataring-engineering/mcp-server-trino",
+          "description": "Trino MCP Server to query and access data from Trino Clusters"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "tuannvm-mcp-trino",
+        "label": "Trino MCP Server (Go)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/tuannvm/mcp-trino",
+          "github": "https://github.com/tuannvm/mcp-trino",
+          "description": "A Go implementation of a Model Context Protocol (MCP) server for Trino"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "designcomputer-mysql-mcp-server",
+        "label": "MySQL MCP Server (DesignComputer)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/designcomputer/mysql_mcp_server",
+          "github": "https://github.com/designcomputer/mysql_mcp_server",
+          "description": "MySQL database integration with configurable access controls, schema inspection, and comprehensive security guidelines"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "wenb1n-dev-mysql-mcp-server-pro",
+        "label": "MySQL MCP Server Pro",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/wenb1n-dev/mysql_mcp_server_pro",
+          "github": "https://github.com/wenb1n-dev/mysql_mcp_server_pro",
+          "description": "Supports SSE, STDIO; not only limited to MySQL's CRUD functionality; also includes database exception analysis capabilities; controls database permissions based on roles; and makes it easy for developers to extend tools with customization"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "domdomegg-airtable-mcp-server",
+        "label": "Airtable MCP Server (DomDomegg)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/domdomegg/airtable-mcp-server",
+          "github": "https://github.com/domdomegg/airtable-mcp-server",
+          "description": "Airtable database integration with schema inspection, read and write capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "edwinbernadus-nocodb-mcp-server",
+        "label": "NocoDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/edwinbernadus/nocodb-mcp-server",
+          "github": "https://github.com/edwinbernadus/nocodb-mcp-server",
+          "description": "Nocodb database integration, read and write capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "ergut-mcp-bigquery-server",
+        "label": "BigQuery MCP Server (Ergut)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/ergut/mcp-bigquery-server",
+          "github": "https://github.com/ergut/mcp-bigquery-server",
+          "description": "Server implementation for Google BigQuery integration that enables direct BigQuery database access and querying capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "f4ww4z-mcp-mysql-server",
+        "label": "MySQL MCP Server (Node.js)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/f4ww4z/mcp-mysql-server",
+          "github": "https://github.com/f4ww4z/mcp-mysql-server",
+          "description": "Node.js-based MySQL database integration that provides secure MySQL database operations"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "fireproof-storage-mcp-database-server",
+        "label": "Fireproof Database MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/fireproof-storage/mcp-database-server",
+          "github": "https://github.com/fireproof-storage/mcp-database-server",
+          "description": "Fireproof ledger database with multi-user sync"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "freepeak-db-mcp-server",
+        "label": "DB MCP Server (FreePeak)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/FreePeak/db-mcp-server",
+          "github": "https://github.com/FreePeak/db-mcp-server",
+          "description": "A high-performance multi-database MCP server built with Golang, supporting MySQL & PostgreSQL (NoSQL coming soon). Includes built-in tools for query execution, transaction management, schema exploration, query building, and performance analysis, with seamless Cursor integration for enhanced database workflows"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "furey-mongodb-lens",
+        "label": "MongoDB Lens",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/furey/mongodb-lens",
+          "github": "https://github.com/furey/mongodb-lens",
+          "description": "MongoDB Lens: Full Featured MCP Server for MongoDB Databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "gannonh-firebase-mcp",
+        "label": "Firebase MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/gannonh/firebase-mcp",
+          "github": "https://github.com/gannonh/firebase-mcp",
+          "description": "Firebase services including Auth, Firestore and Storage"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "get-convex-convex-backend",
+        "label": "Convex Backend MCP",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/get-convex/convex-backend",
+          "github": "https://github.com/get-convex/convex-backend",
+          "description": "Convex database integration to introspect tables, functions, and run oneoff queries"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "googleapis-genai-toolbox",
+        "label": "Google GenAI Toolbox",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/googleapis/genai-toolbox",
+          "github": "https://github.com/googleapis/genai-toolbox",
+          "description": "Open source MCP server specializing in easy, fast, and secure tools for Databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "greptimeteam-greptimedb-mcp-server",
+        "label": "GreptimeDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/GreptimeTeam/greptimedb-mcp-server",
+          "github": "https://github.com/GreptimeTeam/greptimedb-mcp-server",
+          "description": "MCP Server for querying GreptimeDB"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "hannesrudolph-sqlite-explorer-fastmcp-mcp-server",
+        "label": "SQLite Explorer FastMCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/hannesrudolph/sqlite-explorer-fastmcp-mcp-server",
+          "github": "https://github.com/hannesrudolph/sqlite-explorer-fastmcp-mcp-server",
+          "description": "An MCP server that provides safe, read-only access to SQLite databases through Model Context Protocol (MCP). This server is built with the FastMCP framework, which enables LLMs to explore and query SQLite databases with built-in safety features and query validation"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "idoru-influxdb-mcp-server",
+        "label": "InfluxDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/idoru/influxdb-mcp-server",
+          "github": "https://github.com/idoru/influxdb-mcp-server",
+          "description": "Run queries against InfluxDB OSS API v2"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "isaacwasserman-mcp-snowflake-server",
+        "label": "Snowflake MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/isaacwasserman/mcp-snowflake-server",
+          "github": "https://github.com/isaacwasserman/mcp-snowflake-server",
+          "description": "Snowflake integration implementing read and (optional) write operations as well as insight tracking"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "joshuarileydev-supabase-mcp-server",
+        "label": "Supabase MCP Server (Joshua Riley)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/joshuarileydev/supabase-mcp-server",
+          "github": "https://github.com/joshuarileydev/supabase-mcp-server",
+          "description": "Supabase MCP Server for managing and creating projects and organisations in Supabase"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "jovezhong-mcp-timeplus",
+        "label": "Timeplus MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/jovezhong/mcp-timeplus",
+          "github": "https://github.com/jovezhong/mcp-timeplus",
+          "description": "MCP server for Apache Kafka and Timeplus. Able to list Kafka topics, poll Kafka messages, save Kafka data locally and query streaming data with SQL via Timeplus"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "kashiwabyte-vikingdb-mcp-server",
+        "label": "VikingDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/KashiwaByte/vikingdb-mcp-server",
+          "github": "https://github.com/KashiwaByte/vikingdb-mcp-server",
+          "description": "VikingDB integration with collection and index introduction, vector store and search capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "kiliczsh-mcp-mongo-server",
+        "label": "MongoDB MCP Server (Kiliczsh)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/kiliczsh/mcp-mongo-server",
+          "github": "https://github.com/kiliczsh/mcp-mongo-server",
+          "description": "A Model Context Protocol Server for MongoDB"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "ktanaka101-mcp-server-duckdb",
+        "label": "DuckDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/ktanaka101/mcp-server-duckdb",
+          "github": "https://github.com/ktanaka101/mcp-server-duckdb",
+          "description": "DuckDB database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "lucashild-mcp-server-bigquery",
+        "label": "BigQuery MCP Server (Lucas Hild)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/LucasHild/mcp-server-bigquery",
+          "github": "https://github.com/LucasHild/mcp-server-bigquery",
+          "description": "BigQuery database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "quarkiverse-mcp-server-jdbc",
+        "label": "JDBC MCP Server (Quarkiverse)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/quarkiverse/mcp-server-jdbc",
+          "github": "https://github.com/quarkiverse/mcp-server-jdbc",
+          "description": "Connect to any JDBC-compatible database and query, insert, update, delete, and more"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "jparkerweb-mcp-sqlite",
+        "label": "SQLite MCP Server (JParkerWeb)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/jparkerweb/mcp-sqlite",
+          "github": "https://github.com/jparkerweb/mcp-sqlite",
+          "description": "Model Context Protocol (MCP) server that provides comprehensive SQLite database interaction capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "memgraph-mcp-memgraph",
+        "label": "Memgraph MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/memgraph/mcp-memgraph",
+          "github": "https://github.com/memgraph/mcp-memgraph",
+          "description": "Memgraph MCP Server - includes a tool to run a query against Memgraph and a schema resource"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "modelcontextprotocol-server-postgres",
+        "label": "PostgreSQL MCP Server (Official)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/modelcontextprotocol/server-postgres",
+          "github": "https://github.com/modelcontextprotocol/server-postgres",
+          "description": "PostgreSQL database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "modelcontextprotocol-server-sqlite",
+        "label": "SQLite MCP Server (Official)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/modelcontextprotocol/server-sqlite",
+          "github": "https://github.com/modelcontextprotocol/server-sqlite",
+          "description": "SQLite database operations with built-in analysis features"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "neo4j-contrib-mcp-neo4j",
+        "label": "Neo4j MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/neo4j-contrib/mcp-neo4j",
+          "github": "https://github.com/neo4j-contrib/mcp-neo4j",
+          "description": "Model Context Protocol with Neo4j (Run queries, Knowledge Graph Memory, Manaage Neo4j Aura Instances)"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "neondatabase-mcp-server-neon",
+        "label": "Neon MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/neondatabase/mcp-server-neon",
+          "github": "https://github.com/neondatabase/mcp-server-neon",
+          "description": "An MCP Server for creating and managing Postgres databases using Neon Serverless Postgres"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "niledatabase-nile-mcp-server",
+        "label": "Nile MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/niledatabase/nile-mcp-server",
+          "github": "https://github.com/niledatabase/nile-mcp-server",
+          "description": "MCP server for Nile's Postgres platform - Manage and query Postgres databases, tenants, users, auth using LLMs"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "openlink-mcp-server-odbc",
+        "label": "ODBC MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/openlink/mcp-server-odbc",
+          "github": "https://github.com/openlink/mcp-server-odbc",
+          "description": "An MCP server for generic Database Management System (DBMS) Connectivity via the Open Database Connectivity (ODBC) protocol"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "openlink-mcp-server-sqlalchemy",
+        "label": "SQLAlchemy MCP Server (OpenLink)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/openlink/mcp-server-sqlalchemy",
+          "github": "https://github.com/openlink/mcp-server-sqlalchemy",
+          "description": "An MCP server for generic Database Management System (DBMS) Connectivity via SQLAlchemy using Python ODBC (pyodbc)"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "pab1it0-adx-mcp-server",
+        "label": "Azure Data Explorer MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/pab1it0/adx-mcp-server",
+          "github": "https://github.com/pab1it0/adx-mcp-server",
+          "description": "Query and analyze Azure Data Explorer databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "pab1it0-prometheus-mcp-server",
+        "label": "Prometheus MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/pab1it0/prometheus-mcp-server",
+          "github": "https://github.com/pab1it0/prometheus-mcp-server",
+          "description": "Query and analyze Prometheus, open-source monitoring system"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "prisma-prisma",
+        "label": "Prisma MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/prisma/prisma",
+          "github": "https://github.com/prisma/prisma",
+          "description": "Gives LLMs the ability to manage Prisma Postgres databases (e.g. spin up new database instances or run schema migrations)"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "qdrant-mcp-server-qdrant",
+        "label": "Qdrant MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/qdrant/mcp-server-qdrant",
+          "github": "https://github.com/qdrant/mcp-server-qdrant",
+          "description": "A Qdrant MCP server"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "quantgeekdev-mongo-mcp",
+        "label": "MongoDB MCP Server (QuantGeekDev)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/QuantGeekDev/mongo-mcp",
+          "github": "https://github.com/QuantGeekDev/mongo-mcp",
+          "description": "MongoDB integration that enables LLMs to interact directly with databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "rashidazarang-airtable-mcp",
+        "label": "Airtable MCP Server (Rashid)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/rashidazarang/airtable-mcp",
+          "github": "https://github.com/rashidazarang/airtable-mcp",
+          "description": "Connect AI tools directly to Airtable. Query, create, update, and delete records using natural language. Features include base management, table operations, schema manipulation, record filtering, and data migration through a standardized MCP interface"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "redis-mcp-redis",
+        "label": "Redis MCP Server (Official)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/redis/mcp-redis",
+          "github": "https://github.com/redis/mcp-redis",
+          "description": "The Redis official MCP Server offers an interface to manage and search data in Redis"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "runekaagaard-mcp-alchemy",
+        "label": "SQLAlchemy MCP Server (Universal)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/runekaagaard/mcp-alchemy",
+          "github": "https://github.com/runekaagaard/mcp-alchemy",
+          "description": "Universal SQLAlchemy-based database integration supporting PostgreSQL, MySQL, MariaDB, SQLite, Oracle, MS SQL Server and many more databases. Features schema and relationship inspection, and large dataset analysis capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "sirmews-mcp-pinecone",
+        "label": "Pinecone MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/sirmews/mcp-pinecone",
+          "github": "https://github.com/sirmews/mcp-pinecone",
+          "description": "Pinecone integration with vector search capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "skysqlinc-skysql-mcp",
+        "label": "SkySQL MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/skysqlinc/skysql-mcp",
+          "github": "https://github.com/skysqlinc/skysql-mcp",
+          "description": "Serverless MariaDB Cloud DB MCP server. Tools to launch, delete, execute SQL and work with DB level AI agents for accurate text-2-sql and conversations"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "supabase-community-supabase-mcp",
+        "label": "Supabase MCP Server (Official)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/supabase-community/supabase-mcp",
+          "github": "https://github.com/supabase-community/supabase-mcp",
+          "description": "Official Supabase MCP server to connect AI assistants directly with your Supabase project and allows them to perform tasks like managing tables, fetching config, and querying data"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "theralabs-legion-mcp",
+        "label": "Legion MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/TheRaLabs/legion-mcp",
+          "github": "https://github.com/TheRaLabs/legion-mcp",
+          "description": "Universal database MCP server supporting multiple database types including PostgreSQL, Redshift, CockroachDB, MySQL, RDS MySQL, Microsoft SQL Server, BigQuery, Oracle DB, and SQLite"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "tradercjz-dolphindb-mcp-server",
+        "label": "DolphinDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/tradercjz/dolphindb-mcp-server",
+          "github": "https://github.com/tradercjz/dolphindb-mcp-server",
+          "description": "DolphinDB database integration with schema inspection and query capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "weaviate-mcp-server-weaviate",
+        "label": "Weaviate MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/weaviate/mcp-server-weaviate",
+          "github": "https://github.com/weaviate/mcp-server-weaviate",
+          "description": "An MCP Server to connect to your Weaviate collections as a knowledge base as well as using Weaviate as a chat memory store"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "xgenerationlab-xiyan-mcp-server",
+        "label": "XiyanSQL MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/XGenerationLab/xiyan_mcp_server",
+          "github": "https://github.com/XGenerationLab/xiyan_mcp_server",
+          "description": "An MCP server that supports fetching data from a database using natural language queries, powered by XiyanSQL as the text-to-SQL LLM"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "xing5-mcp-google-sheets",
+        "label": "Google Sheets MCP Server (Xing5)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/xing5/mcp-google-sheets",
+          "github": "https://github.com/xing5/mcp-google-sheets",
+          "description": "A Model Context Protocol server for interacting with Google Sheets. This server provides tools to create, read, update, and manage spreadsheets through the Google Sheets API"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "freema-mcp-gsheets",
+        "label": "Google Sheets MCP Server (Freema)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/freema/mcp-gsheets",
+          "github": "https://github.com/freema/mcp-gsheets",
+          "description": "MCP server for Google Sheets API integration with comprehensive reading, writing, formatting, and sheet management capabilities"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "zhwt-go-mcp-mysql",
+        "label": "MySQL MCP Server (Go)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/Zhwt/go-mcp-mysql",
+          "github": "https://github.com/Zhwt/go-mcp-mysql",
+          "description": "Easy to use, zero dependency MySQL MCP server built with Golang with configurable readonly mode and schema inspection"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "ydb-ydb-mcp",
+        "label": "YDB MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/ydb/ydb-mcp",
+          "github": "https://github.com/ydb/ydb-mcp",
+          "description": "MCP server for interacting with YDB databases"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "zilliztech-mcp-server-milvus",
+        "label": "Milvus MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/zilliztech/mcp-server-milvus",
+          "github": "https://github.com/zilliztech/mcp-server-milvus",
+          "description": "MCP Server for Milvus / Zilliz, making it possible to interact with your database"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "openlink-mcp-server-jdbc",
+        "label": "JDBC MCP Server (OpenLink)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/openlink/mcp-server-jdbc",
+          "github": "https://github.com/openlink/mcp-server-jdbc",
+          "description": "An MCP server for generic Database Management System (DBMS) Connectivity via the Java Database Connectivity (JDBC) protocol"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "yincongcyincong-victoriametrics-mcp-server",
+        "label": "VictoriaMetrics MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/yincongcyincong/VictoriaMetrics-mcp-server",
+          "github": "https://github.com/yincongcyincong/VictoriaMetrics-mcp-server",
+          "description": "An MCP server for interacting with VictoriaMetrics database"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "hydrolix-mcp-hydrolix",
+        "label": "Hydrolix MCP Server",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/hydrolix/mcp-hydrolix",
+          "github": "https://github.com/hydrolix/mcp-hydrolix",
+          "description": "Hydrolix time-series datalake integration providing schema exploration and query capabilities to LLM-based workflows"
+        }
+      }
+    },
+    {
+      "data": {
+        "id": "davewind-mysql-mcp-server",
+        "label": "MySQL MCP Server (DaveWind)",
+        "type": "Service",
+        "properties": {
+          "url": "https://github.com/davewind/mysql-mcp-server",
+          "github": "https://github.com/davewind/mysql-mcp-server",
+          "description": "A user-friendly read-only mysql mcp server for cursor and n8n"
+        }
+      }
+    },
+    {
+        "data": {
+            "id": "Database",
+            "label": "Database",
+            "type": "UseCase"
+        }
+    }
+
+
+        
 
     ],
     "edges": [
+        {
+      "data": {
+        "id": "edge-use-case--aiven-open-mcp-aiven",
+        "source": "aiven-open-mcp-aiven",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--alexanderzuev-supabase-mcp-server",
+        "source": "alexanderzuev-supabase-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--aliyun-alibabacloud-tablestore-mcp-server",
+        "source": "aliyun-alibabacloud-tablestore-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--benborla29-mcp-server-mysql",
+        "source": "benborla29-mcp-server-mysql",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--bytebase-dbhub",
+        "source": "bytebase-dbhub",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--c4pt0r-mcp-server-tidb",
+        "source": "c4pt0r-mcp-server-tidb",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--canner-wren-engine",
+        "source": "canner-wren-engine",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--centralmind-gateway",
+        "source": "centralmind-gateway",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--christianhinge-dicom-mcp",
+        "source": "christianhinge-dicom-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--chroma-core-chroma-mcp",
+        "source": "chroma-core-chroma-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--clickhouse-mcp-clickhouse",
+        "source": "clickhouse-mcp-clickhouse",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--confluentinc-mcp-confluent",
+        "source": "confluentinc-mcp-confluent",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--couchbase-ecosystem-mcp-server-couchbase",
+        "source": "couchbase-ecosystem-mcp-server-couchbase",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--cr7258-elasticsearch-mcp-server",
+        "source": "cr7258-elasticsearch-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--crystaldba-postgres-mcp",
+        "source": "crystaldba-postgres-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--dataring-engineering-mcp-server-trino",
+        "source": "dataring-engineering-mcp-server-trino",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--tuannvm-mcp-trino",
+        "source": "tuannvm-mcp-trino",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--designcomputer-mysql-mcp-server",
+        "source": "designcomputer-mysql-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--wenb1n-dev-mysql-mcp-server-pro",
+        "source": "wenb1n-dev-mysql-mcp-server-pro",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--domdomegg-airtable-mcp-server",
+        "source": "domdomegg-airtable-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--edwinbernadus-nocodb-mcp-server",
+        "source": "edwinbernadus-nocodb-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--ergut-mcp-bigquery-server",
+        "source": "ergut-mcp-bigquery-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--f4ww4z-mcp-mysql-server",
+        "source": "f4ww4z-mcp-mysql-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--fireproof-storage-mcp-database-server",
+        "source": "fireproof-storage-mcp-database-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--freepeak-db-mcp-server",
+        "source": "freepeak-db-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--furey-mongodb-lens",
+        "source": "furey-mongodb-lens",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--gannonh-firebase-mcp",
+        "source": "gannonh-firebase-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--get-convex-convex-backend",
+        "source": "get-convex-convex-backend",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--googleapis-genai-toolbox",
+        "source": "googleapis-genai-toolbox",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--greptimeteam-greptimedb-mcp-server",
+        "source": "greptimeteam-greptimedb-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--hannesrudolph-sqlite-explorer-fastmcp-mcp-server",
+        "source": "hannesrudolph-sqlite-explorer-fastmcp-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--idoru-influxdb-mcp-server",
+        "source": "idoru-influxdb-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--isaacwasserman-mcp-snowflake-server",
+        "source": "isaacwasserman-mcp-snowflake-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--joshuarileydev-supabase-mcp-server",
+        "source": "joshuarileydev-supabase-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--jovezhong-mcp-timeplus",
+        "source": "jovezhong-mcp-timeplus",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--kashiwabyte-vikingdb-mcp-server",
+        "source": "kashiwabyte-vikingdb-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--kiliczsh-mcp-mongo-server",
+        "source": "kiliczsh-mcp-mongo-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--ktanaka101-mcp-server-duckdb",
+        "source": "ktanaka101-mcp-server-duckdb",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--lucashild-mcp-server-bigquery",
+        "source": "lucashild-mcp-server-bigquery",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--quarkiverse-mcp-server-jdbc",
+        "source": "quarkiverse-mcp-server-jdbc",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--jparkerweb-mcp-sqlite",
+        "source": "jparkerweb-mcp-sqlite",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--memgraph-mcp-memgraph",
+        "source": "memgraph-mcp-memgraph",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--modelcontextprotocol-server-postgres",
+        "source": "modelcontextprotocol-server-postgres",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--modelcontextprotocol-server-sqlite",
+        "source": "modelcontextprotocol-server-sqlite",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--neo4j-contrib-mcp-neo4j",
+        "source": "neo4j-contrib-mcp-neo4j",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--neondatabase-mcp-server-neon",
+        "source": "neondatabase-mcp-server-neon",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--niledatabase-nile-mcp-server",
+        "source": "niledatabase-nile-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--openlink-mcp-server-odbc",
+        "source": "openlink-mcp-server-odbc",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--openlink-mcp-server-sqlalchemy",
+        "source": "openlink-mcp-server-sqlalchemy",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--pab1it0-adx-mcp-server",
+        "source": "pab1it0-adx-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--pab1it0-prometheus-mcp-server",
+        "source": "pab1it0-prometheus-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--prisma-prisma",
+        "source": "prisma-prisma",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--qdrant-mcp-server-qdrant",
+        "source": "qdrant-mcp-server-qdrant",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--quantgeekdev-mongo-mcp",
+        "source": "quantgeekdev-mongo-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--rashidazarang-airtable-mcp",
+        "source": "rashidazarang-airtable-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--redis-mcp-redis",
+        "source": "redis-mcp-redis",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--runekaagaard-mcp-alchemy",
+        "source": "runekaagaard-mcp-alchemy",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--sirmews-mcp-pinecone",
+        "source": "sirmews-mcp-pinecone",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--skysqlinc-skysql-mcp",
+        "source": "skysqlinc-skysql-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--supabase-community-supabase-mcp",
+        "source": "supabase-community-supabase-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--theralabs-legion-mcp",
+        "source": "theralabs-legion-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--tradercjz-dolphindb-mcp-server",
+        "source": "tradercjz-dolphindb-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--weaviate-mcp-server-weaviate",
+        "source": "weaviate-mcp-server-weaviate",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--xgenerationlab-xiyan-mcp-server",
+        "source": "xgenerationlab-xiyan-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--xing5-mcp-google-sheets",
+        "source": "xing5-mcp-google-sheets",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--freema-mcp-gsheets",
+        "source": "freema-mcp-gsheets",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--zhwt-go-mcp-mysql",
+        "source": "zhwt-go-mcp-mysql",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--ydb-ydb-mcp",
+        "source": "ydb-ydb-mcp",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--zilliztech-mcp-server-milvus",
+        "source": "zilliztech-mcp-server-milvus",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--openlink-mcp-server-jdbc",
+        "source": "openlink-mcp-server-jdbc",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--yincongcyincong-victoriametrics-mcp-server",
+        "source": "yincongcyincong-victoriametrics-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--hydrolix-mcp-hydrolix",
+        "source": "hydrolix-mcp-hydrolix",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-use-case--davewind-mysql-mcp-server",
+        "source": "davewind-mysql-mcp-server",
+        "target": "Database",
+        "label": "IN_AREA"
+      }
+    },
+        {
+      "data": {
+        "id": "edge-aiven-open-mcp-aiven",
+        "source": "aiven-open-mcp-aiven",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-alexanderzuev-supabase-mcp-server",
+        "source": "alexanderzuev-supabase-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-aliyun-alibabacloud-tablestore-mcp-server",
+        "source": "aliyun-alibabacloud-tablestore-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-benborla29-mcp-server-mysql",
+        "source": "benborla29-mcp-server-mysql",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-bytebase-dbhub",
+        "source": "bytebase-dbhub",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-c4pt0r-mcp-server-tidb",
+        "source": "c4pt0r-mcp-server-tidb",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-canner-wren-engine",
+        "source": "canner-wren-engine",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-centralmind-gateway",
+        "source": "centralmind-gateway",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-christianhinge-dicom-mcp",
+        "source": "christianhinge-dicom-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-chroma-core-chroma-mcp",
+        "source": "chroma-core-chroma-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-clickhouse-mcp-clickhouse",
+        "source": "clickhouse-mcp-clickhouse",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-confluentinc-mcp-confluent",
+        "source": "confluentinc-mcp-confluent",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-couchbase-ecosystem-mcp-server-couchbase",
+        "source": "couchbase-ecosystem-mcp-server-couchbase",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-cr7258-elasticsearch-mcp-server",
+        "source": "cr7258-elasticsearch-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-crystaldba-postgres-mcp",
+        "source": "crystaldba-postgres-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-dataring-engineering-mcp-server-trino",
+        "source": "dataring-engineering-mcp-server-trino",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-tuannvm-mcp-trino",
+        "source": "tuannvm-mcp-trino",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-designcomputer-mysql-mcp-server",
+        "source": "designcomputer-mysql-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-wenb1n-dev-mysql-mcp-server-pro",
+        "source": "wenb1n-dev-mysql-mcp-server-pro",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-domdomegg-airtable-mcp-server",
+        "source": "domdomegg-airtable-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-edwinbernadus-nocodb-mcp-server",
+        "source": "edwinbernadus-nocodb-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-ergut-mcp-bigquery-server",
+        "source": "ergut-mcp-bigquery-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-f4ww4z-mcp-mysql-server",
+        "source": "f4ww4z-mcp-mysql-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-fireproof-storage-mcp-database-server",
+        "source": "fireproof-storage-mcp-database-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-freepeak-db-mcp-server",
+        "source": "freepeak-db-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-furey-mongodb-lens",
+        "source": "furey-mongodb-lens",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-gannonh-firebase-mcp",
+        "source": "gannonh-firebase-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-get-convex-convex-backend",
+        "source": "get-convex-convex-backend",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-googleapis-genai-toolbox",
+        "source": "googleapis-genai-toolbox",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-greptimeteam-greptimedb-mcp-server",
+        "source": "greptimeteam-greptimedb-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-hannesrudolph-sqlite-explorer-fastmcp-mcp-server",
+        "source": "hannesrudolph-sqlite-explorer-fastmcp-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-idoru-influxdb-mcp-server",
+        "source": "idoru-influxdb-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-isaacwasserman-mcp-snowflake-server",
+        "source": "isaacwasserman-mcp-snowflake-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-joshuarileydev-supabase-mcp-server",
+        "source": "joshuarileydev-supabase-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-jovezhong-mcp-timeplus",
+        "source": "jovezhong-mcp-timeplus",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-kashiwabyte-vikingdb-mcp-server",
+        "source": "kashiwabyte-vikingdb-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-kiliczsh-mcp-mongo-server",
+        "source": "kiliczsh-mcp-mongo-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-ktanaka101-mcp-server-duckdb",
+        "source": "ktanaka101-mcp-server-duckdb",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-lucashild-mcp-server-bigquery",
+        "source": "lucashild-mcp-server-bigquery",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-quarkiverse-mcp-server-jdbc",
+        "source": "quarkiverse-mcp-server-jdbc",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-jparkerweb-mcp-sqlite",
+        "source": "jparkerweb-mcp-sqlite",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-memgraph-mcp-memgraph",
+        "source": "memgraph-mcp-memgraph",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-modelcontextprotocol-server-postgres",
+        "source": "modelcontextprotocol-server-postgres",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-modelcontextprotocol-server-sqlite",
+        "source": "modelcontextprotocol-server-sqlite",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-neo4j-contrib-mcp-neo4j",
+        "source": "neo4j-contrib-mcp-neo4j",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-neondatabase-mcp-server-neon",
+        "source": "neondatabase-mcp-server-neon",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-niledatabase-nile-mcp-server",
+        "source": "niledatabase-nile-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-openlink-mcp-server-odbc",
+        "source": "openlink-mcp-server-odbc",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-openlink-mcp-server-sqlalchemy",
+        "source": "openlink-mcp-server-sqlalchemy",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-pab1it0-adx-mcp-server",
+        "source": "pab1it0-adx-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-pab1it0-prometheus-mcp-server",
+        "source": "pab1it0-prometheus-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-prisma-prisma",
+        "source": "prisma-prisma",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-qdrant-mcp-server-qdrant",
+        "source": "qdrant-mcp-server-qdrant",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-quantgeekdev-mongo-mcp",
+        "source": "quantgeekdev-mongo-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-rashidazarang-airtable-mcp",
+        "source": "rashidazarang-airtable-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-redis-mcp-redis",
+        "source": "redis-mcp-redis",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-runekaagaard-mcp-alchemy",
+        "source": "runekaagaard-mcp-alchemy",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-sirmews-mcp-pinecone",
+        "source": "sirmews-mcp-pinecone",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-skysqlinc-skysql-mcp",
+        "source": "skysqlinc-skysql-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-supabase-community-supabase-mcp",
+        "source": "supabase-community-supabase-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-theralabs-legion-mcp",
+        "source": "theralabs-legion-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-tradercjz-dolphindb-mcp-server",
+        "source": "tradercjz-dolphindb-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-weaviate-mcp-server-weaviate",
+        "source": "weaviate-mcp-server-weaviate",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-xgenerationlab-xiyan-mcp-server",
+        "source": "xgenerationlab-xiyan-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-xing5-mcp-google-sheets",
+        "source": "xing5-mcp-google-sheets",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-freema-mcp-gsheets",
+        "source": "freema-mcp-gsheets",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-zhwt-go-mcp-mysql",
+        "source": "zhwt-go-mcp-mysql",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-ydb-ydb-mcp",
+        "source": "ydb-ydb-mcp",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-zilliztech-mcp-server-milvus",
+        "source": "zilliztech-mcp-server-milvus",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-openlink-mcp-server-jdbc",
+        "source": "openlink-mcp-server-jdbc",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-yincongcyincong-victoriametrics-mcp-server",
+        "source": "yincongcyincong-victoriametrics-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-hydrolix-mcp-hydrolix",
+        "source": "hydrolix-mcp-hydrolix",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-davewind-mysql-mcp-server",
+        "source": "davewind-mysql-mcp-server",
+        "target": "MCP",
+        "label": "SERVER"
+      }
+    },
         {
             "data": {
                 "id": "e-Wix-WixStudio",
@@ -4767,7 +6824,7 @@
             "data": {
                 "id": "e-Wix-Base44",
                 "source": "WixCompany",
-                "target": "base44",
+                "target": "Base44Company",
                 "label": "ACQUIRED"
             }
         },
@@ -4776,6 +6833,14 @@
                 "id": "e-agent-protocol-lanchain",
                 "source": "LangChainCompany",
                 "target": "AgentProtocol",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "e-lanchain-agntcy",
+                "source": "LangChainCompany",
+                "target": "Agntcy",
                 "label": "DEVELOPED"
             }
         },
