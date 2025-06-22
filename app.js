@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(loadingDiv);
   }
 
-
   loadGraphData('data.json');
-
 
   function loadGraphData(jsonFile) {
     // Show loading indicator
@@ -71,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  
   function initializeGraph(graphData) {
     // Initialize Cytoscape
     window.cy = cytoscape({
@@ -220,23 +217,26 @@ document.addEventListener('DOMContentLoaded', function() {
         animate: true,
         randomize: true,
         nodeDimensionsIncludeLabels: true,
-
-        // Separate the type nodes from connected nodes
-      nodeRepulsion: 8000,
-      idealEdgeLength: 100,
-      edgeElasticity: 0.45,
-      nestingFactor: 0.1,
-      gravity: 0.25,
-      numIter: 2500,
-      tile: true,
-      tilingPaddingVertical: 10,
-      tilingPaddingHorizontal: 10,
-      gravityRangeCompound: 1.5,
-      gravityCompound: 1.0,
-      gravityRange: 3.8,
-      initialEnergyOnIncremental: 0.5
+        nodeRepulsion: 8000,
+        idealEdgeLength: 100,
+        edgeElasticity: 0.45,
+        nestingFactor: 0.1,
+        gravity: 0.25,
+        numIter: 2500,
+        tile: true,
+        tilingPaddingVertical: 10,
+        tilingPaddingHorizontal: 10,
+        gravityRangeCompound: 1.5,
+        gravityCompound: 1.0,
+        gravityRange: 3.8,
+        initialEnergyOnIncremental: 0.5
       }
     });
+
+    // Initialize global variables after cy is ready
+    window.hiddenNodes = cy.collection();
+    window.currentTypeFilter = [];
+    window.reportData = null;
     
     // Styles based on types 
     const nodeStyles = {
@@ -259,9 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventHandlers();
   }
 
-
   function setupEventHandlers() {
-
     // Function to set active filter button
     function setActiveFilterButton(buttonId) {
       // Remove active class from all filter buttons
@@ -323,13 +321,79 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearSearchButton = document.getElementById('clearSearch');
     if (clearSearchButton) {
       clearSearchButton.addEventListener('click', () => {
+        // Restore any hidden nodes before clearing
+        if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+          cy.add(window.hiddenNodes);
+          window.hiddenNodes = cy.collection(); // Clear the hidden nodes collection
+        }
+        
         const searchElement = document.getElementById('search');
         if (searchElement) {
           searchElement.value = '';
         }
+        
+        // Clear all styles
         cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+        
+        // Reset hide button
+        resetHideButton();
+        
+        // Fit view
+        cy.fit();
+        
+        showSuccessNotification('Search cleared.');
       });
     }
+
+    // NEW EVENT HANDLERS FOR NEW FEATURES
+    const hideFadedButton = document.getElementById('hideFadedNodes');
+    if (hideFadedButton) {
+      hideFadedButton.addEventListener('click', hideFadedNodes);
+    }
+
+    const applyTypeFilterButton = document.getElementById('applyTypeFilter');
+    if (applyTypeFilterButton) {
+      applyTypeFilterButton.addEventListener('click', applyMultiTypeFilter);
+    }
+
+    const clearTypeFilterButton = document.getElementById('clearTypeFilter');
+    if (clearTypeFilterButton) {
+      clearTypeFilterButton.addEventListener('click', clearMultiTypeFilter);
+    }
+
+    const generateReportButton = document.getElementById('generateReport');
+    if (generateReportButton) {
+      generateReportButton.addEventListener('click', generateUseCaseReport);
+    }
+
+    // Report modal event handlers
+    const closeReportModalButton = document.getElementById('close-report-modal');
+    if (closeReportModalButton) {
+      closeReportModalButton.addEventListener('click', () => {
+        const modal = document.getElementById('report-modal');
+        if (modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+
+    const exportJSONButton = document.getElementById('exportJSON');
+    if (exportJSONButton) {
+      exportJSONButton.addEventListener('click', () => exportReport('json'));
+    }
+
+    const exportCSVButton = document.getElementById('exportCSV');
+    if (exportCSVButton) {
+      exportCSVButton.addEventListener('click', () => exportReport('csv'));
+    }
+
+    // Close report modal when clicking outside
+    window.addEventListener('click', (event) => {
+      const reportModal = document.getElementById('report-modal');
+      if (event.target === reportModal) {
+        reportModal.style.display = 'none';
+      }
+    });
 
     const backButton = document.getElementById('back-to-list');
     if (backButton) {
@@ -339,23 +403,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const openSubgraphViewButton = document.getElementById('openSubgraphView');
     if (openSubgraphViewButton) {
       openSubgraphViewButton.addEventListener('click', () => {
-        // If no type is filtered, show a notification
         if (!currentFilteredType) {
           showNotification('Please select a node type first by clicking one of the filter buttons.', 'warning');
           return;
         }
-        
         openSubgraphModal(currentFilteredType);
       });
     }
 
-    // Event listener for notification close button
     const notificationClose = document.getElementById('notification-close');
     if (notificationClose) {
       notificationClose.addEventListener('click', hideNotification);
     }
   
-    // Event listener for closing the modal
     const closeModalButton = document.querySelector('.close-modal');
     if (closeModalButton) {
       closeModalButton.addEventListener('click', () => {
@@ -366,7 +426,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Close the modal when clicking outside of it
     window.addEventListener('click', (event) => {
       const modal = document.getElementById('subgraph-modal');
       if (event.target === modal) {
@@ -431,10 +490,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterAllButton = document.getElementById('filterAll');
     if (filterAllButton) {
       filterAllButton.addEventListener('click', () => {
+        // Restore any hidden nodes before showing all
+        if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+          cy.add(window.hiddenNodes);
+          window.hiddenNodes = cy.collection(); // Clear the hidden nodes collection
+        }
+        
         currentFilteredType = null;
         cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+        
+        // Reset hide button
+        resetHideButton();
+        
         cy.fit();
         setActiveFilterButton(null); // Remove active state from all buttons
+        
+        showSuccessNotification('All filters cleared.');
       });
     }
 
@@ -477,13 +548,619 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-
   // Global variables to track state
   let currentFilteredType = null;
   let currentDetailNode = null;
   let allTypeNodes = null;
 
-  // Function to filter nodes by type and display modal
+  // HIDE FADED NODES FUNCTIONALITY
+  function hideFadedNodes() {
+    if (!cy) {
+      showErrorNotification('Graph not initialized yet.');
+      return;
+    }
+
+    const fadedNodes = cy.nodes('.faded');
+    const fadedEdges = cy.edges('.faded');
+    
+    if (fadedNodes.length === 0 && fadedEdges.length === 0) {
+      showNotification('No faded nodes to hide. Try performing a search or filter first.', 'info');
+      return;
+    }
+
+    // Store hidden nodes for potential restoration
+    const newHiddenElements = fadedNodes.union(fadedEdges);
+    window.hiddenNodes = window.hiddenNodes.union(newHiddenElements);
+    
+    // Actually remove the faded elements from the graph
+    fadedNodes.remove();
+    fadedEdges.remove();
+    
+    // Update button to show restore option
+    const hideFadedButton = document.getElementById('hideFadedNodes');
+    if (hideFadedButton) {
+      hideFadedButton.textContent = `Show Hidden Elements (${newHiddenElements.length})`;
+      hideFadedButton.style.backgroundColor = '#27ae60';
+      hideFadedButton.style.color = 'white';
+      hideFadedButton.disabled = false;
+      
+      // Replace event listener
+      hideFadedButton.replaceWith(hideFadedButton.cloneNode(true));
+      const newButton = document.getElementById('hideFadedNodes');
+      newButton.addEventListener('click', showHiddenNodes);
+    }
+    
+    showSuccessNotification(`Hidden ${fadedNodes.length} nodes and ${fadedEdges.length} edges.`);
+    
+    // Fit view to remaining visible elements
+    const visibleElements = cy.elements();
+    if (visibleElements.length > 0) {
+      cy.fit(visibleElements, 50);
+    }
+  }
+
+  function showHiddenNodes() {
+    if (!cy) {
+      showErrorNotification('Graph not initialized yet.');
+      return;
+    }
+
+    if (!window.hiddenNodes || window.hiddenNodes.length === 0) {
+      showNotification('No hidden nodes to restore.', 'info');
+      return;
+    }
+
+    // Restore all hidden elements back to the graph
+    cy.add(window.hiddenNodes);
+    
+    const hiddenCount = window.hiddenNodes.length;
+    window.hiddenNodes = cy.collection(); // Clear the collection
+    
+    // Reset button
+    const hideFadedButton = document.getElementById('hideFadedNodes');
+    if (hideFadedButton) {
+      hideFadedButton.textContent = 'Hide Faded Elements';
+      hideFadedButton.style.backgroundColor = '#e74c3c';
+      hideFadedButton.style.color = 'white';
+      hideFadedButton.disabled = true;
+      
+      // Replace event listener
+      hideFadedButton.replaceWith(hideFadedButton.cloneNode(true));
+      const newButton = document.getElementById('hideFadedNodes');
+      newButton.addEventListener('click', hideFadedNodes);
+    }
+    
+    showSuccessNotification(`Restored ${hiddenCount} hidden elements.`);
+    
+    // Fit view to all elements
+    cy.fit();
+  }
+
+  function updateHideButtonForSearch() {
+    const hideFadedButton = document.getElementById('hideFadedNodes');
+    if (hideFadedButton && cy) {
+      const fadedElements = cy.elements('.faded');
+      const hiddenCount = window.hiddenNodes ? window.hiddenNodes.length : 0;
+      
+      if (fadedElements.length > 0) {
+        let buttonText = `Hide Faded Elements (${fadedElements.length})`;
+        if (hiddenCount > 0) {
+          buttonText += ` | ${hiddenCount} Hidden`;
+        }
+        hideFadedButton.textContent = buttonText;
+        hideFadedButton.style.backgroundColor = '#e74c3c';
+        hideFadedButton.style.color = 'white';
+        hideFadedButton.disabled = false;
+        
+        // Ensure correct event listener
+        hideFadedButton.replaceWith(hideFadedButton.cloneNode(true));
+        const newButton = document.getElementById('hideFadedNodes');
+        newButton.addEventListener('click', hideFadedNodes);
+        
+      } else if (hiddenCount > 0) {
+        hideFadedButton.textContent = `Show Hidden Nodes (${hiddenCount})`;
+        hideFadedButton.style.backgroundColor = '#27ae60';
+        hideFadedButton.style.color = 'white';
+        hideFadedButton.disabled = false;
+        
+        // Ensure correct event listener
+        hideFadedButton.replaceWith(hideFadedButton.cloneNode(true));
+        const newButton = document.getElementById('hideFadedNodes');
+        newButton.addEventListener('click', showHiddenNodes);
+        
+      } else {
+        hideFadedButton.textContent = 'Hide Faded Nodes';
+        hideFadedButton.style.backgroundColor = '#e6e6e6';
+        hideFadedButton.style.color = '#000';
+        hideFadedButton.disabled = true;
+      }
+    }
+  }
+
+  function resetHideButton() {
+    const hideFadedButton = document.getElementById('hideFadedNodes');
+    if (hideFadedButton) {
+      hideFadedButton.textContent = 'Hide Faded Nodes';
+      hideFadedButton.style.backgroundColor = '#e6e6e6';
+      hideFadedButton.style.color = '#000';
+      hideFadedButton.disabled = true;
+      
+      // Reset event listener
+      hideFadedButton.replaceWith(hideFadedButton.cloneNode(true));
+      const newButton = document.getElementById('hideFadedNodes');
+      newButton.addEventListener('click', hideFadedNodes);
+    }
+  }
+
+  // SEARCH FUNCTIONALITY
+  function performSearch() {
+    if (!cy) return;
+    
+    const searchElement = document.getElementById('search');
+    const includeConnectedElement = document.getElementById('includeConnected');
+    const includeReachableElement = document.getElementById('includeReachable');
+    const maxDepthElement = document.getElementById('maxDepth');
+    
+    if (!searchElement) return;
+    
+    const query = searchElement.value.toLowerCase();
+    const includeConnected = includeConnectedElement ? includeConnectedElement.checked : true;
+    const includeReachable = includeReachableElement ? includeReachableElement.checked : true;
+    const maxDepth = maxDepthElement ? parseInt(maxDepthElement.value) : 3;
+    
+    // IMPORTANT: Restore any hidden nodes before performing new search
+    if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+      cy.add(window.hiddenNodes);
+      window.hiddenNodes = cy.collection(); // Clear the hidden nodes collection
+    }
+    
+    // Reset all styles first
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    
+    // Reset hide button if no search query
+    if (query === '') {
+      resetHideButton();
+      return;
+    }
+    
+    // Find matching nodes (now searching in the complete graph)
+    const matchingNodes = cy.nodes().filter(node => 
+      node.data('label') && node.data('label').toLowerCase().includes(query)
+    );
+    
+    if (matchingNodes.length === 0) {
+      // No matches found - fade everything
+      cy.elements().addClass('faded');
+      updateHideButtonForSearch();
+      showNotification(`No nodes found matching "${query}".`, 'warning');
+      return;
+    }
+
+    // Highlight matching nodes
+    matchingNodes.addClass('highlighted');
+    
+    // Collections to track different node categories
+    let connectedNodes = cy.collection();
+    let connectedEdges = cy.collection();
+    let reachableNodes = cy.collection();
+    let reachableEdges = cy.collection();
+    let allHighlightedElements = matchingNodes.clone();
+    
+    // Get directly connected elements if option is checked
+    if (includeConnected) {
+      connectedEdges = matchingNodes.connectedEdges();
+      connectedEdges.addClass('connected-edge');
+      
+      connectedNodes = connectedEdges.connectedNodes().filter(node => 
+        !matchingNodes.contains(node)
+      );
+      connectedNodes.addClass('connected');
+      
+      allHighlightedElements = allHighlightedElements.union(connectedNodes).union(connectedEdges);
+    }
+    
+    // Get reachable nodes if option is checked
+    if (includeReachable) {
+      let startNodes = matchingNodes.clone();
+      if (includeConnected) {
+        startNodes = startNodes.union(connectedNodes);
+      }
+      
+      let currentFrontier = startNodes;
+      let visitedNodes = new Set(startNodes.map(node => node.id()));
+      let visitedEdges = new Set(connectedEdges.map(edge => edge.id()));
+      
+      for (let depth = 1; depth <= maxDepth; depth++) {
+        let nextFrontier = cy.collection();
+        
+        currentFrontier.forEach(node => {
+          const outEdges = node.outgoers('edge').filter(edge => 
+            !visitedEdges.has(edge.id())
+          );
+          
+          outEdges.forEach(edge => {
+            visitedEdges.add(edge.id());
+            reachableEdges = reachableEdges.union(edge);
+            
+            const targetNode = edge.target();
+            if (!visitedNodes.has(targetNode.id())) {
+              visitedNodes.add(targetNode.id());
+              reachableNodes = reachableNodes.union(targetNode);
+              nextFrontier = nextFrontier.union(targetNode);
+            }
+          });
+        });
+        
+        currentFrontier = nextFrontier;
+        
+        if (currentFrontier.empty()) {
+          break;
+        }
+      }
+      
+      reachableNodes.addClass('reachable');
+      reachableEdges.addClass('reachable-edge');
+      
+      allHighlightedElements = allHighlightedElements.union(reachableNodes).union(reachableEdges);
+    }
+    
+    // Fade all other elements
+    const fadedElements = cy.elements().difference(allHighlightedElements);
+    fadedElements.addClass('faded');
+    
+    // Update hide button state
+    updateHideButtonForSearch();
+    
+    // Fit view to highlighted elements
+    if (allHighlightedElements.length > 0) {
+      cy.fit(allHighlightedElements, 50);
+    }
+    
+    // Show search results summary
+    const fadedCount = fadedElements.length;
+    const highlightedCount = allHighlightedElements.length;
+    showNotification(`Found ${matchingNodes.length} matching nodes. ${highlightedCount} elements highlighted, ${fadedCount} elements faded.`, 'success');
+  }
+
+  // FILTER BY TYPE FUNCTIONALITY
+  function filterByType(types) {
+    if (!cy) return;
+    
+    // Restore any hidden nodes before applying new filter
+    if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+      cy.add(window.hiddenNodes);
+      window.hiddenNodes = cy.collection(); // Clear the hidden nodes collection
+    }
+    
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    
+    // Filter nodes by type
+    const filteredNodes = cy.nodes().filter(node => types.includes(node.data('type')));
+    
+    if (filteredNodes.length === 0) {
+      cy.elements().addClass('faded');
+      updateHideButtonForSearch();
+      return;
+    }
+    
+    // Highlight filtered nodes
+    filteredNodes.addClass('highlighted');
+    
+    // Get connected edges and nodes
+    const connectedEdges = filteredNodes.connectedEdges();
+    connectedEdges.addClass('connected-edge');
+    
+    const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+      !filteredNodes.contains(node)
+    );
+    connectedNodes.addClass('connected');
+    
+    // Fade out all other elements
+    cy.elements().difference(filteredNodes.union(connectedEdges).union(connectedNodes)).addClass('faded');
+    
+    // Update hide button state
+    updateHideButtonForSearch();
+    
+    // Fit view to highlighted elements
+    cy.fit(filteredNodes.union(connectedEdges).union(connectedNodes), 50);
+  }
+
+  // MULTI-TYPE FILTER FUNCTIONALITY
+  function applyMultiTypeFilter() {
+    if (!cy) {
+      showErrorNotification('Graph not initialized yet.');
+      return;
+    }
+
+    const selectElement = document.getElementById('nodeTypeSelect');
+    if (!selectElement) {
+      showErrorNotification('Type selector not found.');
+      return;
+    }
+
+    const selectedTypes = Array.from(selectElement.selectedOptions).map(option => option.value);
+    
+    if (selectedTypes.length === 0) {
+      showWarningNotification('Please select at least one node type to filter.');
+      return;
+    }
+
+    // Restore any hidden nodes before applying new filter
+    if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+      cy.add(window.hiddenNodes);
+      window.hiddenNodes = cy.collection();
+    }
+
+    window.currentTypeFilter = selectedTypes;
+    
+    // Clear existing styles
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    
+    // Filter nodes by selected types
+    const filteredNodes = cy.nodes().filter(node => selectedTypes.includes(node.data('type')));
+    
+    if (filteredNodes.length === 0) {
+      cy.elements().addClass('faded');
+      updateHideButtonForSearch();
+      showWarningNotification('No nodes found for the selected types.');
+      return;
+    }
+
+    // Highlight filtered nodes
+    filteredNodes.addClass('highlighted');
+    
+    // Get connected edges and nodes
+    const connectedEdges = filteredNodes.connectedEdges();
+    connectedEdges.addClass('connected-edge');
+    
+    const connectedNodes = connectedEdges.connectedNodes().filter(node => 
+      !filteredNodes.contains(node)
+    );
+    connectedNodes.addClass('connected');
+    
+    // Fade out all other elements
+    cy.elements().difference(filteredNodes.union(connectedEdges).union(connectedNodes)).addClass('faded');
+    
+    // Update hide button state
+    updateHideButtonForSearch();
+    
+    // Fit view to highlighted elements
+    cy.fit(filteredNodes.union(connectedEdges).union(connectedNodes), 50);
+    
+    showSuccessNotification(`Filtered to ${selectedTypes.length} node type(s): ${selectedTypes.join(', ')}`);
+  }
+
+  function clearMultiTypeFilter() {
+    if (!cy) {
+      showErrorNotification('Graph not initialized yet.');
+      return;
+    }
+
+    // Restore any hidden nodes before clearing filter
+    if (window.hiddenNodes && window.hiddenNodes.length > 0) {
+      cy.add(window.hiddenNodes);
+      window.hiddenNodes = cy.collection();
+    }
+
+    const selectElement = document.getElementById('nodeTypeSelect');
+    if (selectElement) {
+      selectElement.selectedIndex = -1; // Clear all selections
+    }
+
+    window.currentTypeFilter = [];
+    
+    // Clear all styles
+    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    
+    // Reset hide button
+    resetHideButton();
+    
+    // Fit view to all elements
+    cy.fit();
+    
+    showSuccessNotification('Type filter cleared.');
+  }
+
+  // USE CASE REPORT FUNCTIONALITY
+  function generateUseCaseReport() {
+    if (!cy) return;
+
+    // Get all use cases
+    const useCases = cy.nodes().filter(node => node.data('type') === 'UseCase');
+    
+    if (useCases.length === 0) {
+      showWarningNotification('No use cases found in the graph.');
+      return;
+    }
+
+    const reportData = {};
+    
+    // For each use case, find products and services in its area
+    useCases.forEach(useCase => {
+      const useCaseLabel = useCase.data('label');
+      const useCaseId = useCase.id();
+      
+      // Find all edges with "IN_AREA" relationship from this use case
+      const inAreaEdges = useCase.connectedEdges().filter(edge => {
+        const edgeLabel = edge.data('label');
+        return edgeLabel && edgeLabel.toLowerCase().includes('in_area');
+      });
+      
+      // Get connected products and services
+      const connectedNodes = inAreaEdges.connectedNodes().filter(node => {
+        const nodeType = node.data('type');
+        return (nodeType === 'Product' || nodeType === 'Service') && node.id() !== useCaseId;
+      });
+      
+      if (connectedNodes.length > 0) {
+        reportData[useCaseLabel] = {
+          useCase: {
+            id: useCaseId,
+            label: useCaseLabel,
+            properties: useCase.data('properties') || {}
+          },
+          items: []
+        };
+        
+        connectedNodes.forEach(node => {
+          reportData[useCaseLabel].items.push({
+            id: node.id(),
+            label: node.data('label'),
+            type: node.data('type'),
+            properties: node.data('properties') || {}
+          });
+        });
+        
+        // Sort items by type, then by label
+        reportData[useCaseLabel].items.sort((a, b) => {
+          if (a.type !== b.type) {
+            return a.type.localeCompare(b.type);
+          }
+          return a.label.localeCompare(b.label);
+        });
+      }
+    });
+    
+    if (Object.keys(reportData).length === 0) {
+      showWarningNotification('No products or services found with IN_AREA relationships to use cases.');
+      return;
+    }
+
+    // Store report data globally for export
+    window.reportData = reportData;
+    
+    // Generate and display the report
+    displayUseCaseReport(reportData);
+  }
+
+  function displayUseCaseReport(data) {
+    const modal = document.getElementById('report-modal');
+    const reportContent = document.getElementById('report-content');
+    
+    if (!modal || !reportContent) return;
+
+    let html = '';
+    
+    // Sort use cases alphabetically
+    const sortedUseCases = Object.keys(data).sort();
+    
+    sortedUseCases.forEach(useCaseLabel => {
+      const useCaseData = data[useCaseLabel];
+      const itemCount = useCaseData.items.length;
+      
+      html += `
+        <div class="use-case-group">
+          <div class="use-case-title">
+            ${useCaseLabel} 
+            <span style="font-size: 14px; color: #666; font-weight: normal;">
+              (${itemCount} item${itemCount !== 1 ? 's' : ''})
+            </span>
+          </div>
+          <div class="items-grid">
+      `;
+      
+      useCaseData.items.forEach(item => {
+        html += `
+          <div class="item-card">
+            <div class="item-title">${item.label}</div>
+            <div class="item-type">${item.type}</div>
+            <div class="item-properties">
+        `;
+        
+        // Add properties if they exist
+        if (Object.keys(item.properties).length > 0) {
+          for (const [key, value] of Object.entries(item.properties)) {
+            if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
+              html += `<div><strong>${key}:</strong> <a href="${value}" target="_blank" rel="noopener noreferrer">${value}</a></div>`;
+            } else {
+              html += `<div><strong>${key}:</strong> ${value}</div>`;
+            }
+          }
+        } else {
+          html += '<div style="color: #999; font-style: italic;">No additional properties</div>';
+        }
+        
+        html += `
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `
+          </div>
+        </div>
+      `;
+    });
+    
+    reportContent.innerHTML = html;
+    modal.style.display = 'block';
+    
+    showSuccessNotification(`Generated report for ${sortedUseCases.length} use case${sortedUseCases.length !== 1 ? 's' : ''}.`);
+  }
+
+  function exportReport(format) {
+    if (!window.reportData) {
+      showErrorNotification('No report data available to export.');
+      return;
+    }
+
+    const data = window.reportData;
+    
+    if (format === 'json') {
+      exportAsJSON(data);
+    } else if (format === 'csv') {
+      exportAsCSV(data);
+    }
+  }
+
+  function exportAsJSON(data) {
+    const jsonString = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `use-case-report-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showSuccessNotification('Report exported as JSON.');
+  }
+
+  function exportAsCSV(data) {
+    let csvContent = 'Use Case,Item Name,Item Type,Property Key,Property Value\n';
+    
+    Object.keys(data).forEach(useCaseLabel => {
+      const useCaseData = data[useCaseLabel];
+      
+      useCaseData.items.forEach(item => {
+        if (Object.keys(item.properties).length > 0) {
+          Object.entries(item.properties).forEach(([key, value]) => {
+            csvContent += `"${useCaseLabel}","${item.label}","${item.type}","${key}","${value}"\n`;
+          });
+        } else {
+          csvContent += `"${useCaseLabel}","${item.label}","${item.type}","",""\n`;
+        }
+      });
+    });
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `use-case-report-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showSuccessNotification('Report exported as CSV.');
+  }
+
+  // SUBGRAPH MODAL FUNCTIONALITY
   function openSubgraphModal(nodeType) {
     if (!cy) return;
     
@@ -530,8 +1207,6 @@ document.addEventListener('DOMContentLoaded', function() {
     populateTypeNodesTable(typeNodes);
   }
 
-
-  // Function to initialize the subgraph visualization
   function initializeSubgraph(typeNodes, detailNode = null, connectedNodes = null, connectedEdges = null) {
     // If there's an existing subgraph, destroy it
     if (window.subgraphCy) {
@@ -544,7 +1219,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create elements for the subgraph
     const elements = [];
-    
     
     // Add the type nodes
     typeNodes.forEach(node => {
@@ -604,13 +1278,10 @@ document.addEventListener('DOMContentLoaded', function() {
         nestingFactor: 0.1,
         gravity: 0.25,
         numIter: 2500,
-      // Use these settings to position the detail node in the center
-      // and arrange connected nodes around it
-      initialEnergyOnIncremental: 0.5,
-      ready: function() {
-        // This function is called when the layout is ready
-        // We can use it to ensure the detail node is positioned well
-      }
+        initialEnergyOnIncremental: 0.5,
+        ready: function() {
+          // This function is called when the layout is ready
+        }
       };
     } else {
       // List view - use a grid layout for better visibility
@@ -720,7 +1391,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       layout: layoutOptions,
-      
     });
     
     // Apply node styles based on type
@@ -779,8 +1449,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
   }
 
-
-  // Function to highlight connections for a node
   function populateTypeNodesTable(typeNodes) {
     const tableBody = document.getElementById('connected-nodes-body');
     const tableTitle = document.getElementById('table-title');
@@ -836,8 +1504,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-
-  // Function to add a toggle graph button
   function addToggleGraphButton() {
     const tableBody = document.getElementById('connected-nodes-body');
     if (!tableBody) return;
@@ -894,16 +1560,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-
-  // Function to toggle graph view
   function toggleGraphView(event) {
     // Prevent default behavior and stop propagation
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
-    
-    console.log('Toggle graph view called');
     
     const graphView = document.getElementById('graph-view');
     const modalBody = document.querySelector('.modal-body');
@@ -914,24 +1576,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     const isGraphVisible = graphView.style.display !== 'none';
-    console.log('Graph is currently visible:', isGraphVisible);
     
     if (isGraphVisible) {
       // Hide graph
-      console.log('Hiding graph');
       graphView.style.display = 'none';
       modalBody.classList.add('table-only');
       modalBody.classList.remove('split-view');
     } else {
       // Show graph
-      console.log('Showing graph');
       graphView.style.display = 'block';
       modalBody.classList.remove('table-only');
       modalBody.classList.add('split-view');
       
       // If we have a detail node but haven't initialized the graph yet
       if (currentDetailNode && (!window.subgraphCy || window.subgraphCy.elements().length === 0)) {
-        console.log('Initializing subgraph for detail node:', currentDetailNode.id());
         const connectedEdges = currentDetailNode.connectedEdges();
         const connectedNodes = connectedEdges.connectedNodes().filter(node => 
           node.id() !== currentDetailNode.id()
@@ -948,19 +1606,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the toggle button directly
     const toggleBtn = document.getElementById('toggle-graph-btn');
     if (toggleBtn) {
-      console.log('Updating toggle button');
       // Update button class and text
       toggleBtn.className = `toggle-graph-btn ${!isGraphVisible ? 'hide-graph-btn' : 'show-graph-btn'}`;
       toggleBtn.textContent = !isGraphVisible ? 'Hide Graph View' : 'Show Graph View';
-    } else {
-      console.error('Toggle button not found');
     }
     
     return false; // Prevent default
   }
 
-
-  // Update showNodeDetail function to use the toggle button
   function showNodeDetail(nodeId) {
     if (!cy) return;
     
@@ -1017,7 +1670,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNodeDetailsTable(detailNode);
     
     // Ensure the toggle button is properly initialized with the correct state
-    // and event listener after the table has been updated
     setTimeout(() => {
       const toggleBtn = document.getElementById('toggle-graph-btn');
       if (toggleBtn) {
@@ -1037,170 +1689,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 0);
   }
 
-
-  document.addEventListener('click', function(event) {
-    // Check if the clicked element is the toggle graph button
-    if (event.target && event.target.id === 'toggle-graph-btn') {
-      console.log('Toggle button clicked via delegation');
-      toggleGraphView(event);
-    }
-  });
-
-
-  // Update backToListView to maintain the toggle button
-  function backToListView() {
-    // Reset current detail node
-    currentDetailNode = null;
-    
-    // Hide back button
-    const backButton = document.getElementById('back-to-list');
-    if (backButton) {
-      backButton.style.display = 'none';
-    }
-    
-    // Switch to table-only view
-    const modalBody = document.querySelector('.modal-body');
-    if (modalBody) {
-      modalBody.classList.add('table-only');
-      modalBody.classList.remove('split-view');
-    }
-    
-    // Hide graph view
-    const graphView = document.getElementById('graph-view');
-    if (graphView) {
-      graphView.style.display = 'none';
-    }
-    
-    // Repopulate the table with all nodes of the selected type
-    populateTypeNodesTable(allTypeNodes);
-    
-    // The toggle button will be added by populateTypeNodesTable
-  }
-
-
-  // Function to populate the table with connections for a specific node
-  function populateConnectionsTable(detailNode, connectedNodes, connectedEdges) {
-    const tableBody = document.getElementById('connected-nodes-body');
-    const tableHeader = document.getElementById('table-header');
-    
-    if (!tableBody || !tableHeader) return;
-    
-    // Update table header
-    tableHeader.innerHTML = `
-      <tr>
-        <th>Connected Node</th>
-        <th>Type</th>
-        <th>Relationship</th>
-      </tr>
-    `;
-    
-    // Clear the table
-    tableBody.innerHTML = '';
-    
-    // Add the toggle graph button first
-    addToggleGraphButton();
-    
-    // Add a back to details button
-    const backRow = document.createElement('tr');
-    backRow.innerHTML = `
-      <td colspan="3" style="text-align: center;">
-        <button id="back-to-details" class="back-to-details-btn">Back to Node Details</button>
-      </td>
-    `;
-    tableBody.appendChild(backRow);
-    
-    // Add event listener to the back button
-    setTimeout(() => {
-      const backBtn = document.getElementById('back-to-details');
-      if (backBtn) {
-        backBtn.addEventListener('click', () => {
-          updateNodeDetailsTable(detailNode);
-        });
-      }
-    }, 0);
-    
-    // Group connected nodes by type
-    const nodesByType = {};
-    connectedNodes.forEach(node => {
-      const type = node.data('type');
-      if (!nodesByType[type]) {
-        nodesByType[type] = [];
-      }
-      nodesByType[type].push(node);
-    });
-    
-    // If no connections, show a message
-    if (Object.keys(nodesByType).length === 0) {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td colspan="3" style="text-align: center; padding: 20px;">No connections found</td>
-      `;
-      tableBody.appendChild(row);
-      return;
-    }
-    
-    // Add rows grouped by type
-    Object.keys(nodesByType).sort().forEach(type => {
-      // Add type header
-      const headerRow = document.createElement('tr');
-      headerRow.innerHTML = `
-        <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">${type} (${nodesByType[type].length})</td>
-      `;
-      tableBody.appendChild(headerRow);
-      
-      // Sort nodes by label
-      const sortedNodes = nodesByType[type].sort((a, b) => {
-        const labelA = a.data('label') || '';
-        const labelB = b.data('label') || '';
-        return labelA.localeCompare(labelB);
-      });
-      
-      // Add nodes of this type
-      sortedNodes.forEach(node => {
-        // Find the edge between these nodes
-        const edge = connectedEdges.filter(e => 
-          (e.source().id() === detailNode.id() && e.target().id() === node.id()) ||
-          (e.target().id() === detailNode.id() && e.source().id() === node.id())
-        );
-        
-        // Determine relationship direction
-        let relationship = edge.data('label') || 'connected to';
-        if (edge.source().id() === detailNode.id()) {
-          relationship += ' &rarr;'; // Outgoing
-        } else {
-          relationship += ' &larr;'; // Incoming
-        }
-        
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${node.data('label')}</td>
-          <td>${node.data('type')}</td>
-          <td>${relationship}</td>
-        `;
-        
-        // Add click event to highlight this node in the graph and show its details
-        row.addEventListener('click', () => {
-          highlightConnections(node);
-        });
-        
-        tableBody.appendChild(row);
-      });
-    });
-  }
-
-
-  // Function to highlight connections in the subgraph
   function highlightConnections(node) {
     if (!window.subgraphCy) return;
     
     // Reset all styles
     window.subgraphCy.elements().removeClass('highlighted connected-edge');
     
+    // Find the node in the subgraph
+    const subgraphNode = window.subgraphCy.getElementById(node.id());
+    if (subgraphNode.length === 0) return;
+    
     // Highlight the selected node
-    node.addClass('highlighted');
+    subgraphNode.addClass('highlighted');
     
     // Highlight connected edges and nodes
-    const connectedEdges = node.connectedEdges();
+    const connectedEdges = subgraphNode.connectedEdges();
     connectedEdges.addClass('connected-edge');
     
     const connectedNodes = connectedEdges.connectedNodes().filter(n => n.id() !== node.id());
@@ -1210,8 +1713,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNodeDetailsTable(node);
   }
 
-
-  // Function to update the table with node details
   function updateNodeDetailsTable(node) {
     const tableBody = document.getElementById('connected-nodes-body');
     if (!tableBody) return;
@@ -1234,7 +1735,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add the toggle graph button with the correct state
     const graphView = document.getElementById('graph-view');
     const isGraphVisible = graphView && graphView.style.display !== 'none';
-  
+
     const buttonRow = document.createElement('tr');
     buttonRow.className = 'toggle-graph-btn-row';
     buttonRow.innerHTML = `
@@ -1348,7 +1849,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tableBody.appendChild(summaryRow);
       }
       
-      // Add a button to view all connections
+      // Add a button to view all connections - THIS WAS MISSING!
       if (connectedNodes.length > 0) {
         const viewAllRow = document.createElement('tr');
         viewAllRow.innerHTML = `
@@ -1371,16 +1872,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Ensure the toggle button has the event listener
-  setTimeout(() => {
-    const toggleBtn = document.getElementById('toggle-graph-btn');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', toggleGraphView);
-    }
-  }, 0);
+    setTimeout(() => {
+      const toggleBtn = document.getElementById('toggle-graph-btn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleGraphView);
+      }
+    }, 0);
   }
 
 
-  // Function to go back to the list view
   function backToListView() {
     // Reset current detail node
     currentDetailNode = null;
@@ -1391,239 +1891,213 @@ document.addEventListener('DOMContentLoaded', function() {
       backButton.style.display = 'none';
     }
     
-    // Reinitialize subgraph with just the type nodes
-    initializeSubgraph(allTypeNodes);
+    // Switch to table-only view
+    const modalBody = document.querySelector('.modal-body');
+    if (modalBody) {
+      modalBody.classList.add('table-only');
+      modalBody.classList.remove('split-view');
+    }
+    
+    // Hide graph view
+    const graphView = document.getElementById('graph-view');
+    if (graphView) {
+      graphView.style.display = 'none';
+    }
     
     // Repopulate the table with all nodes of the selected type
     populateTypeNodesTable(allTypeNodes);
   }
 
+  // Event delegation for toggle graph button
+  document.addEventListener('click', function(event) {
+    // Check if the clicked element is the toggle graph button
+    if (event.target && event.target.id === 'toggle-graph-btn') {
+      toggleGraphView(event);
+    }
+  });
 
-  // Display only nodes of a given type provided by in the list as an argument
-  function filterByType(types) {
-    if (!cy) return;
+  // Function to populate the table with connections for a specific node - THIS WAS MISSING!
+  function populateConnectionsTable(detailNode, connectedNodes, connectedEdges) {
+    const tableBody = document.getElementById('connected-nodes-body');
+    const tableHeader = document.getElementById('table-header');
     
-    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
+    if (!tableBody || !tableHeader) return;
     
-    // Filter nodes by type
-    const filteredNodes = cy.nodes().filter(node => types.includes(node.data('type')));
+    // Update table header
+    tableHeader.innerHTML = `
+      <tr>
+        <th>Connected Node</th>
+        <th>Type</th>
+        <th>Relationship</th>
+      </tr>
+    `;
     
-    if (filteredNodes.length === 0) {
-      cy.elements().addClass('faded');
-      return;
-    }
+    // Clear the table
+    tableBody.innerHTML = '';
     
-    // Highlight filtered nodes
-    filteredNodes.addClass('highlighted');
+    // Add the toggle graph button first
+    addToggleGraphButton();
     
-    // Get connected edges and nodes
-    const connectedEdges = filteredNodes.connectedEdges();
-    connectedEdges.addClass('connected-edge');
+    // Add a back to details button - THIS WAS MISSING!
+    const backRow = document.createElement('tr');
+    backRow.innerHTML = `
+      <td colspan="3" style="text-align: center;">
+        <button id="back-to-details" class="back-to-details-btn">Back to Node Details</button>
+      </td>
+    `;
+    tableBody.appendChild(backRow);
     
-    const connectedNodes = connectedEdges.connectedNodes().filter(node => 
-      !filteredNodes.contains(node)
-    );
-    connectedNodes.addClass('connected');
-    
-    // Fade out all other elements
-    cy.elements().difference(filteredNodes.union(connectedEdges).union(connectedNodes)).addClass('faded');
-    
-    // Fit view to highlighted elements
-    cy.fit(filteredNodes.union(connectedEdges).union(connectedNodes), 50);
-  }
-  
-
-  // Advanced search function with reachability
-  function performSearch() {
-    if (!cy) return;
-    
-    const searchElement = document.getElementById('search');
-    const includeConnectedElement = document.getElementById('includeConnected');
-    const includeReachableElement = document.getElementById('includeReachable');
-    const maxDepthElement = document.getElementById('maxDepth');
-    
-    if (!searchElement) return;
-    
-    const query = searchElement.value.toLowerCase();
-    const includeConnected = includeConnectedElement ? includeConnectedElement.checked : true;
-    const includeReachable = includeReachableElement ? includeReachableElement.checked : true;
-    const maxDepth = maxDepthElement ? parseInt(maxDepthElement.value) : 3;
-    
-    // Reset all styles
-    cy.elements().removeClass('highlighted connected reachable highlighted-edge connected-edge reachable-edge faded');
-    
-    if (query === '') {
-      return; // No search term, show everything normally
-    }
-    
-    // Find matching nodes
-    const matchingNodes = cy.nodes().filter(node => 
-      node.data('label') && node.data('label').toLowerCase().includes(query)
-    );
-    
-    if (matchingNodes.length === 0) {
-      // No matches found
-      cy.elements().addClass('faded');
-      return;
-    }
-    
-    // Highlight matching nodes
-    matchingNodes.addClass('highlighted');
-    
-    // Collections to track different node categories
-    let connectedNodes = cy.collection();
-    let connectedEdges = cy.collection();
-    let reachableNodes = cy.collection();
-    let reachableEdges = cy.collection();
-    let allHighlightedElements = matchingNodes.clone();
-    
-    // Get directly connected elements if option is checked
-    if (includeConnected) {
-      // Get all directly connected edges
-      connectedEdges = matchingNodes.connectedEdges();
-      connectedEdges.addClass('connected-edge');
-      
-      // Get directly connected nodes that aren't already highlighted
-      connectedNodes = connectedEdges.connectedNodes().filter(node => 
-        !matchingNodes.contains(node)
-      );
-      connectedNodes.addClass('connected');
-      
-      // Add to collection of all highlighted elements
-      allHighlightedElements = allHighlightedElements.union(connectedNodes).union(connectedEdges);
-    }
-    
-    // Get reachable nodes if option is checked
-    if (includeReachable) {
-      // Start with matched nodes and their direct connections
-      let startNodes = matchingNodes.clone();
-      if (includeConnected) {
-        startNodes = startNodes.union(connectedNodes);
+    // Add event listener to the back button
+    setTimeout(() => {
+      const backBtn = document.getElementById('back-to-details');
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          updateNodeDetailsTable(detailNode);
+        });
       }
+    }, 0);
+    
+    // Group connected nodes by type
+    const nodesByType = {};
+    connectedNodes.forEach(node => {
+      const type = node.data('type');
+      if (!nodesByType[type]) {
+        nodesByType[type] = [];
+      }
+      nodesByType[type].push(node);
+    });
+    
+    // If no connections, show a message
+    if (Object.keys(nodesByType).length === 0) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td colspan="3" style="text-align: center; padding: 20px;">No connections found</td>
+      `;
+      tableBody.appendChild(row);
+      return;
+    }
+    
+    // Add rows grouped by type
+    Object.keys(nodesByType).sort().forEach(type => {
+      // Add type header
+      const headerRow = document.createElement('tr');
+      headerRow.innerHTML = `
+        <td colspan="3" style="background-color: #e6e6e6; font-weight: bold;">${type} (${nodesByType[type].length})</td>
+      `;
+      tableBody.appendChild(headerRow);
       
-      // Find all reachable nodes up to maxDepth
-      let currentFrontier = startNodes;
-      let visitedNodes = new Set(startNodes.map(node => node.id()));
-      let visitedEdges = new Set(connectedEdges.map(edge => edge.id()));
+      // Sort nodes by label
+      const sortedNodes = nodesByType[type].sort((a, b) => {
+        const labelA = a.data('label') || '';
+        const labelB = b.data('label') || '';
+        return labelA.localeCompare(labelB);
+      });
       
-      // BFS to find reachable nodes
-      for (let depth = 1; depth <= maxDepth; depth++) {
-        let nextFrontier = cy.collection();
+      // Add nodes of this type
+      sortedNodes.forEach(node => {
+        // Find the edge between these nodes
+        const edge = connectedEdges.filter(e => 
+          (e.source().id() === detailNode.id() && e.target().id() === node.id()) ||
+          (e.target().id() === detailNode.id() && e.source().id() === node.id())
+        );
         
-        // For each node in current frontier
-        currentFrontier.forEach(node => {
-          // Get outgoing edges
-          const outEdges = node.outgoers('edge').filter(edge => 
-            !visitedEdges.has(edge.id())
-          );
-          
-          // Add these edges to reachable edges
-          outEdges.forEach(edge => {
-            visitedEdges.add(edge.id());
-            reachableEdges = reachableEdges.union(edge);
-            
-            // Get target node
-            const targetNode = edge.target();
-            if (!visitedNodes.has(targetNode.id())) {
-              visitedNodes.add(targetNode.id());
-              reachableNodes = reachableNodes.union(targetNode);
-              nextFrontier = nextFrontier.union(targetNode);
-            }
-          });
+        // Determine relationship direction
+        let relationship = edge.length > 0 ? (edge[0].data('label') || 'connected to') : 'connected to';
+        if (edge.length > 0) {
+          if (edge[0].source().id() === detailNode.id()) {
+            relationship += ' &rarr;'; // Outgoing
+          } else {
+            relationship += ' &larr;'; // Incoming
+          }
+        }
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${node.data('label')}</td>
+          <td>${node.data('type')}</td>
+          <td>${relationship}</td>
+        `;
+        
+        // Add click event to highlight this node in the graph and show its details
+        row.addEventListener('click', () => {
+          highlightConnections(node);
         });
         
-        currentFrontier = nextFrontier;
+        // Add hover effect
+        row.style.cursor = 'pointer';
+        row.addEventListener('mouseenter', () => {
+          row.style.backgroundColor = '#f0f0f0';
+        });
+        row.addEventListener('mouseleave', () => {
+          row.style.backgroundColor = '';
+        });
         
-        // If no more nodes to explore, break early
-        if (currentFrontier.empty()) {
-          break;
-        }
-      }
-      
-      // Apply styles to reachable elements
-      reachableNodes.addClass('reachable');
-      reachableEdges.addClass('reachable-edge');
-      
-      // Add to collection of all highlighted elements
-      allHighlightedElements = allHighlightedElements.union(reachableNodes).union(reachableEdges);
-    }
-    
-    // Fade all other elements
-    cy.elements().difference(allHighlightedElements).addClass('faded');
-    
-    // If there are matches, fit the view to show them
-    if (matchingNodes.length > 0) {
-      cy.fit(allHighlightedElements, 50);
-    }
+        tableBody.appendChild(row);
+      });
+    });
   }
+
 });
 
-
-  // Function to show a notification instead of using alert
-  function showNotification(message, type = 'info', duration = 3000) {
-    const notification = document.getElementById('notification');
-    const notificationMessage = document.getElementById('notification-message');
-    const notificationClose = document.getElementById('notification-close');
-    
-    if (!notification || !notificationMessage) return;
-    
-    // Clear any existing timeout
-    if (window.notificationTimeout) {
-      clearTimeout(window.notificationTimeout);
-    }
-    
-    // Remove any existing classes and add the new type
-    notification.className = 'notification';
-    if (['error', 'success', 'warning'].includes(type)) {
-      notification.classList.add(type);
-    }
-    
-    // Set the message
-    notificationMessage.textContent = message;
-    
-    // Show the notification
-    notification.style.display = 'block';
-    
-    // Set up auto-hide after duration
-    window.notificationTimeout = setTimeout(() => {
-      hideNotification();
-    }, duration);
-    
-    // Set up close button
-    if (notificationClose) {
-      notificationClose.onclick = hideNotification;
-    }
+// NOTIFICATION FUNCTIONS
+function showNotification(message, type = 'info', duration = 3000) {
+  const notification = document.getElementById('notification');
+  const notificationMessage = document.getElementById('notification-message');
+  const notificationClose = document.getElementById('notification-close');
+  
+  if (!notification || !notificationMessage) return;
+  
+  // Clear any existing timeout
+  if (window.notificationTimeout) {
+    clearTimeout(window.notificationTimeout);
   }
-
-
-  // Function to hide the notification with animation
-  function hideNotification() {
-    const notification = document.getElementById('notification');
-    if (!notification) return;
-    
-    // Add the hiding class for animation
-    notification.classList.add('hiding');
-    
-    // After animation completes, hide the element
-    setTimeout(() => {
-      notification.style.display = 'none';
-      notification.classList.remove('hiding');
-    }, 300); // Match the animation duration
+  
+  // Remove any existing classes and add the new type
+  notification.className = 'notification';
+  if (['error', 'success', 'warning'].includes(type)) {
+    notification.classList.add(type);
   }
-
-
-  // Convenience functions for different notification types
-  function showErrorNotification(message, duration = 4000) {
-    showNotification(message, 'error', duration);
+  
+  // Set the message
+  notificationMessage.textContent = message;
+  
+  // Show the notification
+  notification.style.display = 'block';
+  
+  // Set up auto-hide after duration
+  window.notificationTimeout = setTimeout(() => {
+    hideNotification();
+  }, duration);
+  
+  // Set up close button
+  if (notificationClose) {
+    notificationClose.onclick = hideNotification;
   }
+}
 
+function hideNotification() {
+  const notification = document.getElementById('notification');
+  if (!notification) return;
+  
+  // Add the hiding class for animation
+  notification.classList.add('hiding');
+  
+  // After animation completes, hide the element
+  setTimeout(() => {
+    notification.style.display = 'none';
+    notification.classList.remove('hiding');
+  }, 300); // Match the animation duration
+}
 
-  function showSuccessNotification(message, duration = 3000) {
-    showNotification(message, 'success', duration);
-  }
+function showErrorNotification(message, duration = 4000) {
+  showNotification(message, 'error', duration);
+}
 
+function showSuccessNotification(message, duration = 3000) {
+  showNotification(message, 'success', duration);
+}
 
-  function showWarningNotification(message, duration = 3500) {
-    showNotification(message, 'warning', duration);
-  }
+function showWarningNotification(message, duration = 3500) {
+  showNotification(message, 'warning', duration);
+}
 

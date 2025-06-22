@@ -284,7 +284,8 @@
                 "properties": {
                     "url": "https://microsoft.github.io/autogen/stable/",
                     "github": "https://github.com/microsoft/autogen",
-                    "license": "MIT License and CC-BY-4.0"
+                    "license": "MIT License and CC-BY-4.0",
+                    "description": "AutoGen is a framework for creating multi-agent AI applications that can act autonomously or work alongside humans."
                 }
             }
         },
@@ -401,7 +402,8 @@
                 "properties": {
                     "url": "https://learn.microsoft.com/en-us/semantic-kernel/",
                     "github": "https://github.com/microsoft/semantic-kernel",
-                    "license": "MIT License"
+                    "license": "MIT License",
+                    "description": "Semantic Kernel is a lightweight, open-source development kit that lets you easily build AI agents and integrate the latest AI models into your C#, Python, or Java codebase. It serves as an efficient middleware that enables rapid delivery of enterprise-grade solutions."
                 }
             }
         },
@@ -1015,7 +1017,8 @@
                 "properties": {
                     "url": "",
                     "github": "https://github.com/ggml-org/llama.cpp",
-                    "license": "MIT License"
+                    "license": "MIT License",
+                    "description": "Inference of Meta's LLaMA model (and others) in pure C/C++"
                 }
             }
         },
@@ -1027,7 +1030,8 @@
                 "properties": {
                     "url": "",
                     "github": "https://github.com/microsoft/BitNet",
-                    "license": "MIT License"
+                    "license": "MIT License",
+                    "description": "bitnet.cpp is the official inference framework for 1-bit LLMs (e.g., BitNet b1.58). It offers a suite of optimized kernels, that support fast and lossless inference of 1.58-bit models on CPU and GPU (NPU support will coming next)."
                 }
             }
         },
@@ -3572,18 +3576,6 @@
                 "properties": {
                     "url": "https://deepwiki.com/OpenAgentX/mcp-access-point",
                     "github": "https://github.com/sxhxliang/mcp-access-point",
-                    "license": "MIT License"
-                }
-            }
-        },
-        {
-            "data": {
-                "id": "openai-gpt-image-mcp",
-                "label": "openai-gpt-image-mcp",
-                "type": "Service",
-                "properties": {
-                    "url": "",
-                    "github": "https://github.com/SureScaleAI/openai-gpt-image-mcp",
                     "license": "MIT License"
                 }
             }

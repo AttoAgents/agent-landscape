@@ -13,33 +13,56 @@
     <!-- Main content wrapper -->
     <div class="content-wrap">
       <div class="controls" id="header">
-        <div class="navigation">
-          <div class="search-container">
-            <input type="text" id="search" placeholder="Search nodes...">
-            <div class="search-options">
-              <div class="checkbox-container">
-                <input type="checkbox" id="includeConnected" checked>
-                <label for="includeConnected">Highlight connected nodes</label>
-              </div>
-              <div class="checkbox-container">
-                <input type="checkbox" id="includeReachable" checked>
-                <label for="includeReachable">Highlight all reachable paths</label>
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <div class="slider-container">
-              <label for="maxDepth">Max path depth:</label>
-              <input type="range" id="maxDepth" min="1" max="5" value="3">
-              <span id="depthValue">3</span>
-            </div>
-            
-            <button id="clearSearch">Clear</button>
-            <button id="fit">Fit View</button>
-            <button id="layout">Re-layout</button>
-          </div>
-        </div>
+        <!-- Replace the existing navigation div with this updated version -->
+<div class="navigation">
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search nodes...">
+    <div class="search-options">
+      <div class="checkbox-container">
+        <input type="checkbox" id="includeConnected" checked>
+        <label for="includeConnected">Highlight connected nodes</label>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox" id="includeReachable" checked>
+        <label for="includeReachable">Highlight all reachable paths</label>
+      </div>
+    </div>
+  </div>
+  
+  <!-- NEW: Multi-select for node types -->
+  <!-- <div class="multi-select-container">
+    <label for="nodeTypeSelect">Filter by Types:</label>
+    <select id="nodeTypeSelect" multiple size="4">
+      <option value="UseCase">Use Cases</option>
+      <option value="Protocol">Protocols</option>
+      <option value="Investor">Investors</option>
+      <option value="Company">Companies</option>
+      <option value="Service">MCP Services</option>
+      <option value="Product">Products</option>
+    </select>
+    <button id="applyTypeFilter">Apply Filter</button>
+    <button id="clearTypeFilter">Clear Filter</button>
+  </div> -->
+  
+  <div>
+    <div class="slider-container">
+      <label for="maxDepth">Max path depth:</label>
+      <input type="range" id="maxDepth" min="1" max="5" value="3">
+      <span id="depthValue">3</span>
+    </div>
+    
+    <button id="clearSearch">Clear</button>
+    <button id="fit">Fit View</button>
+    <button id="layout">Re-layout</button>
+    <div>
+      <!-- NEW: Hide faded nodes button -->
+      <button id="hideFadedNodes">Hide Faded</button>
+      <!-- NEW: Generate products/services report button -->
+      <button id="generateReport">Generate Use Case Report</button>
+    </div>
+  </div>
+</div>
+
         
         <div class="filters">
           <button id="filterUseCase">Use Cases</button>
@@ -151,7 +174,22 @@
         </div>
       </div>
 
-
+<!-- Report Modal -->
+<div id="report-modal" class="report-modal">
+  <div class="report-modal-content">
+    <div class="report-modal-header">
+      <h2 id="modal-title">Products and Services by Use Case</h2>
+      <div class="export-buttons">
+        <button id="exportJSON" class="export-btn">Export JSON</button>
+        <button id="exportCSV" class="export-btn">Export CSV</button>
+        <span class="close-modal" id="close-report-modal">&times;</span>
+      </div>
+    </div>
+    <div class="report-modal-body" id="report-content">
+      <!-- Report content will be generated here -->
+    </div>
+  </div>
+</div>
     </div>
     
     <!-- Sticky Footer -->
