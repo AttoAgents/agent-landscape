@@ -3582,18 +3582,6 @@
         },
         {
             "data": {
-                "id": "anyquery",
-                "label": "anyquery",
-                "type": "Service",
-                "properties": {
-                    "url": "https://anyquery.dev/",
-                    "github": "https://github.com/julien040/anyquery",
-                    "license": "AGPLv3"
-                }
-            }
-        },
-        {
-            "data": {
                 "id": "mindsdb",
                 "label": "mindsdb",
                 "type": "Service",
@@ -4156,8 +4144,9 @@
                 "label": "AnyQuery",
                 "type": "Service",
                 "properties": {
-                    "url": "",
+                    "url": "https://anyquery.dev/",
                     "github": "https://github.com/julien040/anyquery",
+                    "license": "AGPLv3",
                     "description": "Query more than 40 apps with one binary using SQL. It can also connect to your PostgreSQL, MySQL, or SQLite compatible database. Local-first and private by design."
                 }
             }
@@ -5307,8 +5296,8 @@
                 "label": "ODBC MCP Server",
                 "type": "Service",
                 "properties": {
-                    "url": "https://github.com/openlink/mcp-server-odbc",
-                    "github": "https://github.com/openlink/mcp-server-odbc",
+                    "url": "https://github.com/OpenLinkSoftware/mcp-odbc-server",
+                    "github": "https://github.com/OpenLinkSoftware/mcp-odbc-server",
                     "description": "An MCP server for generic Database Management System (DBMS) Connectivity via the Open Database Connectivity (ODBC) protocol"
                 }
             }
@@ -5319,8 +5308,8 @@
                 "label": "SQLAlchemy MCP Server (OpenLink)",
                 "type": "Service",
                 "properties": {
-                    "url": "https://github.com/openlink/mcp-server-sqlalchemy",
-                    "github": "https://github.com/openlink/mcp-server-sqlalchemy",
+                    "url": "https://github.com/OpenLinkSoftware/mcp-sqlalchemy-server",
+                    "github": "https://github.com/OpenLinkSoftware/mcp-sqlalchemy-server",
                     "description": "An MCP server for generic Database Management System (DBMS) Connectivity via SQLAlchemy using Python ODBC (pyodbc)"
                 }
             }
@@ -5547,9 +5536,9 @@
                 "label": "YDB MCP Server",
                 "type": "Service",
                 "properties": {
-                    "url": "https://github.com/ydb/ydb-mcp",
-                    "github": "https://github.com/ydb/ydb-mcp",
-                    "description": "MCP server for interacting with YDB databases"
+                    "url": "https://github.com/ydb-platform/ydb-mcp",
+                    "github": "https://github.com/ydb-platform/ydb-mcp",
+                    "description": "Model Context Protocol server for YDB. It allows to work with YDB databases from any LLM that supports MCP. This integration enables AI-powered database operations and natural language interactions with your YDB instances."
                 }
             }
         },
@@ -5571,8 +5560,8 @@
                 "label": "JDBC MCP Server (OpenLink)",
                 "type": "Service",
                 "properties": {
-                    "url": "https://github.com/openlink/mcp-server-jdbc",
-                    "github": "https://github.com/openlink/mcp-server-jdbc",
+                    "url": "https://github.com/OpenLinkSoftware/mcp-jdbc-server",
+                    "github": "https://github.com/OpenLinkSoftware/mcp-jdbc-server",
                     "description": "An MCP server for generic Database Management System (DBMS) Connectivity via the Java Database Connectivity (JDBC) protocol"
                 }
             }
@@ -5607,8 +5596,8 @@
                 "label": "MySQL MCP Server (DaveWind)",
                 "type": "Service",
                 "properties": {
-                    "url": "https://github.com/davewind/mysql-mcp-server",
-                    "github": "https://github.com/davewind/mysql-mcp-server",
+                    "url": "https://github.com/dave-wind/mysql-mcp-server",
+                    "github": "https://github.com/dave-wind/mysql-mcp-server",
                     "description": "A user-friendly read-only mysql mcp server for cursor and n8n"
                 }
             }
@@ -5619,9 +5608,137 @@
                 "label": "Database",
                 "type": "UseCase"
             }
+        },
+        {
+            "data": {
+                "id": "mcpjam-inspector",
+                "label": "MCPJam Inspector",
+                "type": "Product",
+                "properties": {
+                    "url": "https://www.mcpjam.com/",
+                    "github": "https://github.com/MCPJam/inspector",
+                    "license": "Apache License 2.0",
+                    "description": "MCPJam Inspector is a powerful developer tool for testing and debugging Model Context Protocol servers with AI assistance."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "kuzudb",
+                "label": "Kuzu",
+                "type": "Product",
+                "properties": {
+                    "url": "https://kuzudb.com/",
+                    "github": "https://github.com/kuzudb/kuzu",
+                    "license": "MIT License",
+                    "description": "Embedded property graph database built for speed. Vector search and full-text search built in. Implements Cypher."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "oterm",
+                "label": "oterm",
+                "type": "Product",
+                "properties": {
+                    "url": "",
+                    "github": "https://github.com/ggozad/oterm",
+                    "license": "MIT License",
+                    "description": "The terminal client for Ollama."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "elemental",
+                "label": "Elemental",
+                "type": "Product",
+                "properties": {
+                    "url": "https://attoagents.io/elemental/",
+                    "github": "https://github.com/AttoAgents/elemental",
+                    "license": "MIT License",
+                    "description": "General-purpose, multi-agent framework for automating tasks using AI agents composed in teams for conversation-based collaboration."
+                }
+            }
+        },
+        {
+            "data": {
+                "id": "attoagents",
+                "label": "AttoAgents",
+                "type": "Company",
+                "properties": {
+                    "url": "https://attoagents.io/",
+                    "github": "https://github.com/AttoAgents",
+                    "country": "US"
+                }
+            }
         }
     ],
     "edges": [
+        {
+            "data": {
+                "id": "edge-elemental-use-case",
+                "source": "elemental",
+                "target": "AgentFramework",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-elemental-mcp-client",
+                "source": "elemental",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-attoagents-elemental",
+                "source": "attoagents",
+                "target": "elemental",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-oterm-ollama",
+                "source": "oterm",
+                "target": "Ollama",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-oterm-mcp-client",
+                "source": "oterm",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-oterm-use-case",
+                "source": "oterm",
+                "target": "LLMClient",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-kuzudb-vectordb",
+                "source": "kuzudb",
+                "target": "GraphDB",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-mcpjam-inspector-mcp",
+                "source": "mcpjam-inspector",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
         {
             "data": {
                 "id": "edge-use-case--aiven-open-mcp-aiven",
