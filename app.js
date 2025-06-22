@@ -581,6 +581,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hideFadedButton) {
       hideFadedButton.textContent = `Show Hidden Elements (${newHiddenElements.length})`;
       hideFadedButton.style.backgroundColor = '#27ae60';
+      hideFadedButton.style.borderColor = '#229954';
+      hideFadedButton.style.borderWidth = '1px';
       hideFadedButton.style.color = 'white';
       hideFadedButton.disabled = false;
       

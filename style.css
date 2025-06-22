@@ -820,23 +820,23 @@ button.active-filter:hover {
 #hideFadedNodes {
   background-color: #e74c3c;
   color: white;
-  border: none;
+  border: 1px solid #c0392b;
 }
 
 #hideFadedNodes:hover {
   background-color: #c0392b;
-  border: none;
+  border: 1px solid #a93226;
 }
 
 #generateReport {
   background-color: #27ae60;
   color: white;
-  border: none;
+  border: 1px solid #229954;
 }
 
 #generateReport:hover {
   background-color: #229954;
-  border: none;
+  border: 1px solid #1e8449;
 }
 
 /* Report modal styles */
