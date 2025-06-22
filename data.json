@@ -5672,6 +5672,18 @@
                     "country": "US"
                 }
             }
+        },
+        {
+            "data": {
+                "id": "alchemist",
+                "label": "Alchemist",
+                "type": "Product",
+                "properties": {
+                    "url": "https://attoagents.io/alchemist/",
+                    "license": "Proprietary",
+                    "description": "Alchemist is a powerful tool for building and managing AI agents, enabling users to create custom agents that can perform tasks, answer questions, and interact with various data sources."
+                }
+            }
         }
     ],
     "edges": [
@@ -5697,6 +5709,54 @@
                 "source": "attoagents",
                 "target": "elemental",
                 "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-elemental-ollama",
+                "source": "elemental",
+                "target": "Ollama",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-attoagents-alchemist",
+                "source": "attoagents",
+                "target": "alchemist",
+                "label": "DEVELOPED"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-alchemist-use-case",
+                "source": "alchemist",
+                "target": "AgentPlatform",
+                "label": "IN_AREA"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-alchemist-MCP-client",
+                "source": "alchemist",
+                "target": "MCP",
+                "label": "CLIENT"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-alchemist-elemental",
+                "source": "alchemist",
+                "target": "elemental",
+                "label": "USES"
+            }
+        },
+        {
+            "data": {
+                "id": "edge-alchemist-RAG",
+                "source": "alchemist",
+                "target": "RAG",
+                "label": "IN_AREA"
             }
         },
         {
