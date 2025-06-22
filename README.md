@@ -108,6 +108,12 @@ Alternatively a click on the node or item on the list of subgraph nodes (from pr
 
 <img src="media/10--node-properties-and-details-of-product-or-company.png" alt="Properties of the selected element of the subgraph." width="100%">
 
+## Products catalog 
+
+With any filter applied generate a product catalog organized per application area. Each product will display information from the node properties. Products are organized in a grid view.
+
+<img src="media/11--product-and-services-directory.png" alt="Products and services catalog." width="100%">
+
 ## Contributions 
 
 We highly appreciate contributions in building the dataset by either direct updates or messages (or issues) related to needed fixes or updates. 
