@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"chalk": "^5.4.1",
+		"cli-progress": "^3.12.0",
+		"node-fetch": "^3.3.2",
+		"yargs": "^18.0.0"
+	},
+	"type": "module"
+}
