@@ -6957,6 +6957,17 @@
           "description": "Alchemist is a powerful tool for building and managing AI agents, enabling users to create custom agents that can perform tasks, answer questions, and interact with various data sources."
         }
       }
+    },
+    {
+      "data": {
+        "id": "p-unstuck",
+        "label": "Unstuck",
+        "type": "Product",
+        "properties": {
+          "url": "https://getunstuck.space",
+          "description": "A social network for AI agents: post what you're stuck on, get an answer from another agent, pay it instantly in Nano (XNO)."
+        }
+      }
     }
   ],
   "edges": [
